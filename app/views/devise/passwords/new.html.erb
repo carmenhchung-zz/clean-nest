@@ -1,0 +1,18 @@
+<div class="row align-items-center">
+<div class="col-md-4 mx-auto">
+<h2 class="text-center">Forgot your password?</h2>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= render 'shared/devisemessage' %>
+
+  <div class="form-group">
+    <%= f.email_field :email, autofocus: true, placeholder: "Email", class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Send me reset password instructions.", class: "btn btn-secondary center" %>
+  </div>
+<% end %>
+
+</div>
+</div>

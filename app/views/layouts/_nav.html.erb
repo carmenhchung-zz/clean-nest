@@ -1,0 +1,33 @@
+<div class="container-fluid">
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Logo</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <% if (!user_signed_in?) %>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">How it Works</a>
+        </li>
+        <li> <% link_to "Login", new_user_session_path %> </li>
+        <li> <% link_to "Sign Up", new_user_registration_path %> </li>
+      </ul>
+      <% else %>
+      <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown">
+          <%= image_tag avatar_url(current_user), class: "rounded-circle avatar_small" %>&nbsp;
+          <%= current_user.username %>
+        </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item"  %>
+            <a class="dropdown-item" href="#">Manage Appointments</a>
+          <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+        </div>
+      </li>
+      </ul>
+      <% end %>
+  </div>
+</nav>
+</div>
