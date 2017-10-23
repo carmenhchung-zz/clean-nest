@@ -36,11 +36,12 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap', '~> 4.0.0.beta'
 # Jquery-rails
 gem 'jquery-rails'
-
-gem 'devise', '~> 4.2'
 #  Devise is for login authentication
-gem 'toastr-rails', '~> 1.0'
+gem 'devise', '~> 4.2'
 # Toastr is to auto format the notices/alerts/messages to pop up on top right.
+gem 'toastr-rails', '~> 1.0'
+# Development testing gem
+gem 'dotenv-rails', groups: [:development, :test]
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

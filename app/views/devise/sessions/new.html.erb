@@ -1,7 +1,6 @@
 <div class="row align-items-center">
   <div class="col-md-4 mx-auto">
-    <h2 class="text-center">Log in</h2>
-      <br/>
+    <br><h2 class="text-center">Log in</h2></br>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-group">
         <%= f.email_field :email, autofocus: true, placeholder: "Email", class: "form-control" %>
@@ -17,13 +16,13 @@
             <%= f.check_box :remember_me %> Remember Me
           </div>
           <span class="pull-right">
-            <%= link_to "Forgot Password", new_user_password_path %>
+            <%= link_to "Forgot Password", new_user_password_path, class: 'text-teal' %>
           </span>
         <% end -%>
       </div>
 
       <div class="actions">
-        <%= f.submit "Log in", class: "btn btn-secondary" %>
+        <%= f.submit "Log in", class: "btn btn-block center" %>
       </div>
     <% end %>
   </div>

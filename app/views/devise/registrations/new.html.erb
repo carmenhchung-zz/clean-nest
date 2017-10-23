@@ -1,7 +1,6 @@
 <div class="row align-items-center">
 <div class="col-md-4 mx-auto">
-<h2 class="text-center">Sign up</h2>
-
+<br><h2 class="text-center">Sign up</h2></br>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render 'shared/devisemessage' %>
 
@@ -30,7 +29,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up", class: "btn btn-secondary center" %>
+    <%= f.submit "Sign up", class: "btn btn-block center" %>
   </div>
 <% end %>
 </div>
