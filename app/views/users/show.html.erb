@@ -1,0 +1,23 @@
+<div class="container">
+<div class="row">
+  <div class="col-md-3">
+    <div class="center">
+      <%= image_tag avatar_url(@user), class: "avatar-full" %>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">Contact Details</div>
+      <div class="panel-body">
+      Email Address<br/>
+      Phone Number
+      </div>
+    </div>
+    </div>
+  </div>
+  <div class="col-md-9">
+    <h2> <%= @user.firstname %> <%= @user.lastname %></h2>
+  <div class="description row-space-3">
+    <%= @user.bio %>
+  </div>
+  </div>
+</div>
+</div>

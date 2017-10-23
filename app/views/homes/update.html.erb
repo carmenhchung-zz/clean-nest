@@ -1,0 +1,71 @@
+<div class="container">
+<div class="row">
+
+  <div class="col-md-3">
+    <div class="center">
+      <% image_tag image_data_path(@home), class: "avatar-full" %>
+
+    <div class="panel panel-default">
+      <div class="panel-body panel-button">
+        <%= button_to 'View Listing', home_path(@home), action: :get, class: 'btn center' %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-9 center">
+    <h2 class="text-center">Home Listing</h2>
+    <% form_for @home do |f| %>
+      <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label>Home Type</label>
+                <%= f.select :home_type, [["Apartment", "Apartment"], ["House", "House"], ["Townhouse", "Townhouse"], ["Other", "Other"]], id: "home_type", prompt: "Select...", class: "form-control" %>
+              </div>
+            </div>
+            </div>
+          <%= f.submit "Save", class: "btn btn-block center" %>
+        <% end %>
+  </div>
+</div>
+</div>
+
+
+
+
+  <div class="col-md-9 center">
+    <h2 class="text-center">Home Listing</h2>
+    <div class="wrap_right">
+      <% form_for @home do |f| %>
+      <dl>
+      <dt>Listing Name</dt>
+      <dd><%= f.listing_name %></dd>
+
+      <dt>Type</dt>
+      <dd><%= f.home_type %></dd>
+
+      <dt>Address:</dt>
+      <dd><%= f.address %></dd>
+      <dt>Instructions:</dt>
+      <dd><%= f.instructions %></dd>
+      <dt>Hours Required:</dt>
+      <dd><%= f.hours %></dd>
+      <dt>Hourly Rate:</dt>
+      <dd>$<%= f.hourly_rate %></dd>
+      <dt>Supplies Provided:</dt>
+      <dd><% if @home.supplies_provided == true %>Yes<% else %>No<% end %></dd>
+      </dl>
+  </div>
+        <!-- <br>Name: <%= f.listing_name %></br>
+        <br>Type: <%= f.home_type %></br>
+        <br>Address: <%= f.address %></br>
+        <br>Instructions: <%= f.instructions %></br>
+        <br>Hours Required: <%= f.hours %></br>
+        <br>Hourly Rate: <%= f.hourly_rate %></br>
+        <br>Supplies Provided? <%= f.supplies_provided %></br> -->
+
+    <%= f.submit "Save", class: "btn btn-block center" %>
+    <% end %>
+  </div>
+</div>
+</div>

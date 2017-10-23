@@ -1,0 +1,35 @@
+<div class="container">
+<div class="row">
+
+  <div class="col-md-3">
+    <%= render 'layouts/user-sidebar' %>
+  </div>
+  <!-- Shows user's sidebar with home, appointments & account -->
+
+  <div class="col-md-9">
+    <div class="row center">
+      <h1>HOMES</h1>
+    </div>
+  <!-- Row title "Homes" -->
+
+    <div class="row center">
+      <% @homes.each do |f| %>
+        <div class="col-md-6">
+          <div class="card">
+            Insert home photo here
+          <%#= link_to image_tag(puppy.image_url, class: 'profileindex'), puppy_path(puppy.id) %>
+          <div class="card-body">
+            <h4 class="card-title center text-teal"><%= f.listing_name %></h4></br>
+            <p>Address: <%= f.address %></p>
+            <p>Hourly rate: $<%= f.hourly_rate %></p>
+            <%= link_to "VIEW", listing_home_path(f.id), class: "btn center" %>
+            <%= link_to "EDIT", home_path(f.id), class: "btn center" %>
+          </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>
+</div>
