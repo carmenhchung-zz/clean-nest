@@ -27,7 +27,9 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+# Use below version of bcrypt to overcome Windows issue.
+gem 'bcrypt', '~> 3.1.11'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -42,6 +44,11 @@ gem 'devise', '~> 4.2'
 gem 'toastr-rails', '~> 1.0'
 # Development testing gem
 gem 'dotenv-rails', groups: [:development, :test]
+# Shrine gem is for image uploading
+gem "shrine"
+# Below gems are to resize images that are uploaded with Shrine.
+gem "image_processing"
+gem "mini_magick", ">= 4.3.5"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -1,0 +1,11 @@
+<% if object.errors.any? %>
+  <h3>The following errors were found:</h3>
+
+  <ul>
+    <% object.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<!-- For Shrine errors -->

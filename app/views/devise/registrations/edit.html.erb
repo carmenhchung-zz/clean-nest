@@ -5,7 +5,7 @@
       <% image_tag avatar_url(@user), class: "avatar-full" %>
       Edit Image
       <div class="panel panel-button">
-      <%= button_to 'View Profile', user_path(current_user.id), class: 'btn center' %>
+      <%= button_to 'View Profile', showuser_path(current_user.id), method: :get, class: 'btn center' %>
       </div>
       </div>
     </div>
@@ -27,10 +27,10 @@
           <%= f.text_field :phone_number, autofocus: true, placeholder: "Phone Number", class: "form-control" %>
         </div>
 
-        <div class="form-group">
-          <%= f.check_box :is_male %> Male
-          <%= f.check_box :is_female %> Female
-        </div>
+        <!-- <div class="form-group">
+          <%#= f.check_box :is_male %> Male
+          <%#= f.check_box :is_female %> Female
+        </div> -->
 
         <!-- <div class="field center">
         Male

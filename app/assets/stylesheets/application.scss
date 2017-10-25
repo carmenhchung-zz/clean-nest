@@ -110,7 +110,7 @@ body {
 }
 
 .avatar-medium {
-  width: 48px;
+  width: 300px;
 }
 
 .avatar-full {
@@ -184,12 +184,12 @@ body {
 .flex-wrapper {
   display: flex;
 }
-.wrap_left {
+.wrap-left {
     overflow-wrap: break-word;
     width: 60%;
     padding: 0 10px 0 0;
 }
-.wrap_right {
+.wrap-right {
     width: 100%;
     padding: 0 10px;
     margin-top: 10px;
