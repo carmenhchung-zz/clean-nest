@@ -9,11 +9,10 @@ Rails.application.routes.draw do
 
   get '/userprofile/:id', to: 'users#show', as: 'showuser'
 
-
   # Only create the path to show user information - create/update is taken care of by Devise.
 
-  # resources :homes do
+  resources :homes do
     # For every home ID, route to the above things. These are in the controller.
-  #end
+  end
 
 end
