@@ -13,17 +13,22 @@
   <!-- Row title "Homes" -->
 
     <div class="row center">
-      <% @homes.each do |f| %>
+      <% @homes.each do |home| %>
         <div class="col-md-6">
           <div class="card">
-            Insert home photo here
-          <%#= link_to image_tag(puppy.image_url, class: 'profileindex'), puppy_path(puppy.id) %>
+            <div>
+              <% if home.image.present? %>
+                <%= image_tag home.image_url(:thumb), class: 'avatar-full' %>
+              <% end %>
+
+            </div>
+
           <div class="card-body">
-            <h4 class="card-title center text-teal"><%= f.listing_name %></h4></br>
-            <p>Address: <%= f.address %></p>
-            <p>Hourly rate: $<%= f.hourly_rate %></p>
-            <%= link_to "VIEW", listing_home_path(f.id), class: "btn center" %>
-            <%= link_to "EDIT", home_path(f.id), class: "btn center" %>
+            <h4 class="card-title center text-teal"><%= home.listing_name %></h4></br>
+            <p>Address: <%= home.address %></p>
+            <p>Hourly rate: $<%= home.hourly_rate %></p>
+            <%= link_to "VIEW", home_path(home.id), class: "btn center" %>
+            <%= link_to "EDIT", edit_home_path(home.id), action: :patch, class: "btn center" %>
           </div>
           </div>
         </div>

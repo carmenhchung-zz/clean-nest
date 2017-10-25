@@ -1,20 +1,11 @@
-<div class="container">
-<div class="row">
-
-  <div class="col-md-3">
-    <div class="center">
-      Insert blank default avatar here.
-
-    <div class="panel panel-default">
-      <div class="panel-body panel-button">
-        <%= button_to 'View Current Listings', home_path(@home), action: :get, class: 'btn center' %>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div class="col-md-9 center">
     <h2 class="text-center">New Home Listing</h2>
+
+    <%= render 'home_form', home: @home %>
+    <%= link_to 'Back', home_path %>
+  </div>
+
     <% form_for @home do |f| %>
       <div class="row">
 

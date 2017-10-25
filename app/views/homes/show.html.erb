@@ -1,0 +1,33 @@
+<div class="container">
+<div class="row">
+
+  <div class="col-md-3">
+    <%= render 'layouts/user-sidebar' %>
+  </div>
+  <!-- Shows user's sidebar with home, appointments & account -->
+
+  <div class="col-md-9">
+    <div class="row center">
+      <h1>HOME PROFILE</h1>
+    </div>
+
+    <section class="flex-wrapper">
+    <div class="wrap-right">
+    <div class="row center">
+            <div>
+              <% if @home.image.present? %>
+                <%= image_tag @home.image_url(:thumb), class: 'avatar-full' %>
+              <% end %>
+            </div>
+
+            <p><%= @home.listing_name %></p>
+            <p>Address: <%= @home.address %></p>
+            <p>Hourly rate: $<%= @home.hourly_rate %></p>
+
+
+            <%= link_to "EDIT", edit_home_path(@home.id), action: :patch, class: "btn center" %>
+          </div>
+          </div>
+        </div>
+    </div>
+  </div>

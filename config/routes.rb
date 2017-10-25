@@ -7,13 +7,13 @@ Rails.application.routes.draw do
     controllers: {registrations: 'registrations'}
   # Override the Devise code, including pointing to the registrations controller, where you are now able to edit your profile without entering in your current password (overriding Devise).
 
-  # resources :users, only: [:show]
+  get '/userprofile/:id', to: 'users#show', as: 'showuser'
+
+
   # Only create the path to show user information - create/update is taken care of by Devise.
 
-  resources :homes, except: [:edit] do
-    member do
-      get 'listing'
-    end
+  # resources :homes do
     # For every home ID, route to the above things. These are in the controller.
-  end
+  #end
+
 end

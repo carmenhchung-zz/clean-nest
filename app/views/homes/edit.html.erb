@@ -1,0 +1,21 @@
+<div class="container">
+<div class="row">
+
+  <div class="col-md-3">
+    <%= render 'layouts/user-sidebar' %>
+  </div>
+  <!-- Shows user's sidebar with home, appointments & account -->
+
+    <div class="col-md-9">
+      <h2 class="text-center">Edit Home Listing</h2>
+      <div class="row center">
+        <%= render 'home_form', home: @home %>
+        <!-- Renders the edit/new form for each home -->
+      </div>
+      
+      <div class="row center">
+        <%= link_to 'Back', home_path, class: 'text-center text-teal' %>
+      </div>
+    </div>
+</div>
+</div>

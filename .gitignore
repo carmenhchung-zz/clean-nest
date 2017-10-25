@@ -7,8 +7,11 @@
 # Ignore bundler config.
 /.bundle
 
-#Ignore my secrets in my testing environment
+#Ignore my secrets in my testing environment.
 /.env
+
+#Ignore my uploaded files using Shrine.
+public/uploads
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
