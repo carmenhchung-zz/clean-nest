@@ -1,3 +1,5 @@
+<!-- This page provides a snapshot summary of a user's homes including a thumbnail -->
+
 <div class="container">
 <div class="row">
 
@@ -10,31 +12,30 @@
     <div class="row center">
       <h1>HOMES</h1>
     </div>
-  <!-- Row title "Homes" -->
 
-    <div class="row center">
+  <!-- Row title "Homes" -->
+    <div class="col-md-6 center">
       <% @homes.each do |home| %>
-        <div class="col-md-6">
+
           <div class="card">
             <div>
               <% if home.image.present? %>
                 <%= image_tag home.image_url(:thumb), class: 'avatar-full' %>
               <% end %>
-
             </div>
 
-          <div class="card-body">
+          <div class="card-body center">
             <h4 class="card-title center text-teal"><%= home.listing_name %></h4></br>
-            <p>Address: <%= home.address %></p>
-            <p>Hourly rate: $<%= home.hourly_rate %></p>
+            <p><%= home.address %></p>
+            <p>Hourly rate offered: $<%= home.hourly_rate %></p>
             <%= link_to "VIEW", home_path(home.id), class: "btn center" %>
             <%= link_to "EDIT", edit_home_path(home.id), action: :patch, class: "btn center" %>
+            <%= link_to "DELETE", home_path(home.id), remote: true, method: :delete, data: {confirm: "Are you sure?"}, class: "btn center" %>
           </div>
           </div>
-        </div>
-      <% end %>
-    </div>
 
+      <% end %>
+        </div>
   </div>
 </div>
 </div>

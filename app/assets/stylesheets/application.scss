@@ -58,10 +58,9 @@ body {
   cursor: pointer; cursor: hand;
 }
 
-// Text styling
-
-.text-main, .icon-main {
-  color: #00A699;
+// Card styling
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 // Nav bar styling

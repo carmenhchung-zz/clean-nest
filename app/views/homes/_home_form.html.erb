@@ -1,3 +1,5 @@
+<!-- This partial is a form to both enter a new home and edit an existing home -->
+
 <%= render "shared/errors", object: @home %>
 <%= form_with(model: home, local: true) do |f| %>
 
@@ -5,9 +7,8 @@
       <p>
           <% if home.image.present? %>
             <%= image_tag home.image_url(:thumb), class: 'avatar-medium' %>
-            <br>Remove photo: <%= f.check_box :remove_image %></br>
+            <%= link_to image_tag('bin.svg'), remote: true, method: :delete, data: {confirm: "Are you sure?"} %>
           <% end %>
-        <label>Edit Image</label>
         <%= f.file_field :image, id: :image_data, class: "form-control" %>
       </p>
     </div>
@@ -16,7 +17,7 @@
     <div class="form-group">
       <p>
         <label>Listing Name</label>
-        <%= f.text_field :listing_name, id: 'listing_name', class: "form-control" %>
+        <%= f.text_field :listing_name, id: 'listing_name', class: "form-control", required: true %>
       </p>
     </div>
     <!-- Insert/Edit listing name -->
@@ -24,7 +25,7 @@
     <div class="form-group">
       <p>
         <label>Home Type</label>
-        <%= f.select :home_type, [["Apartment", "Apartment"], ["House", "House"], ["Townhouse", "Townhouse"], ["Other", "Other"]], id: "home_type", prompt: "Select...", class: "form-control" %>
+        <%= f.select :home_type, [["Apartment", "Apartment"], ["House", "House"], ["Townhouse", "Townhouse"], ["Other", "Other"]], id: "home_type", prompt: "Select...", class: "form-control", required: true %>
       </p>
     </div>
     <!-- Insert/Edit home type from dropdown -->
@@ -32,7 +33,7 @@
     <div class="form-group">
       <p>
         <label>Address:</label>
-        <%= f.text_field :address, autofocus: true, class: "form-control" %>
+        <%= f.text_field :address, autofocus: true, class: "form-control", required: true %>
       </p>
     </div>
     <!-- Insert/Edit home address -->
@@ -48,7 +49,7 @@
     <div class="form-group">
       <p>
         <label>Hours required to clean home:</label>
-        <%= f.number_field :hours, autofocus: true, class: "form-control" %>
+        <%= f.number_field :hours, autofocus: true, class: "form-control", required: true %>
       </p>
     </div>
     <!-- Insert/Edit hours required to clean home -->
@@ -56,7 +57,7 @@
     <div class="form-group">
       <p>
       <label>Hourly rate offered:</label>
-        <%= f.number_field :hourly_rate, autofocus: true, class: "form-control" %>
+        <%= f.number_field :hourly_rate, autofocus: true, class: "form-control", required: true %>
       </p>
     </div>
     <!-- Insert/Edit hourly rate offered -->

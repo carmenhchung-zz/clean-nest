@@ -1,67 +1,23 @@
+<!-- This page allows a user to create a new home listing -->
 
-  <div class="col-md-9 center">
-    <h2 class="text-center">New Home Listing</h2>
+<div class="container">
+<div class="row">
 
-    <%= render 'home_form', home: @home %>
-    <%= link_to 'Back', home_path %>
+  <div class="col-md-3">
+    <%= render 'layouts/user-sidebar' %>
   </div>
+  <!-- Shows user's sidebar with home, appointments & account -->
 
-    <% form_for @home do |f| %>
-      <div class="row">
+  <div class="col-md-9">
+    <h2 class="text-center">New Home Listing</h2>
+    <div class="row center">
+      <%= render 'home_form', home: @home %>
+        <!-- Renders the edit/new form for each home -->
+    </div>
 
-        <div class="col-md-4">
-          <div class="form-group">
-            <label>Listing Name:</label>
-            <%= f.text_field :listing_name, autofocus: true, class: "form-control" %>
-          </div>
-        </div>
-
-            <div class="col-md-4">
-              <div class="form-group">
-                <label>Home Type:</label>
-                <%= f.select :home_type, [["Apartment", "Apartment"], ["House", "House"], ["Townhouse", "Townhouse"], ["Other", "Other"]], id: "home_type", prompt: "Select...", class: "form-control" %>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="form-group">
-                <label>Address:</label>
-                <%= f.text_field :address, autofocus: true, class: "form-control" %>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="form-group">
-                <label>Instructions for cleaner:</label>
-                <%= f.text_field :instructions, autofocus: true, class: "form-control" %>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="form-group">
-                <label>Hours required to clean:</label>
-                <%= f.text_field :hours, autofocus: true, class: "form-control" %>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="form-group">
-                <label>Hourly rate offered:</label>
-                <%= f.text_field :hourly_rate, autofocus: true, class: "form-control" %>
-              </div>
-            </div>
-
-            <div class="col-md-4 select">
-              <div class="form-group">
-                <label>Supplies provided?</label>
-                <%= f.select :supplies_provided, [["Yes", "true"], ["No", "false"]],
-                  id: "supplies_provided", prompt: "Select...", class: "form-control" %>
-              </div>
-            </div>
-
-      </div> <!-- End row -->
-          <%= f.submit "Create Home", class: "btn btn-block center" %>
-        <% end %>
+    <div class="row center">
+      <%= link_to 'Back', homes_path, class: 'text-center text-teal' %>
+    </div>
   </div>
 </div>
 </div>

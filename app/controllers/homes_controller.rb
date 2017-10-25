@@ -2,6 +2,9 @@ class HomesController < ApplicationController
   before_action :set_home, except: [:index, :new, :create]
   # Run set home (see private) before all else, except for index, new and create which do not need this method.
 
+  before_action :is_authorised, only: [:show, :edit, :update]
+  # Ensures that only the owner of the actual home can view it, edit it, and update it.
+
   before_action :authenticate_user!
   # All customers need to login.
 
@@ -22,9 +25,10 @@ class HomesController < ApplicationController
   def create
     @home = current_user.homes.build(home_params)
     if @home.save
-      redirect_to home_path, notice: "Successfully saved!"
+      redirect_to homes_path, notice: "Successfully saved!"
     else
       flash[:alert] = "Something went wrong. Try again."
+      render :new
     end
   # Create a new home.
   end
@@ -32,9 +36,16 @@ class HomesController < ApplicationController
   def edit
   end
 
+  def destroy
+    @home.destroy
+    @homes = Home.where(home_id: home_id)
+    respond_to :js
+    # Responds to javascript
+  end
+
   def update
     if @home.update(home_params)
-      redirect_to home_path, notice: "Successfully saved!"
+      redirect_to homes_path, notice: "Successfully saved!"
     else
       flash[:alert] = "Something went wrong. Try again."
     end
@@ -50,5 +61,9 @@ class HomesController < ApplicationController
   def home_params
     params.require(:home).permit(:home_type, :listing_name, :address, :instructions, :hours, :hourly_rate, :supplies_provided, :image)
     # To create or update the room, you need to permit the attributes that the user can create/update.
+  end
+
+  def is_authorised
+    redirect_to homes_path, alert: "You don't have permission to access this." unless current_user.id == @home.user_id
   end
 end
