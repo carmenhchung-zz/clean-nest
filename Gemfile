@@ -44,7 +44,9 @@ gem 'toastr-rails', '~> 1.0'
 # Development testing gem
 gem 'dotenv-rails', groups: [:development, :test]
 # Shrine gem is for image uploading
-gem "shrine"
+gem 'shrine'
+#Geocoder gem for Google map
+gem 'geocoder', '~> 1.4'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

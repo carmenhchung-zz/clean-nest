@@ -59,7 +59,7 @@ class HomesController < ApplicationController
   end
 
   def home_params
-    params.require(:home).permit(:home_type, :listing_name, :address, :instructions, :hours, :hourly_rate, :supplies_provided, :image)
+    params.require(:home).permit(:home_type, :listing_name, :address, :instructions, :hours, :hourly_rate, :supplies_provided, :image, :longtitude, :latitude)
     # To create or update the room, you need to permit the attributes that the user can create/update.
   end
 

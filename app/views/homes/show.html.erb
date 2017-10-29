@@ -1,20 +1,20 @@
 <!-- This page displays the profile of a user's specific home -->
-
 <div class="container">
 <div class="row">
 
+<!-- Show user's sidebar with home, appointments & account -->
   <div class="col-md-3">
     <%= render 'layouts/user-sidebar' %>
   </div>
-  <!-- Shows user's sidebar with home, appointments & account -->
 
+<!-- Create header for Home Profile page -->
   <div class="col-md-9">
     <div class="row center">
       <h1>HOME PROFILE</h1>
     </div>
 
-    <section class="flex-wrapper">
-    <div class="wrap-right">
+<!-- Create card with all info for a specific home, including map -->
+    <div class="card">
     <div class="row center">
             <div>
               <% if @home.image.present? %>
@@ -26,10 +26,36 @@
             <p>Address: <%= @home.address %></p>
             <p>Hourly rate: $<%= @home.hourly_rate %></p>
 
-
             <%= link_to "EDIT", edit_home_path(@home.id), action: :patch, class: "btn center" %>
-          </div>
-          </div>
-        </div>
+    </div>
+
+    <!-- Google maps -->
+    <div class="row center">
+        <div id="map" style="width: 80%; height: 400px"></div>
+
+    <!-- Use Javascript to feed the home's latitude and longitude (contained in the home database) to the Google maps API -->
+        <script src="https://maps.googleapis.com/maps/api/js"></script>
+        <script>
+            function initialize() {
+              var location = {lat: <%= @home.latitude %>, lng: <%= @home.longitude %>};
+              var map = new google.maps.Map(document.getElementById('map'), {
+                center: location,
+                zoom: 14
+              });
+
+              var marker = new google.maps.Marker({
+                position: location,
+                map: map
+              });
+
+              infoWindow.open(map, marker);
+            }
+
+            google.maps.event.addDomListener(window, 'load', initialize);
+        </script>
+
+    </div>
     </div>
   </div>
+</div>
+</div>
