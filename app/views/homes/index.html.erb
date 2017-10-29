@@ -3,39 +3,37 @@
 <div class="container">
 <div class="row">
 
+<!-- Show user's sidebar with home, appointments & account -->
   <div class="col-md-3">
     <%= render 'layouts/user-sidebar' %>
   </div>
-  <!-- Shows user's sidebar with home, appointments & account -->
 
+<!-- Create header for Homes -->
   <div class="col-md-9">
     <div class="row center">
       <h1>HOMES</h1>
     </div>
 
-  <!-- Row title "Homes" -->
+<!-- Create card with the thumbnail shot of the user's home(s), as well as its listing name, address, hourly rate offered and buttons to edit, delete and view the home profile page -->
     <div class="col-md-6 center">
       <% @homes.each do |home| %>
-
           <div class="card">
             <div>
-              <% if home.image.present? %>
-                <%= image_tag home.image_url(:thumb), class: 'avatar-full' %>
-              <% end %>
+                <%= image_tag(home.home_image, class: 'avatar-full') %>
             </div>
 
-          <div class="card-body center">
-            <h4 class="card-title center text-teal"><%= home.listing_name %></h4></br>
-            <p><%= home.address %></p>
-            <p>Hourly rate offered: $<%= home.hourly_rate %></p>
-            <%= link_to "VIEW", home_path(home.id), class: "btn center" %>
-            <%= link_to "EDIT", edit_home_path(home.id), action: :patch, class: "btn center" %>
-            <%= link_to "DELETE", home_path(home.id), remote: true, method: :delete, data: {confirm: "Are you sure?"}, class: "btn center" %>
+            <div class="card-body center">
+              <h4 class="card-title center text-teal"><%= home.listing_name %></h4></br>
+              <p><%= home.address %></p>
+              <p>Hourly rate offered: $<%= home.hourly_rate %></p>
+              <%= link_to "VIEW", home_path(home.id), class: "btn center" %>
+              <%= link_to "EDIT", edit_home_path(home.id), action: :patch, class: "btn center" %>
+              <%= link_to "DELETE", home_path(home.id), remote: true, method: :delete, data: {confirm: "Are you sure?"}, class: "btn center" %>
+            </div>
           </div>
-          </div>
-
       <% end %>
-        </div>
+    </div>
+
   </div>
 </div>
 </div>

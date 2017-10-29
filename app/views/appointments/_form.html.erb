@@ -1,0 +1,8 @@
+
+<!-- Link each appointment to a particular user (in this case, cleaner) that is being booked -->
+<%= form_for [@user, @user.appointments.new] do |f| %>
+  <% f.text_field :date %>
+  <% f.text_field :time %>
+</br>
+  <%= f.submit "Book now", class: 'btn' %>
+<% end %>

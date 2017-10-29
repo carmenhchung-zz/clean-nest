@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  home: one
+  date: 2017-10-28 17:25:36
+  time: 2017-10-28 17:25:36
+  hours: 1
+  hourly_price: 1
+  total: 1
+
+two:
+  user: two
+  home: two
+  date: 2017-10-28 17:25:36
+  time: 2017-10-28 17:25:36
+  hours: 1
+  hourly_price: 1
+  total: 1

@@ -5,10 +5,8 @@
 
     <div class="form-group">
       <p>
-          <% if home.image.present? %>
-            <%= image_tag home.image_url(:thumb), class: 'avatar-medium' %>
+          <%= image_tag(home.home_image, class: 'avatar-full') %>
             <%= link_to image_tag('bin.svg'), remote: true, method: :delete, data: {confirm: "Are you sure?"} %>
-          <% end %>
         <%= f.file_field :image, id: :image_data, class: "form-control" %>
       </p>
     </div>
