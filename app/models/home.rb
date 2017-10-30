@@ -1,6 +1,6 @@
 class Home < ApplicationRecord
   belongs_to :user
-  has_one :photos
+  has_one :image
   has_many :appointments
   include ImageUploader[:image]
 

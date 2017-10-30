@@ -15,3 +15,4 @@
 //= require toastr
 //= require popper
 //= require bootstrap-sprockets
+//= require jquery-ui/datepicker

@@ -7,8 +7,8 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# Use postgres as the database
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -45,8 +45,10 @@ gem 'toastr-rails', '~> 1.0'
 gem 'dotenv-rails', groups: [:development, :test]
 # Shrine gem is for image uploading
 gem 'shrine'
-#Geocoder gem for Google map
+# Geocoder gem for Google map
 gem 'geocoder', '~> 1.4'
+# Jquery gem
+gem 'jquery-ui-rails', '~> 5.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -10,16 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171028062536) do
+ActiveRecord::Schema.define(version: 20171030053100) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "appointments", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "home_id"
-    t.datetime "date"
-    t.datetime "time"
+    t.bigint "user_id"
+    t.bigint "home_id"
+    t.date "date"
+    t.time "start_time"
+    t.time "end_time"
     t.integer "hours"
-    t.integer "hourly_price"
-    t.integer "total"
+    t.integer "hourly_rate"
+    t.integer "total_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["home_id"], name: "index_appointments_on_home_id"
@@ -27,19 +31,19 @@ ActiveRecord::Schema.define(version: 20171028062536) do
   end
 
   create_table "homes", force: :cascade do |t|
-    t.string "home_type"
     t.string "listing_name"
+    t.string "home_type"
     t.text "address"
     t.text "instructions"
     t.integer "hours"
     t.integer "hourly_rate"
-    t.integer "user_id"
     t.boolean "supplies_provided"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.text "image_data"
     t.float "latitude"
     t.float "longitude"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_homes_on_user_id"
   end
 
@@ -54,6 +58,9 @@ ActiveRecord::Schema.define(version: 20171028062536) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
+    t.integer "failed_attempts", default: 0, null: false
+    t.string "unlock_token"
+    t.datetime "locked_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "firstname"
@@ -72,4 +79,7 @@ ActiveRecord::Schema.define(version: 20171028062536) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "appointments", "homes"
+  add_foreign_key "appointments", "users"
+  add_foreign_key "homes", "users"
 end
