@@ -27,7 +27,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
-# Use below version of bcrypt to overcome Windows issue.
+# Use below version of bcrypt to overcome Windows issues.
 gem 'bcrypt', '~> 3.1.11'
 
 # Use Capistrano for deployment
@@ -47,8 +47,12 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'shrine'
 # Geocoder gem for Google map
 gem 'geocoder', '~> 1.4'
-# Jquery gem
+# Jquery gem for datepicker - used to select dates for appointments more easily
 gem 'jquery-ui-rails', '~> 5.0'
+# Bootstrap timepicker - used to select time for appointments more easily
+gem 'bootstrap-timepicker-rails'
+# Simple form gem - used to allow time and date picker form inputs
+gem 'simple_form'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
