@@ -6,7 +6,10 @@
     <div class="form-group">
       <p>
           <%= image_tag(home.home_image, class: 'avatar-full') %>
-            <%= link_to image_tag('bin.svg'), remote: true, method: :delete, data: {confirm: "Are you sure?"} %>
+            <%= link_to home_path(home.home_image), remote: true, method: :delete, data: {confirm: "Are you sure?"} do %>
+            <% image_tag('bin.svg') %>
+            <% end %>
+        </br>
         <%= f.file_field :image, id: :image_data, class: "form-control" %>
       </p>
     </div>

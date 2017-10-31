@@ -18,7 +18,7 @@
         <ul class="dropdown ml-auto">
           <a href="#" class="dropdown-toggle text-teal" data-toggle="dropdown"
                 role="button" aria-haspopup="true" aria-expanded="false">
-                <%= image_tag avatar_url(current_user), class: "img-circle avatar-small" %>&nbsp;
+                <%= image_tag(current_user.image_url, class: "img-circle avatar-small") %>&nbsp;
                 <%= current_user.username %> <span class="caret"></span>
           </a>
           <ul class="dropdown-menu center">

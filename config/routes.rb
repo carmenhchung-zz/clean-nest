@@ -10,8 +10,10 @@ Rails.application.routes.draw do
 # Allow appointments to be made and linked to users - but only let them create and not edit or delete.
   resources :users do
     resources :appointments, only: [:create]
+    get 'preload'
   end
 
+  get '/your_appointments' => 'appointments#your_appointments'
 # Only create the path to show user information - create/update is taken care of by Devise.
   get '/userprofile/:id', to: 'users#show', as: 'showuser'
 

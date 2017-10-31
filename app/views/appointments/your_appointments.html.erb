@@ -1,0 +1,39 @@
+<!-- This page provides a snapshot summary of a user's homes including a thumbnail -->
+
+<div class="container">
+<div class="row">
+
+<!-- Show user's sidebar with home, appointments & account -->
+  <div class="col-md-3">
+    <%= render 'layouts/user-sidebar' %>
+  </div>
+
+<!-- Create header for Homes -->
+  <div class="col-md-9">
+    <div class="row center">
+      <h1>YOUR APPOINTMENTS</h1>
+    </div>
+
+<!-- Create card with the thumbnail shot of the user's home(s), as well as its listing name, address, hourly rate offered and buttons to edit, delete and view the home profile page -->
+    <div class="col-md-6 center">
+      <% @appointments.each do |appointment| %>
+          <div class="card">
+            <div>
+                <%= image_tag(appointment.home.home_image, class: 'avatar-full') %>
+            </div>
+
+            <div class="card-body center">
+              <h4 class="card-title center text-teal"><%= appointment.home.listing_name %></h4></br>
+              <p>Date: <%= appointment.date.strftime('%v') %></p>
+              <p>Time: <%= appointment.start_time %> - <%= appointment.end_time %></p>
+              <p>Cleaner: <%= link_to appointment.user.username, user_path(appointment.user) %></p>
+              <p>Total price: $<%= appointment.total_price %></p>
+              <%# link_to "VIEW", home_path(home.id), class: "btn center" %>
+            </div>
+          </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>
+</div>
