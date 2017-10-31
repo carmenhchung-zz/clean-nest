@@ -2,32 +2,47 @@
 
 <!-- Pass the user that each appointment belongs to and the appointment details - @user is the parent and @user.appointments.new is the child -->
 
+<h2>MAKE AN APPOINTMENT</h2>
 <%= form_for([@user, @user.appointments.new]) do |f| %>
 <!-- <div class="form-group"> -->
-  Date: <%= f.text_field :date %>
+  Date: <%= f.text_field :date, readonly: true %></br>
   <!-- Time picker using bootstrap -->
-  Time:
-    <!-- <div class="input-group bootstrap-timepicker"> -->
-    <!-- <input id="timepicker" type="text" class="form-control input-small">
-    <span class="input-group-addon"><i class="icon-time"></i></span>
-    </div> -->
-
+  Start Time:
     <div class="input-group bootstrap-timepicker timepicker">
-    <input id="timepicker1" type="text" class="form-control input-small">
-    <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-</div>
-
+      <input id="timepicker1" type="text" class="form-control input-small">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+    </div>
   Number of hours: <%= f.number_field :hours %>
-</br>
-<!-- </div> -->
-  <%= f.submit "Book now", class: 'btn' %>
+  <p>
+  <%= f.submit "Book now", class: 'btn center' %>
+  </p>
+
+<div id="preview" style="display: none">
+  <table class="reservation-table">
+    <tbody>m
+      <tr><td>End Date: </td></tr>
+      <tr><td>Hourly Rate: $<span id="appointment_hourly_rate"></span><%#= @user.hourly_rate %></td></tr>
+      <tr><td>Total Price: $<span id="appointment_total"></span><%#= @user.hourly_rate * :hours %> </td></tr>
+    </tbody>
+  </table>
+</div>
 <% end %>
 
-
-
-<!-- Run script so that jquery-ui datepicker works - allows a dropdown date picker -->
+<!-- Run script so that jquery-ui datepicker works - allows a dropdown date picker and a time picker -->
 <script>
   $(function() {
+
+    $.ajax({
+      url: '<%= preload_user_path(@user) %>',
+      dateTyp: 'json',
+      success: function(data) {
+        $.each(data, function(arrID, arrValue) {
+          console.log(arrValue);
+        });
+      }
+
+    })
+
     $('#appointment_date').datepicker({
       dateFormat: 'dd-mm-yy'
     });

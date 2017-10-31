@@ -4,7 +4,9 @@
 <div class="row">
   <div class="col">
     <div class="center">
-      <%= image_tag avatar_url(@user), class: "avatar-full" %>
+      <% if @user.image.present? %>
+      <%= image_tag(@user.image_url, class: "avatar-full") %>
+      <% end %>
 
     <div class="panel panel-default">
       <div class="panel-heading">Contact Details</div>

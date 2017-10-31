@@ -26,7 +26,10 @@ class AppointmentsController < ApplicationController
     flash[:notice] = "Successfully made an appointment!"
     redirect_to user
     end
+  end
 
+  def your_appointments
+    @appointments = current_user.appointments.order(date: :asc)
   end
 
   private

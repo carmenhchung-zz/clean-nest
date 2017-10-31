@@ -36,11 +36,13 @@ class HomesController < ApplicationController
   def edit
   end
 
+
+# Method to delete both the entire home as well as an image for a particular home
   def destroy
     @home.destroy
-    @homes = Home.where(home_id: home_id)
+    @home.image.destroy
     respond_to :js
-    # Responds to javascript
+    # Responds to javascript - use with ajax
   end
 
   def update
