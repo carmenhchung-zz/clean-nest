@@ -1,8 +1,40 @@
+<!-- This page is a booking form partial to book a cleaner. It links each appointment to a particular user (in this case, cleaner) that is being booked -->
 
-<!-- Link each appointment to a particular user (in this case, cleaner) that is being booked -->
-<%= form_for [@user, @user.appointments.new] do |f| %>
-  <% f.text_field :date %>
-  <% f.text_field :time %>
+<!-- Pass the user that each appointment belongs to and the appointment details - @user is the parent and @user.appointments.new is the child -->
+
+<%= form_for([@user, @user.appointments.new]) do |f| %>
+<!-- <div class="form-group"> -->
+  Date: <%= f.text_field :date %>
+  <!-- Time picker using bootstrap -->
+  Time:
+    <!-- <div class="input-group bootstrap-timepicker"> -->
+    <!-- <input id="timepicker" type="text" class="form-control input-small">
+    <span class="input-group-addon"><i class="icon-time"></i></span>
+    </div> -->
+
+    <div class="input-group bootstrap-timepicker timepicker">
+    <input id="timepicker1" type="text" class="form-control input-small">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+</div>
+
+  Number of hours: <%= f.number_field :hours %>
 </br>
+<!-- </div> -->
   <%= f.submit "Book now", class: 'btn' %>
 <% end %>
+
+
+
+<!-- Run script so that jquery-ui datepicker works - allows a dropdown date picker -->
+<script>
+  $(function() {
+    $('#appointment_date').datepicker({
+      dateFormat: 'dd-mm-yy'
+    });
+  });
+
+</script>
+
+<script type="text/javascript">
+    $('#timepicker1').timepicker();
+</script>

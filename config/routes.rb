@@ -7,16 +7,17 @@ Rails.application.routes.draw do
     path_names: {sign_in: 'login', sign_out: 'logout', edit: 'profile', sign_up: 'registration'},
     controllers: {registrations: 'registrations'}
 
+# Allow appointments to be made and linked to users - but only let them create and not edit or delete.
   resources :users do
-  resources :appointments, only: [:create]
+    resources :appointments, only: [:create]
   end
-  
+
 # Only create the path to show user information - create/update is taken care of by Devise.
   get '/userprofile/:id', to: 'users#show', as: 'showuser'
 
 # Only allow user to create an appointment - not edit or delete them.
   resources :homes do
-      resources :appointments, only: [:create]
+      # resources :appointments, only: [:create]
   end
 
 end
