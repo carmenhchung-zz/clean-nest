@@ -1,0 +1,59 @@
+<!-- This page is an availability form partial for each cleaner to set their own availability. It links each availability to a particular user (in this case, cleaner). It is only shown when the profile page is the profile page of the user who has logged in (so only then can set their own availability). -->
+
+<!-- Pass the user that each availability belongs to and the availability details - @user is the parent and @user.availability.new is the child -->
+
+<h2>YOUR AVAILABILITY</h2>
+Current Availability:
+[List current availability here]
+
+Edit availability.
+<%= form_for([@user, @user.appointments.new]) do |f| %>
+<!-- <div class="form-group"> -->
+  Date: <%= f.text_field :date, readonly: true %></br>
+  <!-- Time picker using bootstrap -->
+  Start Time:
+    <div class="input-group bootstrap-timepicker timepicker">
+      <input id="timepicker1" type="text" class="form-control input-small">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+    </div>
+
+  Number of hours: <%= f.number_field :hours %>
+  <p>
+  <%= f.submit "Book now", class: 'btn center' %>
+  </p>
+
+<div id="preview" style="display: none">
+  <table class="reservation-table">
+    <tbody>
+      <tr><td>Hourly Rate: $<span id="appointment_hourly_rate"></span><%#= @user.hourly_rate %></td></tr>
+      <tr><td>Total Price: $<span id="appointment_total"></span><%#= @user.hourly_rate * :hours %> </td></tr>
+    </tbody>
+  </table>
+</div>
+<% end %>
+
+<!-- Run script so that jquery-ui datepicker works - allows a dropdown date picker and a time picker -->
+<script>
+  $(function() {
+
+    // $.ajax({
+    //   url: '<%#= preload_user_path(@user) %>',
+    //   dateTyp: 'json',
+    //   success: function(data) {
+    //     $.each(data, function(arrID, arrValue) {
+    //       console.log(arrValue);
+    //     });
+    //   }
+    //
+    // })
+
+    $('#appointment_date').datepicker({
+      dateFormat: 'dd-mm-yy'
+    });
+  });
+
+</script>
+
+<script type="text/javascript">
+    $('#timepicker1').timepicker();
+</script>

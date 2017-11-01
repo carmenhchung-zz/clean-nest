@@ -5,11 +5,11 @@
   <div class="col">
     <div class="center">
       <% if @user.image.present? %>
-      <%= image_tag(@user.image_url, class: "avatar-full") %>
+      <%= image_tag(@user.image_url(:thumb)) %>
       <% end %>
 
     <div class="panel panel-default">
-      <div class="panel-heading">Contact Details</div>
+      <div class="panel-heading"><%= @user.username %></div>
       <div class="panel-body">
       Email Address<br/>
       Phone Number
@@ -19,16 +19,22 @@
   </div>
 
     <div class="col-md-6">
-    <h1><%= @user.firstname %> <%= @user.lastname %> (<%= @user.username %>)</h1>
-    Gender: <%= @user.gender %>
-    Primary language: <%= @user.language %>
-    Location: <%= @user.location %>
-    <%= @user.bio %>
+    <h1><%= @user.firstname %> <%= @user.lastname %>
+    <!-- If the user has uploaded their ID document (under edit profile), then this picture will show -->
+        <% if @user.identification.exists? %>
+        <%= image_tag('verified.png', class: 'avatar-small') %>
+        <% end %>
+    </h1>
+    <br>Gender: <%= @user.gender %></br>
+    <br>Primary language: <%= @user.language %></br>
+    <br>Location: <%= @user.location %></br>
+    <br>Bio: <%= @user.bio %></br>
+
   </div>
 
 <!-- Appointment Form -->
   <div class="col">
-  <%= render 'appointments/form' %>
+  <%#= render 'appointments/form' %>
   </div>
 
   </div>
