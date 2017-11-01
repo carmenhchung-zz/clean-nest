@@ -13,4 +13,5 @@ class User < ApplicationRecord
   has_many :appointments
   has_one :image
   include ImageUploader[:image]
+  include ImageUploader[:identification]
 end

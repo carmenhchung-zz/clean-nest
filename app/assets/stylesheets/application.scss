@@ -18,10 +18,6 @@ body {
   color: #FFFFFF;
 }
 
-.a {
-  color: #00A699;
-}
-
 .container {
   width: 80%;
 }
@@ -68,13 +64,21 @@ body {
 // Nav bar styling
 
 .navbar-default{
-  background-color: #fff;
+  background-color: #FFFFFF;
+  color: #3AAFA9;
 }
 
-.navbar-brand{
+.navbar-nav{
+  width: 80%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.nav-item {
   color: #3AAFA9;
-  font-size: 2em;
-  font-weight: 400;
 }
 
 // Profile styling
@@ -100,7 +104,7 @@ body {
 }
 
 .description {
-  color: #575757;
+  color: #3AAFA9;
   font-size: 15px;
   font-weight: 500;
   line-height: 25px;
@@ -129,18 +133,18 @@ body {
 
 .form-group input {
   height: 45px;
-  border: 1px solid #00A699;
+  border: 1px solid #3AAFA9;
 }
 
 .form-group textarea {
-  border: 1px solid #00A699;
+  border: 1px solid #3AAFA9;
 }
 
 .form-group select {
   width: 100%;
   color: #565a5c;
   background-color: white;
-  border: 1px solid #00A699;
+  border: 1px solid #3AAFA9;
   border-radius: 2px;
   padding: 10px;
   appearance: none;
@@ -152,7 +156,7 @@ body {
   content: '\25bc';
   font-size: 1.2em;
   position: absolute;
-  color: #00A699;
+  color: #3AAFA9;
   top: 35px;
   right: 30px;
   transform: scale(0.94, 0.62);
@@ -164,7 +168,7 @@ body {
   margin-bottom: -0.25em;
   margin-right: 5px;
   vertical-align: top;
-  border: 1px solid #00A699;
+  border: 1px solid #3AAFA9;
   border-radius: 2px;
   appearance: none;
   -moz-appearance: none;
@@ -177,7 +181,7 @@ body {
   font-size: 0.95em;
   text-align: center;
   width: 1.25em;
-  color: #00A699;
+  color: #3AAFA9;
 }
 
 // Coloured wrapper boxes
@@ -202,14 +206,14 @@ body {
 
 // Reservation table
 
-.reservation-table td {
+.reservation-table td, .appointment-table td {
   width: 100%;
   border: none;
-  border-bottom: 1px solid #dce0e0;
+  border-bottom: 1px solid #3AAFA9;
   padding: 10px;
 }
 
-.reservation-table .total td {
+.reservation-table .total td, .appointment-table .total td {
   font-size: 16px;
   font-weight: bold;
   border: none;

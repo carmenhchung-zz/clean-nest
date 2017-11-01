@@ -1,33 +1,44 @@
-<nav class="navbar sticky-top navbar-expand-lg navbar-default">
+<nav class="navbar sticky-top navbar-expand-lg navbar-default navbar-collapse">
   <div class="container-fluid">
   <%= link_to image_tag('logo2.svg'), root_path %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+<!-- If a user has not signed in, show them the How it Works link and the Login/Sign Up links -->
     <% if (!user_signed_in?) %>
         How it Works
         <ul class="navbar-nav ml-auto">
-          <div class="text-teal">
+        <div class="text-teal">
         <%= link_to "Login", new_user_session_path, class: 'text-teal' %>
         &nbsp; / &nbsp;
         <%= link_to "Sign Up", new_user_registration_path, class: 'text-teal' %>
         </div>
         </ul>
+
+<!-- If a user has signed in, show them the navigation that allows them to find a cleaner/be a cleaner etc. -->
     <% else %>
-        <ul class="dropdown ml-auto">
-          <a href="#" class="dropdown-toggle text-teal" data-toggle="dropdown"
-                role="button" aria-haspopup="true" aria-expanded="false">
-                <%= image_tag(current_user.image_url, class: "img-circle avatar-small") %>&nbsp;
-                <%= current_user.username %> <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu center">
-            <li><%= link_to "Manage Your Appointments" %></li>
-            <li role="separator" class="divider"></li>
-            <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
-            <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
-          </ul>
-        </ul>
+    <ul class="navbar-nav">
+      <li class="nav-item"><%= link_to "Profile", showuser_path(current_user.id), method: :get, class: 'text-teal' %></li>
+      <li class="nav-item"><%= link_to "Find a Cleaner", class: 'text-teal' %></li>
+      <li class="nav-item"><%= link_to "Be a Cleaner", class: 'text-teal' %></li>
+      <li class="nav-item"><%= link_to "Appointments", class: 'text-teal' %></li>
+    </ul>
+
+    <ul class="dropdown ml-auto">
+      <a href="#" class="dropdown-toggle text-teal" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          <%= image_tag(current_user.image_url, class: "img-circle avatar-small") %>&nbsp;
+          <%= current_user.username %> <span class="caret"></span>
+      </a>
+
+      <ul class="dropdown-menu center">
+          <li><%= link_to "View Profile", showuser_path(current_user.id), method: :get %></li>
+          <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+          <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+      </ul>
+    </ul>
+
     <% end %>
   </div>
 </div>

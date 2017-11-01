@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171031060214) do
+ActiveRecord::Schema.define(version: 20171101213057) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,8 +26,19 @@ ActiveRecord::Schema.define(version: 20171031060214) do
     t.integer "total_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "instructions"
     t.index ["home_id"], name: "index_appointments_on_home_id"
     t.index ["user_id"], name: "index_appointments_on_user_id"
+  end
+
+  create_table "availabilities", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer "hours"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_availabilities_on_user_id"
   end
 
   create_table "homes", force: :cascade do |t|
@@ -76,6 +87,7 @@ ActiveRecord::Schema.define(version: 20171031060214) do
     t.text "bio"
     t.integer "hourly_rate"
     t.text "image_data"
+    t.text "identification_data"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -83,5 +95,6 @@ ActiveRecord::Schema.define(version: 20171031060214) do
 
   add_foreign_key "appointments", "homes"
   add_foreign_key "appointments", "users"
+  add_foreign_key "availabilities", "users"
   add_foreign_key "homes", "users"
 end
