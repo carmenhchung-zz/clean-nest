@@ -26,17 +26,7 @@
           <%= f.text_field :phone_number, autofocus: true, placeholder: "Phone Number", class: "form-control" %>
         </div>
 
-        <!-- <div class="form-group">
-          <%#= f.check_box :is_male %> Male
-          <%#= f.check_box :is_female %> Female
-        </div> -->
-
-        <!-- <div class="field center">
-        Male
-        <%#= form.check_box :gender, id: :male %>
-        Female
-        <%#= form.check_box :gender, id: :female %>
-        </div> -->
+        Gender: <%= f.select :gender, [["Male", "Male"], ["Female", "Female"]], id: "gender", prompt: "Select...", class: "form-control" %>
 
         <div class="form-group">
           <%= f.text_field :language, autofocus: true, placeholder: "Primary Language", class: "form-control" %>
