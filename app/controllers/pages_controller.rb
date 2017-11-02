@@ -7,9 +7,9 @@ class PagesController < ApplicationController
         session[:loc_search] = params[:search]
       end
 
-      # Second, their session location search is known and it is not empty, search for all the users within 10 km the location they have entered
+      # Second, their session location search is known and it is not empty, search for all the users within 20 km the location they have entered
       if session[:loc_search] && session[:loc_search] != ""
-        @user_location = User.where(active: true).near(session[:loc_search], 10, order: 'distance')
+        @user_location = User.where(active: true).near(session[:loc_search], 20, order: 'distance')
 
       else
         # If they did not provide a location, then pull up all the cleaners.

@@ -1,25 +1,25 @@
 <!-- This is the search page which allows customers to search for cleaners based on date and hourly price -->
 
+<%= search_form_for @search, url: search_path, remote: true do |f| %>
+
 <div class="container">
 
-  <!-- Search panel -->
+  <!-- Search panel with location and date search -->
     <div class="row">
-      <div class="col-md-4">
-<%= search_form_for @search, url: search_path, remote: true do |f| %>
-            Finding cleaners near: <%= text_field_tag :search, params[:search], placeholder: "Enter your address", class: "form-control", id: "autolocation" %>
-      </div>
+        <div class="col-md-4">
+              Finding cleaners near: <%= text_field_tag :search, params[:search], placeholder: "Enter your address", class: "form-control", id: "autolocation" %>
+        </div>
+        <div class="col-md-4">
+              Date:<%= text_field_tag :date, params[:date], readonly: true, class: "form-control" %>
+        </div>
     </div>
 
-    <div class="row">
-      <div class="col-md-4">
-        <label>Date:</label><%= text_field_tag :date, params[:date], readonly: true, class: "form-control" %>
-      </div>
-    </div>
-
+<br/>
+<!-- Search panel with price range slider and price search -->
     <div class="row">
       <div class="col-md-4">
         <label>Price range:</label>
-        <div id="slider-range"></div>
+      <div id="slider-range"></div>
       </div>
 
       <!-- Search for hourly rates that are greater than the minimum but less than the maximum  -->
@@ -36,20 +36,24 @@
     <br/>
 
     <div class="row">
-      <div class="col-md-3 center">
-        <%= f.submit "Find a Cleaner", class: "btn" %>
+      <div class="col-md-8">
+        <%= f.submit "Find a Cleaner", class: "center btn" %>
       </div>
     </div>
     <br/>
   <% end %>
 
   <div class="row">
+    <div class="col-md-8">
     <br/>
     <%= render partial: "users/users_list", locals: {users: @arrUsers} %>
+    </div>
   </div>
 <br/>
+</div>
 
   <!-- Google maps to show where the cleaners locations are, along with the hourly rate as markers on the map -->
+<div class="container">
   <div id="right">
     <div id="map" style="width: 100%; height: 100%"></div>
 
@@ -89,8 +93,7 @@
         });
     </script>
   </div>
-
-  </div>
+</div>
 
 <script>
   $('#date').datepicker({

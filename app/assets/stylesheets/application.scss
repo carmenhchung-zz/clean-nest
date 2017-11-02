@@ -27,7 +27,8 @@ body {
 }
 
 .center {
-  margin: 0 auto;
+  margin: auto;
+  display: block;
   justify-content: center;
   text-align: center;
 }
@@ -55,8 +56,7 @@ body {
   padding: 9px 27px;
 }
 
-.btn:hover, .btn:focus {
-  color: #fff;
+.btn:hover, .btn:focus, .btn-white:hover, .btn-white:focus {
   cursor: pointer; cursor: hand;
 }
 
