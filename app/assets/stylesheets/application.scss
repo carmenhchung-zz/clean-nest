@@ -71,6 +71,7 @@ body {
 // Card styling
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 10px 20px;
 }
 
 // Nav bar styling
@@ -100,7 +101,7 @@ body {
   background: radial-gradient(0 0,circle farthest-side, rgba(255,255,255,0) 90%,rgba(255,255,255,.8) 98%,rgba(255,255,255,0) 100%) no-repeat;
   background: radial-gradient(circle farthest-side at 0 0, rgba(255,255,255,0) 90%,rgba(255,255,255,.8) 98%,rgba(255,255,255,0) 100%) no-repeat;
   background-position: inherit;
-  -webkit-mask: url('logo2.svg') center;
+  -webkit-mask: url('logo.svg') center;
   mask: url('#mask-firefox');
 }
 
