@@ -1,6 +1,17 @@
+
+
 <nav class="navbar sticky-top navbar-expand-lg navbar-default navbar-collapse">
   <div class="container-fluid">
-  <%= link_to image_tag('logo2.svg'), root_path %>
+    <div class="mask pseudo">
+      <%#= link_to image_tag('logo2.svg'), root_path %>
+      <mask id="mask-firefox">
+        <%= link_to image_tag('logo2.svg', filter: 'url(#filter)'), root_path %>
+      </mask>
+      <filter id="filter">
+        <feFlood flood-color="white" />
+        <feComposite in2="SourceAlpha" operator="in" />
+      </filter>
+    </div>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -10,31 +21,34 @@
     <% if (!user_signed_in?) %>
         How it Works
         <ul class="navbar-nav ml-auto">
-        <div class="text-teal">
         <%= link_to "Login", new_user_session_path, class: 'text-teal' %>
         &nbsp; / &nbsp;
         <%= link_to "Sign Up", new_user_registration_path, class: 'text-teal' %>
-        </div>
         </ul>
 
 <!-- If a user has signed in, show them the navigation that allows them to find a cleaner/be a cleaner etc. -->
     <% else %>
     <ul class="navbar-nav">
-      <li class="nav-item"><%= link_to "Profile", showuser_path(current_user.id), method: :get, class: 'text-teal' %></li>
-      <li class="nav-item"><%= link_to "Find a Cleaner", class: 'text-teal' %></li>
-      <li class="nav-item"><%= link_to "Be a Cleaner", class: 'text-teal' %></li>
+      <li class="nav-item"><%= link_to "Find a Cleaner", search_url, class: 'text-teal' %></li>
+      <li class="nav-item"><%= link_to "Be a Cleaner", edit_user_registration_path, class: 'text-teal' %></li>
       <li class="nav-item"><%= link_to "Appointments", class: 'text-teal' %></li>
     </ul>
 
     <ul class="dropdown ml-auto">
       <a href="#" class="dropdown-toggle text-teal" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          <%= image_tag(current_user.image_url, class: "img-circle avatar-small") %>&nbsp;
-          <%= current_user.username %> <span class="caret"></span>
+
+        <% if current_user.image.present? %>
+        <%= image_tag(current_user.image_url, class: "img-circle avatar-small") %>&nbsp;
+        <% else %>
+        <%= image_tag('defaultprofile.svg', class: "img-circle avatar-small") %>&nbsp;
+        <% end %>
+        <%= current_user.username %> <span class="caret"></span>
       </a>
 
       <ul class="dropdown-menu center">
           <li><%= link_to "View Profile", showuser_path(current_user.id), method: :get %></li>
           <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+          <li><%= link_to "Inbox" %></li>
           <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
       </ul>
     </ul>

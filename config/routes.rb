@@ -21,5 +21,5 @@ Rails.application.routes.draw do
   resources :homes do
       # resources :appointments, only: [:create]
   end
-
+  get 'search' => 'pages#search'
 end

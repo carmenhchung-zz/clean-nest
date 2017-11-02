@@ -26,7 +26,7 @@
 
       Add Availability
       <%= form_for([@user, @user.availability.new]) do |f| %>
-        Date: <%= f.text_field :date, readonly: true %></br>
+        Date: <%= f.text_field :date, readonly: true %><br/>
 
       <!-- Time picker using bootstrap -->
         Start Time:
@@ -53,7 +53,7 @@
 <!-- In the below form, the calendar should only show the dates that the cleaner is available, and the times that they are available for that particular date (using ajax to refresh once they've picked a date using the date picker) -->
 
     <%= form_for([@user, @user.appointments.new]) do |f| %>
-      Date: <%= f.text_field :date, readonly: true %></br>
+      Date: <%= f.text_field :date, readonly: true %><br/>
       <!-- Show the times that the cleaner is available for the above selected date here-->
       <%= f.submit "Book now", class: 'btn center' %>
       </p>

@@ -53,6 +53,8 @@ gem 'jquery-ui-rails', '~> 5.0'
 gem 'bootstrap-timepicker-rails'
 # Simple form gem - used to allow time and date picker form inputs
 gem 'simple_form'
+# Ransack gem used for searching
+gem 'ransack', '~> 1.7'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -9,54 +9,73 @@
         </div>
 
     <div class="col-md-6 center">
-      <h2 class="text-center"><br>Edit Profile</br></h2>
+      <h2 class="text-center"><br>Edit Profile<br/></h2>
         <%= render 'shared/devisemessage' %>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
-          Edit Avatar: <%= f.file_field :image, id: :image_data, class: "form-control" %>
+          <label>Do you wish to be listed as a cleaner?</label><%= f.check_box :active, autofocus: true %>
+
         <div class="form-group">
-          <%= f.text_field :firstname, autofocus: true, placeholder: "First Name", class: "form-control" %>
+          <label>Edit Avatar: </label><%= f.file_field :image, id: :image_data, class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <%= f.text_field :lastname, autofocus: true, placeholder: "Last Name", class: "form-control" %>
+          <label>First Name:</label>
+          <%= f.text_field :firstname, autofocus: true, class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <%= f.text_field :phone_number, autofocus: true, placeholder: "Phone Number", class: "form-control" %>
-        </div>
-
-        Gender: <%= f.select :gender, [["Male", "Male"], ["Female", "Female"]], id: "gender", prompt: "Select...", class: "form-control" %>
-
-        <div class="form-group">
-          <%= f.text_field :language, autofocus: true, placeholder: "Primary Language", class: "form-control" %>
+          <label>Last Name:</label>
+          <%= f.text_field :lastname, autofocus: true, class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <%= f.text_field :location, autofocus: true, placeholder: "Location", class: "form-control" %>
+          <label>Mobile Number:</label>
+          <%= f.text_field :phone_number, autofocus: true, class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <%= f.text_area :bio, autofocus: true, placeholder: "Bio", class: "form-control" %>
+          <label>Primary Language:</label>
+          <%= f.text_field :language, autofocus: true, class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <%= f.email_field :email, autofocus: true, placeholder: "Email", class: "form-control"  %>
+          <label>Preferred Working Location</label>
+          <%= f.text_field :location, autofocus: true, class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <%= f.password_field :password, autocomplete: "off", placeholder: "Password (leave blank if you do not wish to change)", class: "form-control" %>
+          <label>Hourly Rate:</label>
+          <%= f.number_field :hourly_rate, autofocus: true, class: "form-control" %>
         </div>
 
         <div class="form-group">
-        Add identification: <%= f.file_field :identification, id: :identification_data, class: "form-control" %>
+          <label>Bio</label>
+          <%= f.text_area :bio, autofocus: true, class: "form-control" %>
         </div>
+
+        <div class="form-group">
+          <label>Email</label>
+          <%= f.email_field :email, autofocus: true, class: "form-control"  %>
+        </div>
+
+        <div class="form-group">
+          <label>Password (leave blank if you do not wish to change)</label>
+          <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <label>Upload identification document (will not be public):</label>
+         <%= f.file_field :identification, id: :identification_data, class: "form-control" %>
+        </div>
+
+        <label>Gender: </label><%= f.select :gender, [["Male", "Male"], ["Female", "Female"]], id: "gender", prompt: "Select...", class: "form-control" %>
 
         <div class="actions center">
           <%= f.submit "Update", class: 'btn btn-block center' %>
         </div>
       <% end %>
-      <br><%= link_to "Back", :back, class: 'text-teal' %></br>
+      <br><%= link_to "Back", :back, class: 'text-teal' %><br/>
   </div>
   </div>
 </div>

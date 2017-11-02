@@ -14,6 +14,10 @@ body {
   color: #3AAFA9;
 }
 
+.background-teal {
+  background-color: #3AAFA9;
+}
+
 .text-white {
   color: #FFFFFF;
 }
@@ -56,12 +60,49 @@ body {
   cursor: pointer; cursor: hand;
 }
 
+.btn-white {
+  background-color: #FFFFFF;
+  color: #3AAFA9;
+  border-radius: 30px;
+  font-weight: bold;
+  padding: 9px 27px;
+}
+
 // Card styling
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 // Nav bar styling
+
+.mask a{
+  position: relative;
+  display:block;
+  width:70px;
+  height: 70px;
+  text-align:center;
+  -webkit-filter: drop-shadow(1px 1px 2px rgba(0,0,0,.5));
+}
+.mask a{
+  background-position: -140px 0;
+}
+.mask a:hover,
+.mask a:focus{
+  background-position: 10px 0;
+  /*change speed to see in slow motion*/
+  transition: all 1s;
+}
+.mask a::after{
+  content:'';
+  position: absolute;
+  pointer-events: none;
+  top:0; left:0; right:0; bottom: 0;
+  background: radial-gradient(0 0,circle farthest-side, rgba(255,255,255,0) 90%,rgba(255,255,255,.8) 98%,rgba(255,255,255,0) 100%) no-repeat;
+  background: radial-gradient(circle farthest-side at 0 0, rgba(255,255,255,0) 90%,rgba(255,255,255,.8) 98%,rgba(255,255,255,0) 100%) no-repeat;
+  background-position: inherit;
+  -webkit-mask: url('logo2.svg') center;
+  mask: url('#mask-firefox');
+}
 
 .navbar-default{
   background-color: #FFFFFF;
@@ -217,4 +258,21 @@ body {
   font-size: 16px;
   font-weight: bold;
   border: none;
+}
+
+// Search page
+
+#right {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 450px;
+  height: 100%;
+}
+
+.map_hourly_rate {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #3AAFA9;
 }

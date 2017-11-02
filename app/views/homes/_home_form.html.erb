@@ -9,7 +9,7 @@
             <%= link_to home_path(home.home_image), remote: true, method: :delete, data: {confirm: "Are you sure?"} do %>
             <% image_tag('bin.svg') %>
             <% end %>
-        </br>
+        <br/>
         <%= f.file_field :image, id: :image_data, class: "form-control" %>
       </p>
     </div>
