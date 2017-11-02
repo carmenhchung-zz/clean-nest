@@ -1,0 +1,96 @@
+<!-- This is the search page which allows customers to search for cleaners based on date and hourly price -->
+
+<div class="container">
+
+  <!-- Search panel -->
+    <div class="row">
+    <br/>
+      <%= search_form_for @search, url: search_path, remote: true do |f| %>
+        <div class="row">
+          Finding cleaners near: <%= text_field_tag :search, params[:search], placeholder: "Enter your address", class: "form-control", id: "autolocation" %>
+        </div>
+
+        <div class="row">
+          <div class="col-md-8">
+            <label>Price range:</label>
+            <div id="slider-range"></div>
+          </div>
+          <!-- Search for prices that are greater than the minimum price but less than the maximum price -->
+          <div class="col-md-2">
+            <label>Min Hourly Rate:</label>
+            <%= f.number_field :hourly_rate_gteq, class: "form-control" %>
+          </div>
+
+          <div class="col-md-2">
+            <label>Max Hourly Rate:</label>
+            <%= f.number_field :hourly_rate_lteq, class: "form-control" %>
+          </div>
+
+        </div>
+    <br/>
+        <div class="row">
+          <div class="col-md-6">
+            <label>Date:</label><%= text_field_tag :date, params[:date], readonly: true, class: "form-control" %>
+          </div>
+        </div>
+    <br/>
+        <div class="row text-center center">
+          <%= f.submit "Find a Cleaner", class: "btn" %>
+        </div>
+    <br/>
+      <% end %>
+
+  <!-- Google maps to show where the cleaners locations are, along with the hourly rate as markers on the map -->
+  <div id="right">
+    <div id="map" style="width: 100%; height: 100%"></div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAuVjzVqR8jIp0ZitCCNV-4QM7-F_EwyOI">
+    </script>
+    <script>
+        function initialize(users) {
+          var location = {lat: 33.8688, lng: 151.2093}
+
+          if (users.length > 0) {
+            location = {lat: users[0].latitude, lng: users[0].longitude}
+          }
+
+          var map = new google.maps.Map(document.getElementById('map'), {
+            center: location,
+            zoom: 12
+          });
+
+          var marker, inforwindow;
+
+          users.forEach(function(user) {
+            marker = new google.maps.Marker({
+              position: {lat: user.latitude, lng: user.longitude},
+              map: map
+            });
+
+            inforwindow = new google.maps.InfoWindow({
+              content: "<div class='map_hourly_rate'>$" + user.hourly_rate + "/hr"+ "</div>"
+            });
+
+            inforwindow.open(map, marker);
+          })
+        }
+
+        google.maps.event.addDomListener(window, 'load', function() {
+          initialize(<%= raw @arrUsers.to_json %>)
+        });
+    </script>
+  </div>
+
+  </div>
+
+<script>
+  $('#date').datepicker({
+    dateFormat: 'dd-mm-yy',
+    minDate: 0,
+    maxDate: '3m'
+  });
+
+  $(function() {
+    $("#autolocation").geocomplete();
+  })
+</script>

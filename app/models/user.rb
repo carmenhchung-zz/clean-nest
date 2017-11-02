@@ -9,6 +9,11 @@ class User < ApplicationRecord
   validates :lastname, presence: true, length: {maximum: 50}
   validates :username, presence: true, length: {maximum: 50}
 
+  geocoded_by :location
+  # Allows geocoder to access the location field in the user model.
+  after_validation :geocode, if: :location_changed?
+  # Whenever the location is updated, the location will be validated and the latitude and longtitude will be regenerated.
+
   has_many :homes
   has_many :appointments
   has_one :image
