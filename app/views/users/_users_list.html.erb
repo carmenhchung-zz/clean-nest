@@ -1,0 +1,31 @@
+<% users.each do |user| %>
+      <div class="card">
+        <!-- If user has an avatar, show it - otherwise show the default profile avatar -->
+        <% if user.image.present? %>
+        <%= image_tag(user.image_url) %>
+        <% else %>
+        <%= image_tag('defaultprofile.svg') %>
+        <% end %>
+
+          <div class="card-body center">
+              <br/>
+              <h4 class="card-title center text-teal"><%= link_to user.username, user %></h4>
+              <br/>
+              Hourly rate: $<%= user.hourly_rate %> per hour
+              <!-- Later add star ratings to show -->
+              <!-- <div id="star_<%#= room.id %>"></div> <%#= pluralize(room.average_rating, "review") %> -->
+              <br/>
+              <%= link_to "VIEW", user_path(user.id), class: "btn center" %>
+          </div>
+          <br/>
+      </div>
+<% end %>
+
+
+<!-- <script>
+  $('#star_<%#= user.id %>').raty({
+    path: '/assets',
+    readOnly: true,
+    score: <%#= user.average_rating %>
+  });
+</script> -->

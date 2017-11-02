@@ -1,17 +1,17 @@
-
-
 <nav class="navbar sticky-top navbar-expand-lg navbar-default navbar-collapse">
   <div class="container-fluid">
+
+    <!-- Add shine to the logo when you hover over it -->
     <div class="mask pseudo">
-      <%#= link_to image_tag('logo2.svg'), root_path %>
       <mask id="mask-firefox">
-        <%= link_to image_tag('logo2.svg', filter: 'url(#filter)'), root_path %>
+        <%= link_to image_tag('logo.svg', filter: 'url(#filter)'), root_path %>
       </mask>
       <filter id="filter">
         <feFlood flood-color="white" />
         <feComposite in2="SourceAlpha" operator="in" />
       </filter>
     </div>
+
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

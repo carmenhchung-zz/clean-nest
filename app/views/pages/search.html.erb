@@ -4,41 +4,50 @@
 
   <!-- Search panel -->
     <div class="row">
-    <br/>
-      <%= search_form_for @search, url: search_path, remote: true do |f| %>
-        <div class="row">
-          Finding cleaners near: <%= text_field_tag :search, params[:search], placeholder: "Enter your address", class: "form-control", id: "autolocation" %>
-        </div>
+      <div class="col-md-4">
+<%= search_form_for @search, url: search_path, remote: true do |f| %>
+            Finding cleaners near: <%= text_field_tag :search, params[:search], placeholder: "Enter your address", class: "form-control", id: "autolocation" %>
+      </div>
+    </div>
 
-        <div class="row">
-          <div class="col-md-8">
-            <label>Price range:</label>
-            <div id="slider-range"></div>
-          </div>
-          <!-- Search for prices that are greater than the minimum price but less than the maximum price -->
-          <div class="col-md-2">
-            <label>Min Hourly Rate:</label>
-            <%= f.number_field :hourly_rate_gteq, class: "form-control" %>
-          </div>
+    <div class="row">
+      <div class="col-md-4">
+        <label>Date:</label><%= text_field_tag :date, params[:date], readonly: true, class: "form-control" %>
+      </div>
+    </div>
 
-          <div class="col-md-2">
-            <label>Max Hourly Rate:</label>
-            <%= f.number_field :hourly_rate_lteq, class: "form-control" %>
-          </div>
+    <div class="row">
+      <div class="col-md-4">
+        <label>Price range:</label>
+        <div id="slider-range"></div>
+      </div>
 
-        </div>
+      <!-- Search for hourly rates that are greater than the minimum but less than the maximum  -->
+      <div class="col-md-2">
+        <label>Min Hourly Rate:</label>
+        <%= f.number_field :hourly_rate_gteq, class: "form-control" %>
+      </div>
+
+      <div class="col-md-2">
+        <label>Max Hourly Rate:</label>
+        <%= f.number_field :hourly_rate_lteq, class: "form-control" %>
+      </div>
+    </div>
     <br/>
-        <div class="row">
-          <div class="col-md-6">
-            <label>Date:</label><%= text_field_tag :date, params[:date], readonly: true, class: "form-control" %>
-          </div>
-        </div>
+
+    <div class="row">
+      <div class="col-md-3 center">
+        <%= f.submit "Find a Cleaner", class: "btn" %>
+      </div>
+    </div>
     <br/>
-        <div class="row text-center center">
-          <%= f.submit "Find a Cleaner", class: "btn" %>
-        </div>
+  <% end %>
+
+  <div class="row">
     <br/>
-      <% end %>
+    <%= render partial: "users/users_list", locals: {users: @arrUsers} %>
+  </div>
+<br/>
 
   <!-- Google maps to show where the cleaners locations are, along with the hourly rate as markers on the map -->
   <div id="right">

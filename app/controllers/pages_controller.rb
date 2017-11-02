@@ -9,11 +9,11 @@ class PagesController < ApplicationController
 
       # Second, their session location search is known and it is not empty, search for all the users within 10 km the location they have entered
       if session[:loc_search] && session[:loc_search] != ""
-        @user_location = User.near(session[:loc_search], 10, order: 'distance')
-      else
+        @user_location = User.where(active: true).near(session[:loc_search], 10, order: 'distance')
 
-        # If they somehow did not provide a location, then pull up all the cleaners.
-        @user_location = User.all
+      else
+        # If they did not provide a location, then pull up all the cleaners.
+        @user_location = User.where(active: true).all
       end
 
       # Third, once we know all the cleaners within 10 km of the customer, we search those cleaners for those that fulfill the price criteria (params 'q' comes from ransack).
