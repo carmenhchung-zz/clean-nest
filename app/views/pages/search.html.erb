@@ -19,19 +19,19 @@
     <div class="row">
 
       <!-- Search for hourly rates that are greater than the minimum but less than the maximum  -->
-      <div class="col-md-2 center">
+      <div class="col-md-2">
       </br>
         <label>Min Hourly Rate:</label>
         <%= f.number_field :hourly_rate_gteq, class: "form-control" %>
       </div>
 
-      <div class="col-md-2 center">
+      <div class="col-md-2">
       </br>
         <label>Max Hourly Rate:</label>
         <%= f.number_field :hourly_rate_lteq, class: "form-control" %>
       </div>
 
-      <div class="col-md-4 center">
+      <div class="col-md-2">
       </br>
       </br>
         <%= f.submit "Find a Cleaner", class: "btn" %>
