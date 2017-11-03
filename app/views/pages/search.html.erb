@@ -16,32 +16,27 @@
     </div>
 
     <div class="row">
-      <div class="col-md-4">
-        </br>
-        <label>Price range:</label>
-        <div id="slider-range"></div>
-      </div>
-
       <!-- Search for hourly rates that are greater than the minimum but less than the maximum  -->
-      <div class="col-md-2">
+      <div class="col-md-2 center">
       </br>
         <label>Min Hourly Rate:</label>
         <%= f.number_field :hourly_rate_gteq, class: "form-control" %>
       </div>
 
-      <div class="col-md-2">
+      <div class="col-md-2 center">
       </br>
         <label>Max Hourly Rate:</label>
         <%= f.number_field :hourly_rate_lteq, class: "form-control" %>
       </div>
+
+      <div class="col-md-4 center">
+      </br>
+      </br>
+        <%= f.submit "Find a Cleaner", class: "btn" %>
+      </div>
     </div>
     <br/>
 
-    <div class="row">
-      <div class="col-md-8 center">
-        <%= f.submit "Find a Cleaner", class: "btn center" %>
-      </div>
-    </div>
     <br/>
   <% end %>
 
@@ -105,52 +100,5 @@
 
   $(function() {
     $("#autolocation").geocomplete();
-  })
-</script>
-
-<!-- Script to run the price slider - set the min and max hourly rate -->
-
-<!-- <script>
-  $(function() {
-    $("#q_hourly_rate_gteq").val('15');
-    $("#q_hourly_rate_lteq").val('150');
-
-    $("#slider-range").slider({
-      range: true,
-      min: 0,
-      max: 150,
-      values: [15, 150],
-      slide: function(event, ui) {
-        $("#q_hourly_rate_gteq").val(ui.values[0]);
-        $("#q_hourly_rate_lteq").val(ui.values[1]);
-      }
-    });
-
-    $(".ui-widget-header").css('background', '#3AAFA9');
-    $(".ui-state-default, .ui-widget-content").css('background', 'white');
-    $(".ui-state-default, .ui-widget-content").css('border-color', '#3AAFA9');
-  })
-</script> -->
-
-
-<script>
-  $(function() {
-    $("#q_hourly_rate_gteq").val('100');
-    $("#q_hourly_rate_lteq").val('500');
-
-    $("#slider-range").slider({
-      range: true,
-      min: 0,
-      max: 1000,
-      values: [100, 500],
-      slide: function(event, ui) {
-        $("#q_hourly_rate_gteq").val(ui.values[0]);
-        $("#q_hourly_rate_lteq").val(ui.values[1]);
-      }
-    });
-
-    $(".ui-widget-header").css('background', '#00A699');
-    $(".ui-state-default, .ui-widget-content").css('background', 'white');
-    $(".ui-state-default, .ui-widget-content").css('border-color', '#00A699');
   })
 </script>
