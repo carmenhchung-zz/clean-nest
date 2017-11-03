@@ -2,7 +2,7 @@
 @import "toastr";
 // Allows use of the timepicker from Bootstrap so users can select the times for the cleaning appointment.
 @import "bootstrap-timepicker";
-
+@import "jquery.ui.all";
 
 // General styling
 
@@ -56,8 +56,7 @@ body {
   padding: 9px 27px;
 }
 
-.btn:hover, .btn:focus {
-  color: #fff;
+.btn:hover, .btn:focus, .btn-white:hover, .btn-white:focus {
   cursor: pointer; cursor: hand;
 }
 
