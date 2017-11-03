@@ -47,6 +47,8 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'shrine'
 # Geocoder gem for Google map
 gem 'geocoder', '~> 1.4'
+# Auto complete gem so that when the user starts to enter an address, Google maps offers auto suggestions.
+gem 'geocomplete_rails'
 # Jquery gem for datepicker - used to select dates for appointments more easily. SASS gem includes this and helps with CSS.
 gem 'jquery-ui-sass-rails'
 # Bootstrap timepicker - used to select time for appointments more easily

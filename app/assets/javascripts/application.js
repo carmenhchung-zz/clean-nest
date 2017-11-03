@@ -17,3 +17,4 @@
 //= require bootstrap-sprockets
 //= require bootstrap-timepicker
 //= require jquery.ui.all
+//= require geocomplete
