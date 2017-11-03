@@ -41,7 +41,7 @@
 
         <div class="form-group">
           <label>Preferred Working Location</label>
-          <%= f.text_field :location, autofocus: true, class: "form-control" %>
+          <%= f.text_field :location, autofocus: true, class: "form-control", id: "autoaddress" %>
         </div>
 
         <div class="form-group">
@@ -79,3 +79,11 @@
   </div>
   </div>
 </div>
+
+<script>
+// Trigger autolocation geocomplete (using geocomplete javascript)
+$(document).ready(function() {
+    $("#autoaddress").geocomplete();
+  })
+
+</script>
