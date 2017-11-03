@@ -7,16 +7,16 @@
         <%= image_tag('defaultprofile.svg', class: 'card-img-top')  %>
         <% end %>
 
-        <div class="card-body">
-            <h4 class="card-title center text-teal"><%= link_to user.username, user %></h4>
-            <div class= "text-teal center">$<%= user.hourly_rate %>/hr</div>
+          <div class="card-body center">
+              <h4 class="card-title center text-teal"><%= link_to user.username, user %></h4>
+              $<%= user.hourly_rate %>/hr
               <!-- Later add star ratings to show -->
               <!-- <div id="star_<%#= room.id %>"></div> <%#= pluralize(room.average_rating, "review") %> -->
-            <br/>
-            <%= link_to "VIEW", user_path(user.id), class: "btn center" %>
-            <br/>
-    </div>
-  </div>
+              <br/><br/>
+              <%= link_to "VIEW", user_path(user.id), class: "btn center" %>
+          </div>
+          <br/>
+      </div>
 <% end %>
 
 

@@ -7,12 +7,12 @@ class PagesController < ApplicationController
         session[:loc_search] = params[:search]
       end
 
-      # Second, their session location search is known and it is not empty, search for all the users within 20 km the location they have entered
+      # Second, their session location search is known and it is not empty, search for all the active users (i.e. those who have clicked that they are cleaners on their profile page) within 10 km the location they have entered
       if session[:loc_search] && session[:loc_search] != ""
         @user_location = User.where(active: true).near(session[:loc_search], 20, order: 'distance')
 
       else
-        # If they did not provide a location, then pull up all the cleaners.
+        # If they did not provide a location and/or date, then pull up all the cleaners.
         @user_location = User.where(active: true).all
       end
 
@@ -24,9 +24,9 @@ class PagesController < ApplicationController
       @arrUsers = @users.to_a
 
       # Search the results to see which cleaners are actually available on the date requested.
-      if (params[:date] && !params[:date].empty?)
-
-        date = Date.parse(params[:date])
+      # if (params[:date] && !params[:date].empty?)
+      #
+      #   date = User.parse(params[:date])
 
         # @users.each do |user|
 
@@ -41,7 +41,7 @@ class PagesController < ApplicationController
           # Note: insert the code from the availability checking function on the user form [i.e. profile availability]
 
         # end
-      end
+      # end
 
     end
 

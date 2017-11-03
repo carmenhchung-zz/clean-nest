@@ -2,6 +2,7 @@
 @import "toastr";
 // Allows use of the timepicker from Bootstrap so users can select the times for the cleaning appointment.
 @import "bootstrap-timepicker";
+@import "jquery.ui.all";
 
 // General styling
 
@@ -27,8 +28,7 @@ body {
 }
 
 .center {
-  margin: auto;
-  display: block;
+  margin: 0;
   justify-content: center;
   text-align: center;
 }

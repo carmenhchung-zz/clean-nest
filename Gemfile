@@ -47,8 +47,8 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'shrine'
 # Geocoder gem for Google map
 gem 'geocoder', '~> 1.4'
-# Jquery gem for datepicker - used to select dates for appointments more easily
-gem 'jquery-ui-rails', '~> 5.0'
+# Jquery gem for datepicker - used to select dates for appointments more easily. SASS gem includes this and helps with CSS.
+gem 'jquery-ui-sass-rails'
 # Bootstrap timepicker - used to select time for appointments more easily
 gem 'bootstrap-timepicker-rails'
 # Simple form gem - used to allow time and date picker form inputs
