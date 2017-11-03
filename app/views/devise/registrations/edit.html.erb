@@ -13,7 +13,7 @@
         <%= render 'shared/devisemessage' %>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
-          <label>Do you wish to be listed as a cleaner?</label><%= f.check_box :active, autofocus: true %>
+          <label><h4>Tick this box if you wish to be a cleaner: &nbsp; </h4></label><%= f.check_box :active, autofocus: true %>
 
         <div class="form-group">
           <label>Edit Avatar: </label><%= f.file_field :image, id: :image_data, class: "form-control" %>
