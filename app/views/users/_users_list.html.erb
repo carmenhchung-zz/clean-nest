@@ -11,7 +11,7 @@
               <h4 class="card-title center text-teal"><%= link_to user.username, user %></h4>
               $<%= user.hourly_rate %>/hr
               <!-- Later add star ratings to show -->
-              <!-- <div id="star_<%#= room.id %>"></div> <%#= pluralize(room.average_rating, "review") %> -->
+              <!-- <div id="star_<%= user.id %>"></div> <%#= pluralize(user.average_rating, "review") %> -->
               <br/><br/>
               <%= link_to "VIEW", user_path(user.id), class: "btn center" %>
           </div>

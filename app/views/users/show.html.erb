@@ -46,8 +46,7 @@
 
   <!-- Use Javascript to feed the user's latitude and longitude based on their location (contained in the user database) to the Google maps API -->
   <!-- Google API key for Google maps -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAuVjzVqR8jIp0ZitCCNV-4QM7-F_EwyOI">
-  </script>
+
       <script>
           function initialize() {
             var location = {lat: <%= @user.latitude %>, lng: <%= @user.longitude %>};

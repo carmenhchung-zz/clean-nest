@@ -5,6 +5,10 @@
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkcAUgQQgRZQMHLPIAk-Quf-ZKqtYYuKw&libraries=places"></script>
+    <script src="jquery.geocomplete.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkcAUgQQgRZQMHLPIAk-Quf-ZKqtYYuKw&callback=initMap"
+    type="text/javascript"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 

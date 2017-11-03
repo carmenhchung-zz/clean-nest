@@ -19,4 +19,8 @@ class User < ApplicationRecord
   has_one :image
   include ImageUploader[:image]
   include ImageUploader[:identification]
+
+  # def average_rating
+  # customer_reviews.count == 0 ? 0 : customer_reviews.average(:star).round(2).to_i
+  # end
 end
