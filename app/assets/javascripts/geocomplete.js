@@ -1,3 +1,5 @@
+// From the geocomplete rails gem so that users can start to enter their location and the application will offer location suggestions. In conjunction with Google API.
+
 /**
  * jQuery Geocoding and Places Autocomplete Plugin - V 1.7.0
  *
