@@ -3,6 +3,7 @@
 // Allows use of the timepicker from Bootstrap so users can select the times for the cleaning appointment.
 @import "bootstrap-timepicker";
 
+
 // General styling
 
 body {
@@ -27,7 +28,7 @@ body {
 }
 
 .center {
-  margin: 0 auto;
+  margin: 0;
   justify-content: center;
   text-align: center;
 }
