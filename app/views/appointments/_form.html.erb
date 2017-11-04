@@ -4,36 +4,53 @@
 
 
 <!-- List this user's current availabilities in the table below - pull it up from the availabilities table, and allow editing and deletion if the current user is the same as the availability user -->
-    <h2>CURRENT AVAILABILITY</h2>
+<%= form_for([@user, @user.appointments.new]) do |f| %>
+<!-- <div class="form-group"> -->
+  Date: <%= f.text_field :date, readonly: true %><br/>
+  <!-- Time picker using bootstrap -->
+  Start Time:
+    <div class="input-group bootstrap-timepicker timepicker">
+      <input id="timepicker1" type="text" class="form-control input-small">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+    </div>
 
-    <div id="preview">
-      <table class="reservation-table">
-        <tbody>
-          <tr>
-            <td> Date <span id="availability_date"></span></td>
-            <td> Start Time <span id="availability_start_time"></span></td>
-            <td> End Time <span id="availability_start_time"></span></td>
-            <%# if current_user.id == @availability.user_id %>
-            <td> Edit <span id="availability_edit"></span></td>
-            <td> Delete <span id="availability_delete"></span></td>
-            <%# end %>
-         </tr>
+  Number of hours: <%= f.number_field :hours %>
+  <p>
+  <%= f.submit "Book now", class: 'btn center' %>
+  </p>
 
-    <% if @availability.user_id != nil %>
-          <tr>
-            <td> <%= @availability.date %> <span id="availability_date"></span></td>
-            <td> <%= @availability.start_time %> <span id="availability_start_time"></span></td>
-            <td> <%= @availability.end_time %>  <span id="availability_end_time"></span></td>
-          <%# if current_user.id == @availability.user_id %>
-            <td> <%#= image_tag('edit.svg') %> <span id="availability_edit"></span></td>
-            <td> <%#= image_tag('bin.svg') %> <span id="availability_delete"></span></td>
-          <%# end %>
-         </tr>
-
-    <% else %>
-    <tr>
-    There are no available times.
-    </tr>
-        </tbody>
-      </table>
+<div id="preview" style="display: none">
+  <table class="reservation-table">
+    <tbody>
+      <tr><td>Hourly Rate: $<span id="appointment_hourly_rate"></span><%#= @user.hourly_rate %></td></tr>
+      <tr><td>Total Price: $<span id="appointment_total"></span><%#= @user.hourly_rate * :hours %> </td></tr>
+    </tbody>
+  </table>
+</div>
 <% end %>
+
+<!-- Run script so that jquery-ui datepicker works - allows a dropdown date picker and a time picker -->
+<script>
+  $(function() {
+
+    // $.ajax({
+    //   url: '<%#= preload_user_path(@user) %>',
+    //   dateTyp: 'json',
+    //   success: function(data) {
+    //     $.each(data, function(arrID, arrValue) {
+    //       console.log(arrValue);
+    //     });
+    //   }
+    //
+    // })
+
+    $('#appointment_date').datepicker({
+      dateFormat: 'dd-mm-yy'
+    });
+  });
+
+</script>
+
+<script type="text/javascript">
+    $('#timepicker1').timepicker();
+</script>
