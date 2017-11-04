@@ -16,6 +16,7 @@ class User < ApplicationRecord
 
   has_many :homes
   has_many :appointments
+  has_many :availabilities
   has_one :image
   include ImageUploader[:image]
   include ImageUploader[:identification]

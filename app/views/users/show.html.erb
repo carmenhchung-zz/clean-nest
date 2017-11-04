@@ -19,7 +19,7 @@
     </div>
   </div>
 
-    <div class="col-md-6">
+    <div class="col-md-5">
     <h1><%= @user.firstname %> <%= @user.lastname %>
     <!-- If the user has uploaded their ID document (under edit profile), then this verification tick will show -->
         <% if @user.identification.present? %>
@@ -33,9 +33,44 @@
     <br>Bio: <%= @user.bio %><br/>
   </div>
 
-<!-- Appointment Form -->
+<!-- Show availabilities -->
   <div class="col">
   <%#= render 'appointments/form' %>
+  <h2>CURRENT AVAILABILITY</h2>
+
+  <div id="preview">
+    <table class="reservation-table">
+      <tbody>
+    <% @availabilities.each do |availability| %>
+      <% if availability.user_id.present? %>
+        <tr>
+          <td> Date <span id="availability_date"></span></td>
+          <td> Start Time <span id="availability_start_time"></span></td>
+          <td> End Time <span id="availability_start_time"></span></td>
+          <%# if current_user.id == @availabilities.user_id %>
+          <td> Edit <span id="availability_edit"></span></td>
+          <td> Delete <span id="availability_delete"></span></td>
+          <%# end %>
+       </tr>
+        <tr>
+          <td> <%#= availability.date %> Enter date<span id="availability_date"></span></td>
+          <td> <%= availability.start_time %> <span id="availability_start_time"></span></td>
+          <td> <%= availability.end_time %>  <span id="availability_end_time"></span></td>
+        <%# if current_user.id == @availabilities.user_id %>
+          <td> <%#= image_tag('edit.svg') %> <span id="availability_edit"></span></td>
+          <td> <%#= image_tag('bin.svg') %> <span id="availability_delete"></span></td>
+        <%# end %>
+       </tr>
+
+      <% else %>
+      <tr>
+      There are no available times.
+      </tr>
+      </tbody>
+    </table>
+  <% end %>
+<% end %>
+
   </div>
   </div>
   <br/>

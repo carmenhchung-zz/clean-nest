@@ -27,7 +27,7 @@ class HomesController < ApplicationController
     if @home.save
       redirect_to homes_path, notice: "Successfully saved!"
     else
-      flash[:alert] = "Something went wrong. Try again."
+      flash[:alert] = "Something went wrong. Please try again."
       render :new
     end
   # Create a new home.
@@ -37,7 +37,7 @@ class HomesController < ApplicationController
   end
 
 
-# Method to delete both the entire home as well as an image for a particular home
+# Method to delete both the entire home as well as an image for a particular home.
   def destroy
     @home.destroy
     @home.image.destroy
