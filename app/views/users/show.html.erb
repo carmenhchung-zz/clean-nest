@@ -2,20 +2,15 @@
 
 <div class="container">
 <div class="row">
-  <div class="col">
-    <div class="center">
+  <div class="col-md-3 center">
     <!-- If user has an avatar, show it - otherwise show the default profile avatar -->
+  <div class="card">
       <% if @user.image.present? %>
       <%= image_tag(@user.image_url) %>
       <% else %>
       <%= image_tag('defaultprofile.svg') %>
       <% end %>
-
-    <div class="panel panel-default">
       <div class="panel-heading"><%= @user.username %></div>
-      <div class="panel-body">
-      </div>
-    </div>
     </div>
   </div>
 
@@ -33,51 +28,53 @@
     <br>Bio: <%= @user.bio %><br/>
   </div>
 
-<!-- Show availabilities -->
-  <div class="col">
-  <%#= render 'appointments/form' %>
-  <h2>CURRENT AVAILABILITY</h2>
-
-  <div id="preview">
-    <table class="reservation-table">
-      <tbody>
-    <% @availabilities.each do |availability| %>
-      <% if availability.user_id.present? %>
-        <tr>
-          <td> Date <span id="availability_date"></span></td>
-          <td> Start Time <span id="availability_start_time"></span></td>
-          <td> End Time <span id="availability_start_time"></span></td>
-          <%# if current_user.id == @availabilities.user_id %>
-          <td> Edit <span id="availability_edit"></span></td>
-          <td> Delete <span id="availability_delete"></span></td>
-          <%# end %>
-       </tr>
-        <tr>
-          <td> <%#= availability.date %> Enter date<span id="availability_date"></span></td>
-          <td> <%= availability.start_time %> <span id="availability_start_time"></span></td>
-          <td> <%= availability.end_time %>  <span id="availability_end_time"></span></td>
-        <%# if current_user.id == @availabilities.user_id %>
-          <td> <%#= image_tag('edit.svg') %> <span id="availability_edit"></span></td>
-          <td> <%#= image_tag('bin.svg') %> <span id="availability_delete"></span></td>
-        <%# end %>
-       </tr>
-
-      <% else %>
-      <tr>
-      There are no available times.
-      </tr>
-      </tbody>
-    </table>
-  <% end %>
-<% end %>
-
-  </div>
-  </div>
-  <br/>
-
   <!-- Google maps -->
-  <div class="row center">
-      <div id="map" style="width: 80%; height: 350px"></div>
+  <div class="col-md-4 center">
+  <%#= render 'appointments/form' %>
+  <h2>CLEANING LOCATION</h2>
+    <div id="map" style="width: 100%; height: 350px"></div>
+    <br/>
+  </div>
+<hr/>
+</div>
+
+  <!-- Show availabilities -->
+
+<div class="row center">
+    <h2>CURRENT AVAILABILITY</h2>
+      <div id="preview">
+        <table class="reservation-table">
+          <tbody>
+        <% @availabilities.each do |availability| %>
+          <% if availability.user_id.present? %>
+            <tr>
+              <td> Date <span id="availability_date"></span></td>
+              <td> Start Time <span id="availability_start_time"></span></td>
+              <td> End Time <span id="availability_start_time"></span></td>
+              <%# if current_user.id == @availabilities.user_id %>
+              <td> Edit <span id="availability_edit"></span></td>
+              <td> Delete <span id="availability_delete"></span></td>
+              <%# end %>
+           </tr>
+            <tr>
+              <td> <%#= availability.date %> Enter date<span id="availability_date"></span></td>
+              <td> <%= availability.start_time %> <span id="availability_start_time"></span></td>
+              <td> <%= availability.end_time %>  <span id="availability_end_time"></span></td>
+            <%# if current_user.id == @availabilities.user_id %>
+              <td> <%#= image_tag('edit.svg') %> <span id="availability_edit"></span></td>
+              <td> <%#= image_tag('bin.svg') %> <span id="availability_delete"></span></td>
+            <%# end %>
+           </tr>
+
+          <% else %>
+          <tr>
+          There are no available times.
+          </tr>
+          </tbody>
+        </table>
+      <% end %>
+    <% end %>
+    </div>
 
   <!-- Use Javascript to feed the user's latitude and longitude based on their location (contained in the user database) to the Google maps API -->
   <!-- Google API key for Google maps -->
