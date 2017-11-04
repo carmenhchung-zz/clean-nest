@@ -1,8 +1,13 @@
 class UsersController < ApplicationController
+
+  before_action :authenticate_user!
+  # All customers need to login.
+
   def show
     @user = User.find(params[:id])
     # Pass param ID (i.e. user ID) which is found in the User table.
     @availabilities = @user.availabilities
+
   end
 
   # For making appointments for each user

@@ -51,19 +51,20 @@
               <td> Date <span id="availability_date"></span></td>
               <td> Start Time <span id="availability_start_time"></span></td>
               <td> End Time <span id="availability_start_time"></span></td>
-              <%# if current_user.id == @availabilities.user_id %>
+              <% if current_user.id == availability.user_id %>
               <td> Edit <span id="availability_edit"></span></td>
               <td> Delete <span id="availability_delete"></span></td>
-              <%# end %>
+              <td>
+              <% end %>
            </tr>
             <tr>
-              <td> <%#= availability.date %> Enter date<span id="availability_date"></span></td>
-              <td> <%= availability.start_time %> <span id="availability_start_time"></span></td>
-              <td> <%= availability.end_time %>  <span id="availability_end_time"></span></td>
-            <%# if current_user.id == @availabilities.user_id %>
-              <td> <%#= image_tag('edit.svg') %> <span id="availability_edit"></span></td>
-              <td> <%#= image_tag('bin.svg') %> <span id="availability_delete"></span></td>
-            <%# end %>
+              <td> <%= availability.start_time.strftime("%A %e %B %Y") %><span id="availability_date"></span></td>
+              <td> <%= availability.start_time.strftime("%l:%M%p") %> <span id="availability_start_time"></span></td>
+              <td> <%= availability.end_time.strftime("%l:%M%p") %>  <span id="availability_end_time"></span></td>
+            <% if current_user.id == availability.user_id %>
+              <td> <%= image_tag('edit.svg') %> <span id="availability_edit"></span></td>
+              <td> <%= image_tag('bin.svg') %> <span id="availability_delete"></span></td>
+            <% end %>
            </tr>
 
           <% else %>
