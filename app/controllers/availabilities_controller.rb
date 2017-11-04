@@ -56,7 +56,7 @@ class AvailabilitiesController < ApplicationController
       @user = User.find(params[:id])
 
       # Pass the user ID to the availabilities table.
-      @availability = user.availabilities.order(date: :asc)
+      @availability = user.availabilities
     end
 
     def availability_params

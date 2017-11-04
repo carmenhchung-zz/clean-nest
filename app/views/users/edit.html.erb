@@ -1,0 +1,15 @@
+<!-- This page allows a user to edit a specific availability -->
+
+<div class="container">
+<div class="row center">
+  <h1>AVAILABILITY</h1>
+      <div class="row center">
+      <!-- Render the edit/new form -->
+        <%= render 'availability_form', availability: @availability %>
+      </div>
+
+      <div class="row center">
+        <%= link_to 'Back', home_path, class: 'text-center text-teal' %>
+      </div>
+    </div>
+</div>
