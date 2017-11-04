@@ -1,5 +1,13 @@
 class AppointmentsController < ApplicationController
 
+  # For making appointments for each user
+  # def preload
+  #   today = Date.today
+  #   # Getting all times where the cleaner has an appointment time that is not today
+  #   appointments = @user.appointments.where("date >= ?", today)
+  #   render json: reservations
+  # end
+
   before_action :authenticate_user!
 
   def create
