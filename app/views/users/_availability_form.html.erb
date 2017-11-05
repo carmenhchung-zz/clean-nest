@@ -8,19 +8,19 @@
   <!-- Time picker using bootstrap -->
   Start Time:
     <div class="input-group bootstrap-timepicker timepicker">
-      <input id="timepicker1" type="text" class="form-control input-small">
+      <input id="start_time" type="text" class="form-control input-small">
       <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
     </div>
 
   End Time:
     <div class="input-group bootstrap-timepicker timepicker">
-      <input id="timepicker1" type="text" class="form-control input-small">
+      <input id="end_time" type="text" class="form-control input-small">
       <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
     </div>
 
     <!-- Note: when adding appointments to the database, the hours should be automatically calculated and entered into the database -->
   <p>
-  <%= f.submit "Book now", class: 'btn center' %>
+  <%= f.submit "Submit Availability", class: 'btn center' %>
   </p>
 
 <% end %>
@@ -49,5 +49,9 @@
 </script>
 
 <script type="text/javascript">
-    $('#timepicker1').timepicker();
+    $('#start_time').timepicker();
+</script>
+
+<script type="text/javascript">
+    $('#end_time').timepicker();
 </script>

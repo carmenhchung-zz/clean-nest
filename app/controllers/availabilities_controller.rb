@@ -10,7 +10,6 @@ class AvailabilitiesController < ApplicationController
     end
 
     def new
-
       @availability = current_user.availabilities.build
     # Create a new home - this initialises empty room object in the memory.
     end
@@ -19,7 +18,7 @@ class AvailabilitiesController < ApplicationController
       date = Date.parse(availability_params[:date])
       start_time = Start_time.parse(availability_params[:start_time])
       end_time = End_time.parse(availability_params[:end_time])
-      hours = Hours.parse(availability_params[:hours])
+      hours = (end_time - start_time).to_i
       @availability = current_user.availabilities.build(availability_params)
 
       #Pass the user at the top of this method down to this particular availability.
