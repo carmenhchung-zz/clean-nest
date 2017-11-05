@@ -30,7 +30,6 @@
 
   <!-- Google maps -->
   <div class="col-md-4 center">
-  <%#= render 'appointments/form' %>
   <h2>CLEANING LOCATION</h2>
     <div id="map" style="width: 100%; height: 350px"></div>
     <br/>
@@ -44,44 +43,58 @@
     <h2>CURRENT AVAILABILITY</h2>
         <table class="reservation-table">
           <tbody class>
-        <% @availabilities.each do |availability| %>
-          <% if availability.user_id.present? %>
-            <tr>
-              <td> Date <span id="availability_date"></span></td>
-              <td> Start Time <span id="availability_start_time"></span></td>
-              <td> End Time <span id="availability_start_time"></span></td>
-              <% if current_user.id == availability.user_id %>
-              <td> Edit <span id="availability_edit"></span></td>
-              <td> Delete <span id="availability_delete"></span></td>
-              <td>
-              <% end %>
-           </tr>
-            <tr>
-              <td> <%= availability.start_time.strftime("%A %e %B %Y") %><span id="availability_date"></span></td>
-              <td> <%= availability.start_time.strftime("%l:%M%p") %> <span id="availability_start_time"></span></td>
-              <td> <%= availability.end_time.strftime("%l:%M%p") %>  <span id="availability_end_time"></span></td>
-            <% if current_user.id == availability.user_id %>
-              <td>
-                <%= link_to edit_user_path(availability.id), remote: true, action: :patch do %>
-                <%= image_tag('edit.svg') %>
-                <span id="availability_edit"></span>
-                <% end %>
-              </td>
-              <td> <%= link_to user_path(availability), remote: true, method: :delete, data: {confirm: "Are you sure?"} do %>
-                <%= image_tag('bin.svg') %> <span id="availability_delete"></span>
-                <% end %>
-              </td>
-            <% end %>
-           </tr>
 
-          <% else %>
-          <tr>
-          There are no available times.
-          </tr>
-          </tbody>
-        </table>
+            <!-- For each user availability, show the date, start time and end time - and if the current user is the same as the one who owns the profile, then allow them to access edit and delete functions as well. -->
+            <% @availabilities.each do |availability| %>
+              <% if availability.user_id.present? %>
+                <tr>
+                  <td> Date <span id="availability_date"></span></td>
+                  <td> Start Time <span id="availability_start_time"></span></td>
+                  <td> End Time <span id="availability_start_time"></span></td>
+                      <% if current_user.id == availability.user_id %>
+                      <td> Edit <span id="availability_edit"></span></td>
+                      <td> Delete <span id="availability_delete"></span></td>
+                      <td>
+                      <% end %>
+                </tr>
+
+                <tr>
+                  <td> <%= availability.start_time.strftime("%A %e %B %Y") %><span id="availability_date"></span></td>
+                  <td> <%= availability.start_time.strftime("%l:%M%p") %> <span id="availability_start_time"></span></td>
+                  <td> <%= availability.end_time.strftime("%l:%M%p") %>  <span id="availability_end_time"></span></td>
+
+                      <% if current_user.id == availability.user_id %>
+                      <td>
+                        <%= link_to edit_user_path(availability.id), remote: true, action: :patch do %>
+                        <%= image_tag('edit.svg') %>
+                        <span id="availability_edit"></span>
+                        <% end %>
+                      </td>
+
+                      <td> <%= link_to user_path(availability), remote: true, method: :delete, data: {confirm: "Are you sure?"} do %>
+                        <%= image_tag('bin.svg') %> <span id="availability_delete"></span>
+                        <% end %>
+                      </td>
+
+                      <% end %>
+               </tr>
+
+               <!-- If there are no user availabilities, show that there are no available times. -->
+              <% else %>
+                <tr> There are no available times.</tr>
+              <% end %>
+            </tbody>
+          </table>
+        <br/>
+  </div>
+
+<!-- If the user browsing the profile (i.e. the customer) is not the same person as the user who owns the profile (i.e. the cleaner), then they can book that person. -->
+        <% if current_user.id != availability.user_id %>
+        <div class= "row center">
+          <%= link_to "BOOK CLEANER", new_user_appointment_path(@user), class: "btn center" %>
+        </div>
+        <% end %>
       <% end %>
-    <% end %>
 
   <!-- Use Javascript to feed the user's latitude and longitude based on their location (contained in the user database) to the Google maps API -->
   <!-- Google API key for Google maps -->
@@ -104,7 +117,6 @@
 
           google.maps.event.addDomListener(window, 'load', initialize);
       </script>
-<br/>
-  </div>
+  <br/>
   <br/>
 </div>

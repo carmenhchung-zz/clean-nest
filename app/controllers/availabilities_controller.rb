@@ -10,6 +10,7 @@ class AvailabilitiesController < ApplicationController
     end
 
     def new
+
       @availability = current_user.availabilities.build
     # Create a new home - this initialises empty room object in the memory.
     end

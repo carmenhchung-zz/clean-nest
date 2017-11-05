@@ -9,7 +9,7 @@ class HomesController < ApplicationController
   # All customers need to login.
 
   def index
-    @homes = current_user.homes
+    @home = current_user.homes
   # Lists each user's home(s). Available because in our model, we have set it up so that one user can have many homes.
   end
 

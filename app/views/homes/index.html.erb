@@ -3,9 +3,8 @@
 <div class="container">
 <div class="row">
 
-<!-- Show user's sidebar with home, appointments & account -->
   <div class="col-md-3">
-    <%= render 'layouts/user-sidebar' %>
+
   </div>
 
 <!-- Create header for Homes -->
@@ -16,10 +15,10 @@
 
 <!-- Create card with the thumbnail shot of the user's home(s), as well as its listing name, address, hourly rate offered and buttons to edit, delete and view the home profile page -->
     <div class="col-md-6 center">
-      <% @homes.each do |home| %>
+      <% @home.each do |home| %>
           <div class="card">
             <div>
-                <%= image_tag(home.home_image, class: 'avatar-full') %>
+                <%= image_tag(home.image_url, class: 'avatar-full') %>
             </div>
 
             <div class="card-body center">

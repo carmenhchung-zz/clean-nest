@@ -1,0 +1,86 @@
+<!-- This page is a booking form to book a particular cleaner. -->
+
+<!-- Pass the user that each appointment belongs to and the appointment details - @user is the parent and @user.appointments.new is the child -->
+
+<div class="container">
+<div class="row">
+  <div class="col-md-3 center">
+    <!-- If user has an avatar, show it - otherwise show the default profile avatar -->
+  <div class="card">
+      <% if @user.image.present? %>
+      <%= image_tag(@user.image_url) %>
+      <% else %>
+      <%= image_tag('defaultprofile.svg') %>
+      <% end %>
+      <div class="panel-heading"><%= @user.username %></div>
+    </div>
+  </div>
+
+  <div class="col-md-5">
+    <h2>BOOK CLEANER</h2>
+
+    <!-- The booking form asks the customer for: (1) their home (which would have been previously registered - if not, they are redirected to their home create page so they can add their home address), (2) their appointment date and time. -->
+
+      <%= form_for([@user, @user.appointments.new]) do |f| %>
+      <% if @home.address.present? %>
+      <div class="form-group">
+        <p>
+          <label>Select Your Home</label>
+          <%= f.collection_select :user_id, Home.all, :id, :address %>
+        </p>
+      </div>
+      <% else %>
+        <% redirect_to user_homes_path, flash[:alert] = "Please register an address for your home." %>
+      <% end %>
+    <!-- Show the times that the cleaner is available for the above selected date here-->
+      Date: <%= f.text_field :date, readonly: true, class: 'form-control' %>
+    <!-- Show the dates that the cleaner is available -->
+      <!-- Start Time:
+      <div class="input-group bootstrap-timepicker timepicker">
+        <input id="start_time" type="text" class="form-control input-small">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+      </div>
+
+    End Time:
+      <div class="input-group bootstrap-timepicker timepicker">
+        <input id="end_time" type="text" class="form-control input-small">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+      </div>
+    <br/><br/> -->
+          <%= f.submit "Book now", class: 'btn center' %>
+          </p>
+
+        <!-- <div id="preview" style="display: none">
+          <table class="reservation-table">
+            <tbody>
+              <tr><td>Hourly Rate: $<span id="appointment_hourly_rate"></span><%#= @user.hourly_rate %></td></tr>
+              <tr><td>Total Price: $<span id="appointment_total"></span><%#= @user.hourly_rate * :hours %> </td></tr>
+            </tbody>
+          </table>
+        </div> -->
+
+    <% end %>
+
+    </div>
+    </div>
+
+
+  </div>
+
+<!-- Run script so that jquery-ui datepicker works - allows a dropdown date picker and a time picker -->
+<script>
+  $(function() {
+    $('#appointment_date').datepicker({
+      dateFormat: 'dd-mm-yy'
+    });
+  });
+
+</script>
+
+<!-- $('#appointment_date').datepicker({format: "dd/mm/yyyy"});
+}); -->
+
+<!-- <script type="text/javascript">
+    $('#start_time').timepicker({ timeFormat: 'hh:mm:ss' });
+    $('#end_time').timepicker({ timeFormat: 'hh:mm:ss' });
+</script> -->
