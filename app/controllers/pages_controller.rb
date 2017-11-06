@@ -10,7 +10,17 @@ class PagesController < ApplicationController
       # Second, their session location search is known and it is not empty, search for all the active users (i.e. those who have clicked that they are cleaners on their profile page) within 10 km the location they have entered
       if session[:loc_search] && session[:loc_search] != ""
         @user_location = User.where(active: true).near(session[:loc_search], 20, order: 'distance')
+        @filtered_availabilities = Availability.where(date: params[:date])
 
+        @user_array = []
+        @filtered_availabilities.each do |availability|
+          @user_array << availability.user_id
+        end
+        if params[:price] != nil
+          @filtered_users = User.where("id = ?", @user_array)
+        else
+            @filtered_users = User.where("id = ?", @user_array)
+        end
       else
         # If they did not provide a location and/or date, then pull up all the cleaners.
         @user_location = User.where(active: true).all
@@ -21,7 +31,7 @@ class PagesController < ApplicationController
 
       # Once the search results are obtained, make it into an array so it can be later displayed in the views.
       @users = @search.result
-      @arrUsers = @users.to_a
+      @arrUsers = @filtered_users.to_a
 
       # Search the results to see which cleaners are actually available on the date requested.
       # if (params[:date] && !params[:date].empty?)

@@ -2,7 +2,7 @@ class AppointmentsController < ApplicationController
 
   before_action :set_appointment
   before_action :authenticate_user!
-
+  before_action :test_valid
 
   def new
   end
@@ -44,6 +44,10 @@ class AppointmentsController < ApplicationController
 
     # Find the current user (i.e. customer's) homes (to allow them to choose which should be cleaned)
     @home = Home.find(current_user.id)
+  end
+
+  def test_valid(date)
+    @user.valid_booking(params[:date])
   end
 
   def appointment_params

@@ -7,4 +7,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-Availability.create(user_id: 2, start_time: '2017-11-04 9:30:00 +1100', end_time: '2017-11-04 11:30:00 +1100', hours: 2)
+Availability.create(user_id: 2, date: '2017-11-04', start_time: '9:30:00 +1100', end_time: '11:30:00 +1100', hours: 2)
