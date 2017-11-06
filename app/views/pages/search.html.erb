@@ -33,6 +33,9 @@
   <div id="right">
     <div id="map" style="width: 100%; height: 100%"></div>
 
+    <!-- Use google api javascript for autocomplete of locations when searching -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkcAUgQQgRZQMHLPIAk-Quf-ZKqtYYuKw&libraries=places"></script>
+    
     <script>
         function initialize(users) {
           var location = {lat: 33.8688, lng: 151.2093}
@@ -82,6 +85,3 @@
     $("#autolocation").geocomplete();
   })
 </script>
-
-<!-- Use google api javascript for autocomplete of locations when searching -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkcAUgQQgRZQMHLPIAk-Quf-ZKqtYYuKw&libraries=places"></script>
