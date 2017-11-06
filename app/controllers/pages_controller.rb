@@ -16,11 +16,8 @@ class PagesController < ApplicationController
         @filtered_availabilities.each do |availability|
           @user_array << availability.user_id
         end
-        if params[:price] != nil
-          @filtered_users = User.where("id = ?", @user_array)
-        else
+
             @filtered_users = User.where("id = ?", @user_array)
-        end
       else
         # If they did not provide a location and/or date, then pull up all the cleaners.
         @user_location = User.where(active: true).all

@@ -2,7 +2,7 @@ class AppointmentsController < ApplicationController
 
   before_action :set_appointment
   before_action :authenticate_user!
-  before_action :test_valid
+  # before_action :test_valid
 
   def new
   end
@@ -46,9 +46,9 @@ class AppointmentsController < ApplicationController
     @home = Home.find(current_user.id)
   end
 
-  def test_valid(date)
-    @user.valid_booking(params[:date])
-  end
+  # def test_valid(date)
+  #   @user.valid_booking(params[:date])
+  # end
 
   def appointment_params
     params.require(:appointment).permit(:date, :start_time, :end_time, :hours, :hourly_rate, :total_price)

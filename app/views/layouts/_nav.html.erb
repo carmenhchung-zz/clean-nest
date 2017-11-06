@@ -54,6 +54,7 @@
       <ul class="dropdown-menu center">
           <li><%= link_to "View Profile", showuser_path(current_user.id), method: :get %></li>
           <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+          <li><%= link_to "Homes", homes_path(current_user.id) %></li>
           <li><%= link_to "Inbox", conversations_path %></li>
           <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
       </ul>
