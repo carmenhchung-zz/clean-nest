@@ -1,26 +1,23 @@
 <!-- This page provides the user's inbox -->
 
 <div class="container">
-<div class="row">
+<div class="row center">
 
-  <div class="col-md-3">
-  </div>
-
-  <div class="col-md-9">
-    <div class="row center">
-      <h1>INBOX</h1>
-    </div>
-
+  <div class="col-md-10 center">
+    <div class="panel">
+      <div class="panel-heading center">
+      <h2>INBOX</h2>
+      </div>
+      <div class="panel-body">
     <!-- Find both the current user and the other person and determine whether they are recipient or sender. If there are any messages, show the other person's profile picture, username, the last message time and the content. -->
 
-    <div class="col-md-6 center">
       <% @conversations.each do |conversation| %>
       <% other = current_user == conversation.sender ? conversation.recipient : conversation.sender %>
             <%= link_to conversation_messages_path(conversation) do %>
-            <div class="row center">
+            <div class="row text-teal">
                 <% if conversation.messages.any? %>
                     <div class="col-md-2">
-                      <%= image_tag image_url(other), class: "img-circle" %>
+                      <%= image_tag(other.image_url, class: 'avatar-medium') %>
                     </div>
                     <div class="col-md-2">
                       <%= other.username %>
@@ -33,8 +30,8 @@
             </div>
             <% end %>
       <% end %>
-
     </div>
+  </div>
   </div>
 </div>
 </div>
