@@ -17,13 +17,11 @@
 
 <!-- If a user has not signed in, show them the Login/Sign Up links -->
     <% if (!user_signed_in?) %>
-        <!-- <ul class="navbar-nav ml-auto"> -->
-        <li class="nav-item ml-auto">
+        <ul class="navbar-nav ml-auto">
         <%= link_to "Login", new_user_session_path, class: 'text-teal' %>
         &nbsp; / &nbsp;
         <%= link_to "Sign Up", new_user_registration_path, class: 'text-teal' %>
-        </li>
-        <!-- </ul> -->
+        </ul>
 
 <!-- If a user has signed in, show them the navigation that allows them to find a cleaner/be a cleaner etc. -->
     <% else %>
