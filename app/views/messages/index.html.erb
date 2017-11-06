@@ -1,14 +1,15 @@
 <div class="row">
-  <div class="col-md-3 text-center">
+  <div class="col-md-3 center">
     <%= image_tag image_url(@other), class: "img-circle" %>
     <strong><%= @other.username %></strong>
     <%= link_to "View Profile", @other, class: "btn center" %>
   </div>
-  
+
   <div class="col-md-9">
     <div class="panel panel-default">
       <div class="panel-heading">
         Conversation with <%= @other.username %>
+        
         <!-- Pass the conversation ID so that when you create a new message, you can add the conversation ID to that message too. -->
         <input id="conversation_id" type="hidden" value="<%= @conversation.id %>">
       </div>

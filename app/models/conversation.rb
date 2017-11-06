@@ -10,7 +10,7 @@ class Conversation < ApplicationRecord
 
   # No matter whether the sender or recipient is the user, return the whole conversation.
   scope :involving, -> (user) {
-    where("conversations.sender_id = ? OR conversation.recipient_id = ?", user.id, user.id)
+    where("conversations.sender_id = ? OR conversations.recipient_id = ?", user.id, user.id)
   }
 
   scope :between, -> (user_A, user_B) {
