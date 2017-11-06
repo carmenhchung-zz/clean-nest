@@ -26,14 +26,19 @@
         <%= image_tag('verified.png', class: 'avatar-small') %>
         <% end %>
     </h1>
+
+    <!-- Only show the hourly rate if the person is active as a cleaner -->
+    <% if current_user.active == true %>
     <br>Hourly Rate: $<%= @user.hourly_rate %> per hour<br/>
+    <% end %>
     <br>Gender: <%= @user.gender %><br/>
     <br>Primary language: <%= @user.language %><br/>
     <br>Location: <%= @user.location %><br/>
     <br>Bio: <%= @user.bio %><br/>
   </div>
 
-  <!-- Google maps -->
+  <!-- Google maps to show where the person is cleaning - only show if they are an active cleaner -->
+  <% if current_user.active == true %>
   <div class="col-md-4 center">
   <h2>CLEANING LOCATION</h2>
     <div id="map" style="width: 100%; height: 350px"></div>
@@ -41,66 +46,61 @@
   </div>
 <hr/>
 </div>
+<% end %>
 
-  <!-- Show availabilities -->
+  <!-- Show availabilities only if they are an active cleaner -->
 
-<div class="row center">
-    <h2>CURRENT AVAILABILITY</h2>
-        <table class="reservation-table">
+<% if current_user.active == true %>
+  <div class="row center">
+      <h2>CURRENT AVAILABILITY</h2>
+          <table class="reservation-table">
+
+        <!-- For each user availability, show the date, start time and end time - and if the current user is the same as the one who owns the profile, then allow them to access edit and delete functions as well. -->
           <tbody class>
-
-            <!-- For each user availability, show the date, start time and end time - and if the current user is the same as the one who owns the profile, then allow them to access edit and delete functions as well. -->
-            <% @availabilities.each do |availability| %>
+                  <tr>
+                    <td> Date <span id="availability_date"></span></td>
+                    <td> Start Time <span id="availability_start_time"></span></td>
+                    <td> End Time <span id="availability_end_time"></span></td>
+                  </tr>
+          <% @availabilities.each do |availability| %>
               <% if availability.user_id.present? %>
-                <tr>
-                  <td> Date <span id="availability_date"></span></td>
-                  <td> Start Time <span id="availability_start_time"></span></td>
-                  <td> End Time <span id="availability_start_time"></span></td>
-                      <% if current_user.id == availability.user_id %>
-                      <td> Edit <span id="availability_edit"></span></td>
-                      <td> Delete <span id="availability_delete"></span></td>
-                      <td>
-                      <% end %>
-                </tr>
+                  <tr>
+                    <td> <%= availability.date %> </td>
+                    <td> <%= availability.start_time %> </td>
+                    <td> <%= availability.end_time %> </td>
+  <!-- .strftime("%l:%M%p") .strftime("%A %e %B %Y") -->
+                        <% if current_user.id == availability.user_id %>
+                        <td>
+                          <%= link_to edit_user_path(availability.id), remote: true, action: :patch do %>
+                          <%= image_tag('edit.svg') %>
+                          <% end %>
+                        </td>
 
-                <tr>
-                  <td> <%= availability.start_time.strftime("%A %e %B %Y") %><span id="availability_date"></span></td>
-                  <td> <%= availability.start_time.strftime("%l:%M%p") %> <span id="availability_start_time"></span></td>
-                  <td> <%= availability.end_time.strftime("%l:%M%p") %>  <span id="availability_end_time"></span></td>
-
-                      <% if current_user.id == availability.user_id %>
-                      <td>
-                        <%= link_to edit_user_path(availability.id), remote: true, action: :patch do %>
-                        <%= image_tag('edit.svg') %>
-                        <span id="availability_edit"></span>
+                        <td> <%= link_to user_path(availability), remote: true, method: :delete, data: {confirm: "Are you sure?"} do %>
+                          <%= image_tag('bin.svg') %>
+                          <% end %>
+                        </td>
                         <% end %>
-                      </td>
-
-                      <td> <%= link_to user_path(availability), remote: true, method: :delete, data: {confirm: "Are you sure?"} do %>
-                        <%= image_tag('bin.svg') %> <span id="availability_delete"></span>
-                        <% end %>
-                      </td>
-
-                      <% end %>
-               </tr>
+                 </tr>
 
                <!-- If there are no user availabilities, show that there are no available times. -->
-              <% else %>
-                <tr> There are no available times.</tr>
-              <% end %>
-            </tbody>
-          </table>
-        <br/>
-  </div>
-
-<!-- If the user browsing the profile (i.e. the customer) is not the same person as the user who owns the profile (i.e. the cleaner), then they can book that person. -->
-        <% if current_user.id != availability.user_id %>
-        <div class= "row center">
-          <%= link_to "BOOK CLEANER", new_user_appointment_path(@user), class: "btn center" %>
-        </div>
-        <% end %>
+                <% else %>
+                  <tr> There are no available times.</tr>
+                <% end %>
+                </tbody>
+            </table>
+          <br/>
+      </div>
       <% end %>
 
+
+<!-- If the user browsing the profile (i.e. the customer) is not the same person as the user who owns the profile (i.e. the cleaner), then they can book that person. -->
+      <% if current_user.id != @user %>
+      <div class= "row center">
+        <%= link_to "BOOK CLEANER", new_user_appointment_path(@user), class: "btn center" %>
+      </div>
+      <% end %>
+<% end %>
   <!-- Use Javascript to feed the user's latitude and longitude based on their location (contained in the user database) to the Google maps API -->
   <!-- Google API key for Google maps -->
 
