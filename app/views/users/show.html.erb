@@ -20,17 +20,18 @@
   </div>
 
     <div class="col-md-5">
-    <h1><%= @user.firstname %> <%= @user.lastname %>
+    <h2><%= @user.firstname %> <%= @user.lastname %>
     <!-- If the user has uploaded their ID document (under edit profile), then this verification tick will show -->
         <% if @user.identification.present? %>
         <%= image_tag('verified.png', class: 'avatar-small') %>
         <% end %>
-    </h1>
+    </h2>
 
     <!-- Only show the hourly rate if the person is active as a cleaner -->
-    <% if current_user.active == true %>
+    <% if current_user.active == 'true' %>
     <br>Hourly Rate: $<%= @user.hourly_rate %> per hour<br/>
     <% end %>
+
     <br>Gender: <%= @user.gender %><br/>
     <br>Primary language: <%= @user.language %><br/>
     <br>Location: <%= @user.location %><br/>
@@ -38,20 +39,20 @@
   </div>
 
   <!-- Google maps to show where the person is cleaning - only show if they are an active cleaner -->
-  <% if current_user.active == true %>
-  <div class="col-md-4 center">
-  <h2>CLEANING LOCATION</h2>
-    <div id="map" style="width: 100%; height: 350px"></div>
-    <br/>
+    <% if current_user.active == 'true' %>
+    <div class="col-md-4 center">
+    <h2>CLEANING LOCATION</h2>
+      <div id="map" style="width: 100%; height: 350px"></div>
+      <br/>
+    </div>
+  <hr/>
   </div>
-<hr/>
-</div>
-<% end %>
+    <% end %>
 
   <!-- Show availabilities only if they are an active cleaner -->
 
-<% if current_user.active == true %>
-  <div class="row center">
+  <% if current_user.active == 'true' %>
+    <div class="row center">
       <h2>CURRENT AVAILABILITY</h2>
           <table class="reservation-table">
 
@@ -61,10 +62,15 @@
                     <td> Date <span id="availability_date"></span></td>
                     <td> Start Time <span id="availability_start_time"></span></td>
                     <td> End Time <span id="availability_end_time"></span></td>
+                    <% if current_user.id == @user.id %>
+                    <td> Edit <span id="edit_availability"></span></td>
+                    <td> Delete <span id="delete_availability"></span></td>
+                    <% end %>
                   </tr>
+
           <% @availabilities.each do |availability| %>
-              <% if availability.user_id.present? %>
-                  <tr>
+                <tr>
+                    <% if availability.user_id.present? %>
                     <td> <%= availability.date %> </td>
                     <td> <%= availability.start_time %> </td>
                     <td> <%= availability.end_time %> </td>
@@ -80,8 +86,9 @@
                           <%= image_tag('bin.svg') %>
                           <% end %>
                         </td>
+                  </tr>
                         <% end %>
-                 </tr>
+
 
                <!-- If there are no user availabilities, show that there are no available times. -->
                 <% else %>

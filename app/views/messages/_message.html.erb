@@ -1,0 +1,10 @@
+<div class="row">
+      <div class="col-md-5">
+      <%= image_tag(message.user.image_url, class: 'avatar-medium') %>
+      <strong><%= message.user.username %></strong>
+      <p><%= message.message_time %></p>
+      </div>
+      <div class="col-md-4">
+      </br><%= message.content %>
+      </div>
+</div>
