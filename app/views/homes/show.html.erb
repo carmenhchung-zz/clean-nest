@@ -2,9 +2,7 @@
 <div class="container">
 <div class="row">
 
-<!-- Show user's sidebar with home, appointments & account -->
   <div class="col-md-3">
-    <%= render 'layouts/user-sidebar' %>
   </div>
 
 <!-- Create header for Home Profile page -->
@@ -22,19 +20,22 @@
               <% end %>
             </div>
 
-            <p><%= @home.listing_name %></p>
-            <p>Address: <%= @home.address %></p>
-            <p>Hourly rate: $<%= @home.hourly_rate %></p>
-
-            <%= link_to "EDIT", edit_home_path(@home.id), action: :patch, class: "btn center" %>
+            <br><%= @home.listing_name %></br>
+            <br>Address: <%= @home.address %></br>
+            <br>Hourly rate: $<%= @home.hourly_rate %></br>
+    </div>
+    <div class="row center">
+      <%= link_to "EDIT", edit_home_path(@home.id), action: :patch, class: "btn center" %>
+    <br/>
     </div>
 
     <!-- Google maps -->
     <div class="row center">
+      <br/>
         <div id="map" style="width: 80%; height: 400px"></div>
 
     <!-- Use Javascript to feed the home's latitude and longitude (contained in the home database) to the Google maps API -->
-    
+
         <script>
             function initialize() {
               var location = {lat: <%= @home.latitude %>, lng: <%= @home.longitude %>};

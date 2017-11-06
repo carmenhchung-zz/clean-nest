@@ -12,9 +12,9 @@
 
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.all
 //= require toastr
 //= require popper
 //= require bootstrap-sprockets
 //= require bootstrap-timepicker
-//= require jquery.ui.all
 //= require geocomplete

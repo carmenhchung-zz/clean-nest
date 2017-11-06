@@ -2,7 +2,8 @@
 
 <!-- Add shine to the logo when you hover over it -->
 <ul class="navbar-nav">
-  <li class="nav-item mr-auto">
+
+  <li class="nav-item">
     <div class="mask pseudo">
       <mask id="mask-firefox">
          <%= link_to image_tag('logo.svg', filter: 'url(#filter)'), root_path %>
@@ -13,27 +14,20 @@
       </filter>
     </div>
   </li>
-</ul>
-
-<!-- Makes the drop down burger menu -->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-<div class="collapse navbar-collapse" id="navbarNavDropdown">
 
 <!-- If a user has not signed in, show them the Login/Sign Up links -->
     <% if (!user_signed_in?) %>
-        <ul class="navbar-nav ml-auto">
+        <!-- <ul class="navbar-nav ml-auto"> -->
         <li class="nav-item ml-auto">
         <%= link_to "Login", new_user_session_path, class: 'text-teal' %>
         &nbsp; / &nbsp;
         <%= link_to "Sign Up", new_user_registration_path, class: 'text-teal' %>
         </li>
-        </ul>
+        <!-- </ul> -->
+
 <!-- If a user has signed in, show them the navigation that allows them to find a cleaner/be a cleaner etc. -->
     <% else %>
-    <ul class="navbar-nav">
+    <!-- <ul class="navbar-nav"> -->
       <li class="nav-item"><%= link_to "Find a Cleaner", search_url, class: 'text-teal' %></li>
 
 <!-- If a user is already active as a cleaner, then they can go to their profile page to edit their availabilities; if they are not active as a cleaner, they must go to their edit profile to become active first. -->
@@ -44,8 +38,8 @@
         <%= link_to "Be a Cleaner", edit_user_registration_path, class: 'text-teal' %></li>
         <% end %>
       <li class="nav-item"><%= link_to "Appointments", class: 'text-teal' %></li>
-    </ul>
-
+    <!-- </ul> -->
+</ul>
     <ul class="dropdown ml-auto">
       <a href="#" class="dropdown-toggle text-teal" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 
@@ -60,7 +54,7 @@
       <ul class="dropdown-menu center">
           <li><%= link_to "View Profile", showuser_path(current_user.id), method: :get %></li>
           <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
-          <li><%= link_to "Inbox" %></li>
+          <li><%= link_to "Inbox", conversations_path %></li>
           <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
       </ul>
     </ul>

@@ -16,6 +16,11 @@ Rails.application.routes.draw do
 
   resources :homes
 
+# Messages go inside conversations because they all belong to conversations. 
+  resources :conversations, only: [:index, :create] do
+    resources :messages, only: [:index, :create]
+  end
+
   get '/your_appointments', to: 'appointments#your_appointments'
 # Only create the path to show user information - create/update is taken care of by Devise.
   get '/userprofile/:id', to: 'users#show', as: 'showuser'

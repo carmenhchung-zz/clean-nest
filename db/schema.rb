@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171102052258) do
+ActiveRecord::Schema.define(version: 20171106005054) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,13 @@ ActiveRecord::Schema.define(version: 20171102052258) do
     t.index ["user_id"], name: "index_availabilities_on_user_id"
   end
 
+  create_table "conversations", force: :cascade do |t|
+    t.integer "sender_id"
+    t.integer "recipient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "homes", force: :cascade do |t|
     t.string "listing_name"
     t.string "home_type"
@@ -56,6 +63,16 @@ ActiveRecord::Schema.define(version: 20171102052258) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_homes_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id"
+    t.bigint "conversation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -100,4 +117,6 @@ ActiveRecord::Schema.define(version: 20171102052258) do
   add_foreign_key "appointments", "users"
   add_foreign_key "availabilities", "users"
   add_foreign_key "homes", "users"
+  add_foreign_key "messages", "conversations"
+  add_foreign_key "messages", "users"
 end

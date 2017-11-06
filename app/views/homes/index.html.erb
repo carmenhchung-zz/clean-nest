@@ -4,7 +4,6 @@
 <div class="row">
 
   <div class="col-md-3">
-
   </div>
 
 <!-- Create header for Homes -->
@@ -18,7 +17,9 @@
       <% @home.each do |home| %>
           <div class="card">
             <div>
-                <%= image_tag(home.image_url, class: 'avatar-full') %>
+              <% if home.image.present? %>
+                <%= image_tag home.image_url, class: 'avatar-full' %>
+              <% end %>
             </div>
 
             <div class="card-body center">
@@ -27,7 +28,7 @@
               <p>Hourly rate offered: $<%= home.hourly_rate %></p>
               <%= link_to "VIEW", home_path(home.id), class: "btn center" %>
               <%= link_to "EDIT", edit_home_path(home.id), action: :patch, class: "btn center" %>
-              <%= link_to "DELETE", home_path(home.id), remote: true, method: :delete, data: {confirm: "Are you sure?"}, class: "btn center" %>
+              <p><%= link_to image_tag('bin.svg'), home_path(home.id), remote: true, method: :delete, data: {confirm: "Are you sure?"} %></p>
             </div>
           </div>
       <% end %>

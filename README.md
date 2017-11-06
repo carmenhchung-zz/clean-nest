@@ -1,57 +1,19 @@
-One page summary of your application including problem definition, solution.
-User stories for the whole application.
-A workflow diagram of the user journey/s.
-Wireframes for at least 5 screens.
-Entity Relationship Diagram (ERD).
-Project plan and estimation.
-
-Tools and methodologies
-Trello or similar project management tool to be used to track progress of build.
-Code review. Demonstrate that you have had your code reviewed by other students and that you have provided a code review for others.
-GitHub. Demonstrate use of frequent commits, pull requests, documentation.
-Use Agile development methodologies.
-Provide evidence you have used code quality tools (eg. Traceroute, Bullet, Brakeman, Rails Best Practices tool, RuboCop, RubyCritic, CodeClimate).
-
-
-Rails application code
-Demonstrate Ruby on Rails development skills.
-
-Create your application using Ruby on Rails.
-Demonstrate knowledge of Rails conventions.
-Use postgresql database in development.
-Use an API (eg. Omniauth, Geocoding, Maps, other..).
-Use appropriate gems.
-Use environmental variables to protect API keys etc. (dotenv)
-Implement a payment system for your product. (e.g. Stripe)
-Your app must send transactional emails (eg. using Mailgun).
-Your app should have an internal user messaging system.
-Your app will have some type of searching, sorting and/or filtering capability.
-Your app will have some type of file uploading capability (eg. images).
-Your app will have authentication (eg. Devise, must have full functionality in place).
-Your app will have authorisation (users have restrictions on what they can see and edit).
-Your app will have an admin dashboard for the admin user to administrate the site.
-Document your application with a README that explains how to setup, configure and use your application.
-
-
-
-Deployed application
-Your application is to be deployed to Heroku (recommended) or AWS.
-
-
-
 # CLEAN NEST
 
 ## Table of Contents
 
+[Overview](#overview)  
+[Business Problem](#businessproblem)   
+[Business Solution](#businesssolution)  
 
-
-
+<a name="overview"/>
 ## Overview
 
 Clean Nest is two-way market place that aims to be the leading provider of household cleaning services in Australia.
 
 Clean Nest allows identity-verified cleaners to select the dates and times that they are available for cleaning (and at a later stage, the locations in which they are willing to travel to), as well as set their own hourly rate. The platform also allows customers to search cleaners by availability (and later, price and location preference) and book their services. While the cleaners and customers can communicate via a messaging system, both the booking and payment process is handled by Clean Nest. Finally, both cleaners and customers can review each other upon completion of a booking.
 
+<a name="businessproblem"/>
 ## Business Problem
 
 The Australian Bureau of Statistics reports that the number of households in Australia is projected to increase around 50% from 2011 until 2036, and that the net worth of households will continue to grow, particularly with respect to households with a net worth of more than $1.5 million (CPI adjusted). Similarly, despite relatively high labor costs in Australia, research firm IbisWorld predicts significant growth in the household cleaning market due to the aging and growing Australian population, increasing number of households, and greater disposable income.
@@ -65,14 +27,12 @@ They are required to trust the agency, who has its own agenda (such as sending o
 Clean Nest will offer a platform that provides greater access, transparency and accountability between cleaners and customers.
 
 
-
+<a name="businesssolution"/>
 ## Business Solution
 
 which offers insurance
 
 damaged to goods, broken or stolen tools and also on the job injuries
-
-## Business Potential
 
 In 2014-2015, the residential cleaning service industry had a market size of around $711 million, and it is forecast to continue growing steadily over the next five years, with revenue rising at an annualized 1.7% to reach around $900m in 2019-20.
 
@@ -120,3 +80,47 @@ Average insurance cost is $65 per month for domestic cleaning services (for a bu
 The coverage includes damaged to goods, broken or stolen tools and also on the job injuries.
 
 Other costs include marketing and advertisements, hosting of the site and services. As such costing would be considered minimal.
+
+## PROJECT PLANNING
+
+User stories for the whole application.
+A workflow diagram of the user journey/s.
+Wireframes for at least 5 screens.
+Entity Relationship Diagram (ERD).
+Project plan and estimation.
+
+
+## TOOLS & METHODOLOGIES
+
+Tools and methodologies
+Trello or similar project management tool to be used to track progress of build.
+Code review. Demonstrate that you have had your code reviewed by other students and that you have provided a code review for others.
+GitHub. Demonstrate use of frequent commits, pull requests, documentation.
+Use Agile development methodologies.
+Provide evidence you have used code quality tools (eg. Traceroute, Bullet, Brakeman, Rails Best Practices tool, RuboCop, RubyCritic, CodeClimate).
+
+
+## CODING
+
+
+Rails application code
+Demonstrate Ruby on Rails development skills.
+
+Create your application using Ruby on Rails.
+Demonstrate knowledge of Rails conventions.
+Use postgresql database in development.
+Use an API (eg. Omniauth, Geocoding, Maps, other..).
+Use appropriate gems.
+Use environmental variables to protect API keys etc. (dotenv)
+Implement a payment system for your product. (e.g. Stripe)
+Your app must send transactional emails (eg. using Mailgun).
+Your app should have an internal user messaging system.
+Your app will have some type of searching, sorting and/or filtering capability.
+Your app will have some type of file uploading capability (eg. images).
+Your app will have authentication (eg. Devise, must have full functionality in place).
+Your app will have authorisation (users have restrictions on what they can see and edit).
+Your app will have an admin dashboard for the admin user to administrate the site.
+Document your application with a README that explains how to setup, configure and use your application.
+
+Deployed application
+Your application is to be deployed to Heroku (recommended) or AWS.

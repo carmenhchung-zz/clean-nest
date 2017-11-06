@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-md-3 text-center">
+    <%= image_tag image_url(@other), class: "img-circle" %>
+    <strong><%= @other.username %></strong>
+    <%= link_to "View Profile", @other, class: "btn center" %>
+  </div>
+  
+  <div class="col-md-9">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Conversation with <%= @other.username %>
+        <!-- Pass the conversation ID so that when you create a new message, you can add the conversation ID to that message too. -->
+        <input id="conversation_id" type="hidden" value="<%= @conversation.id %>">
+      </div>
+      <div class="panel-body">
+        <div class="container center">
+          <%= form_for [@conversation, @conversation.messages.new], remote: true do |f| %>
+              <div class="form-group">
+                <%= f.text_field :context, placeholder: "Enter your message here.", class: "form-control" %>
+              </div>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <div>
+                <%= f.submit "Send Message", class: "btn center" %>
+              </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div id="chat">
+      <%= render @messages %>
+    </div>
+
+  </div>
+</div>
