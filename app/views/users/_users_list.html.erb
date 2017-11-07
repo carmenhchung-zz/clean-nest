@@ -1,5 +1,10 @@
-<% users.each do |user| %>
+<% if @arrUsers.blank? %>
+    There are no cleaners available in your area on this date.
+<% else %>
+
+<% @arrUsers.each do |user| %>
       <div class="card" style="width: 30%;">
+
         <!-- If user has an avatar, show it - otherwise show the default profile avatar -->
         <% if user.image.present? %>
         <%= link_to image_tag(user.image_url, class: 'card-img-top') %>
@@ -19,7 +24,7 @@
       </div>
 <% end %>
 
-
+<% end %>
 <!-- <script>
   $('#star_<%#= user.id %>').raty({
     path: '/assets',

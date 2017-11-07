@@ -58,6 +58,11 @@ gem 'simple_form'
 # Ransack gem used for searching
 gem 'ransack', '~> 1.7'
 
+# Rspec gem for testing
+group :test, :development do
+  gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

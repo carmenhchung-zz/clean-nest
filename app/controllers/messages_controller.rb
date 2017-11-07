@@ -17,9 +17,15 @@ class MessagesController < ApplicationController
     @messages = @conversation.messages.order("created_at DESC")
 
     if @message.save
-      ActionCable.server.broadcast "conversation_#{@conversation.id}", message: render_message(@message)
       redirect_to conversation_messages_path(@conversation)
     end
+  end
+
+  # Method to delete the message.
+  def destroy
+    @message.destroy
+    # respond_to :js
+    # Responds to javascript - use with ajax
   end
 
   private

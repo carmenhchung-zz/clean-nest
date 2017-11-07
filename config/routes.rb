@@ -16,9 +16,9 @@ Rails.application.routes.draw do
 
   resources :homes
 
-# Messages go inside conversations because they all belong to conversations. 
-  resources :conversations, only: [:index, :create] do
-    resources :messages, only: [:index, :create]
+# Messages go inside conversations because they all belong to conversations.
+  resources :conversations, only: [:index, :create, :destroy, :delete] do
+    resources :messages, only: [:index, :create, :destroy, :delete]
   end
 
   get '/your_appointments', to: 'appointments#your_appointments'
