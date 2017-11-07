@@ -31,7 +31,7 @@
 <!-- If a user is already active as a cleaner, then they can go to their profile page to edit their availabilities; if they are not active as a cleaner, they must go to their edit profile to become active first. -->
       <li class="nav-item">
         <% if current_user.active == true %>
-        <%= link_to "Be a Cleaner", showuser_path(current_user.id), class: 'text-teal' %></li>
+        <%= link_to "Be a Cleaner", new_user_availability_path(current_user.id), class: 'text-teal' %></li>
         <% else %>
         <%= link_to "Be a Cleaner", edit_user_registration_path, class: 'text-teal' %></li>
         <% end %>

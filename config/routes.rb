@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   resources :users do
     resources :appointments, only: [:new, :create]
     resources :availabilities
-    get 'preload'
   end
 
   resources :homes
@@ -21,7 +20,7 @@ Rails.application.routes.draw do
     resources :messages, only: [:index, :create, :destroy, :delete]
   end
 
-  get '/your_appointments', to: 'appointments#your_appointments'
+  # get '/your_appointments', to: 'appointments#your_appointments'
 # Only create the path to show user information - create/update is taken care of by Devise.
   get '/userprofile/:id', to: 'users#show', as: 'showuser'
 

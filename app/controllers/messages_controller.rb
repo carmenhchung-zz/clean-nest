@@ -26,8 +26,6 @@ class MessagesController < ApplicationController
     @message = Message.find(params[:id])
     @message.destroy
     redirect_to conversation_messages_path(@conversation)
-    # respond_to :js
-    # Responds to javascript - use with ajax
   end
 
   private
