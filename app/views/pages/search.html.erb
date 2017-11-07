@@ -5,7 +5,7 @@
   <!-- Search panel with location and date search -->
     <div class="row">
         <div class="col-md-4">
-              Finding cleaners near: <%= text_field_tag :search, params[:search], placeholder: "Enter your address", class: "form-control", id: "autolocation" %>
+              Finding cleaners near: <%= text_field_tag :address, params[:address], placeholder: "Enter your address", class: "form-control", id: "autolocation" %>
         </div>
         <div class="col-md-4">
               Date:<%= text_field_tag :date, params[:date], readonly: true, class: "form-control" %>
@@ -35,7 +35,7 @@
 
     <!-- Use google api javascript for autocomplete of locations when searching -->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkcAUgQQgRZQMHLPIAk-Quf-ZKqtYYuKw&libraries=places"></script>
-    
+
     <script>
         function initialize(users) {
           var location = {lat: 33.8688, lng: 151.2093}
