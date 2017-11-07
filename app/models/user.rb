@@ -21,13 +21,4 @@ class User < ApplicationRecord
   include ImageUploader[:image]
   include ImageUploader[:identification]
 
-  # def average_rating
-  # customer_reviews.count == 0 ? 0 : customer_reviews.average(:star).round(2).to_i
-  # end
-
-  # def valid_booking(date)
-
-  #  @user.availability.where(date: date) && @user.appointment("date != ?", date) ? true : false
-
-  # end
 end

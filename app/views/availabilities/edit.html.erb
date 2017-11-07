@@ -1,0 +1,59 @@
+<!-- This page is an edit availability form for each cleaner to edit their own availability. It links each availability to a particular user (in this case, cleaner). -->
+
+<div class="row">
+  <div class="col-md-5 center">
+  </div>
+
+  <div class="col-md-3 center">
+    <div class="panel panel-default">
+      <div class="panel-heading center">
+        EDIT AVAILABILITY
+      <div class="panel-body">
+
+        <%= form_for([@user, @user.availabilities.update]) do |f| %>
+        <div class="form-group">
+          <%= text_field_tag :date, params[:date], placeholder: "Select a Date", class: "form-control datepicker" %><br/>
+
+          <!-- Time picker using bootstrap -->
+          <!-- Start Time:
+            <div class="input-group bootstrap-timepicker timepicker">
+              <input id="start_time" type="text" class="form-control input-small">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+            </div>
+
+          End Time:
+            <div class="input-group bootstrap-timepicker timepicker">
+              <input id="end_time" type="text" class="form-control input-small">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+            </div> -->
+
+            <!-- Note: when adding appointments to the database, the hours should be automatically calculated and entered into the database -->
+          <p>
+          <%= f.submit "Submit Availability", class: 'btn center' %>
+          </p>
+
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Run script so that jquery-ui datepicker works - allows a dropdown date picker and a time picker -->
+<script>
+  $(function() {
+    $('#date').datepicker({
+      dateFormat: 'dd-mm-yy'
+    });
+  });
+
+</script>
+
+<!-- <script type="text/javascript">
+    $('#start_time').timepicker();
+</script>
+
+<script type="text/javascript">
+    $('#end_time').timepicker();
+</script> -->

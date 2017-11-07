@@ -2,6 +2,11 @@
   <div class="row">
     <div class="col-md-3">
       <div class="center">
+            <% if current_user.image.present? %>
+            <%= image_tag(current_user.image_url) %>
+            <% else %>
+            <%= image_tag('defaultprofile.svg') %>
+            <% end %>
           <div class="panel panel-button">
           <%= button_to 'View Profile', showuser_path(current_user.id), method: :get, class: 'btn center' %>
           </div>

@@ -5,8 +5,8 @@
 
 <!-- Pass through the user's new availability entry below to the availabilities table -->
 
-    Add Availability
-      <%= form_for([@user, @user.availability.new]) do |f| %>
+    Add Appointment
+      <%= form_for([@user, @user.appointment.new]) do |f| %>
         Date: <%= f.text_field :date, readonly: true %><br/>
 
       <!-- Time picker using bootstrap -->
@@ -54,17 +54,6 @@
 <!-- Run script so that jquery-ui datepicker works - allows a dropdown date picker and a time picker -->
 <script>
   $(function() {
-
-    <!-- // $.ajax({
-    //   url: '<%#= preload_user_path(@user) %>',
-    //   dateTyp: 'json',
-    //   success: function(data) {
-    //     $.each(data, function(arrID, arrValue) {
-    //       console.log(arrValue);
-    //     });
-    //   }
-    //
-    // })
 
   //   $('#appointment_date').datepicker({
   //     dateFormat: 'dd-mm-yy'

@@ -3,32 +3,34 @@
 <div class="container">
 <div class="row">
   <div class="col-md-3 center">
-    <!-- If user has an avatar, show it - otherwise show the default profile avatar -->
-  <div class="card">
+<!-- If user has an avatar, show it - otherwise show the default profile avatar -->
+    <div class="card">
       <% if @user.image.present? %>
       <%= image_tag(@user.image_url) %>
       <% else %>
       <%= image_tag('defaultprofile.svg') %>
       <% end %>
-      <div class="panel-heading"><%= @user.username %></div>
-      <!-- If the current user looking at the profile is not the owner of the profile, allow them to message the user. Set sender and recipient IDs. -->
-      <% if current_user && current_user != @user %>
-        <br/>
-        <%= link_to "Message", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: :post, class: "btn center" %>
-      <% end %>
-    </div>
-  </div>
+        <div class="panel-heading"><%= @user.username %></div>
 
-    <div class="col-md-5">
+<!-- If the current user looking at the profile is not the owner of the profile, allow them to message the user. Set sender and recipient IDs. -->
+        <% if current_user != @user %>
+          <br/>
+          <%= link_to "Message", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: :post, class: "btn center" %>
+        <% end %>
+      </div>
+    </div>
+
+  <div class="col-md-5">
     <h2><%= @user.firstname %> <%= @user.lastname %>
-    <!-- If the user has uploaded their ID document (under edit profile), then this verification tick will show -->
+
+<!-- If the user has uploaded their ID document (under edit profile), then this verification tick will show -->
         <% if @user.identification.present? %>
         <%= image_tag('verified.png', class: 'avatar-small') %>
         <% end %>
     </h2>
 
-    <!-- Only show the hourly rate if the person is active as a cleaner -->
-    <% if current_user.active == 'true' %>
+<!-- Show the hourly rate if the person is active as a cleaner. -->
+    <% if @user.active == true %>
     <br>Hourly Rate: $<%= @user.hourly_rate %> per hour<br/>
     <% end %>
 
@@ -38,75 +40,72 @@
     <br>Bio: <%= @user.bio %><br/>
   </div>
 
-  <!-- Google maps to show where the person is cleaning - only show if they are an active cleaner -->
-    <% if current_user.active == 'true' %>
+  <!-- Show Google maps only if they are an active cleaner. -->
+    <% if @user.active == true %>
     <div class="col-md-4 center">
     <h2>CLEANING LOCATION</h2>
-      <div id="map" style="width: 100%; height: 350px"></div>
       <br/>
     </div>
   <hr/>
   </div>
     <% end %>
 
-  <!-- Show availabilities only if they are an active cleaner -->
-
-  <% if current_user.active == 'true' %>
+  <!-- Show availabilities only if they are an active cleaner. -->
+  <% if @user.active == true %>
     <div class="row center">
       <h2>CURRENT AVAILABILITY</h2>
-          <table class="reservation-table">
+        <table class="reservation-table">
 
-        <!-- For each user availability, show the date, start time and end time - and if the current user is the same as the one who owns the profile, then allow them to access edit and delete functions as well. -->
+  <!-- For each user availability, show the date, start time and end time - and if the current user is the same as the one who owns the profile, then allow them to access edit and delete functions as well. -->
           <tbody class>
-                  <tr>
-                    <td> Date <span id="availability_date"></span></td>
-                    <td> Start Time <span id="availability_start_time"></span></td>
-                    <td> End Time <span id="availability_end_time"></span></td>
-                    <% if current_user.id == @user.id %>
-                    <td> Edit <span id="edit_availability"></span></td>
-                    <td> Delete <span id="delete_availability"></span></td>
-                    <% end %>
-                  </tr>
+              <tr>
+                <td> Date <span id="availability_date"></span></td>
+                <td> Start Time <span id="availability_start_time"></span></td>
+                <td> End Time <span id="availability_end_time"></span></td>
+                <% if current_user.id == @user.id %>
+                <td> Edit <span id="edit_availability"></span></td>
+                <td> Delete <span id="delete_availability"></span></td>
+                <% end %>
+              </tr>
 
           <% @availabilities.each do |availability| %>
                 <tr>
-                    <% if availability.user_id.present? %>
+                  <% if availability.user_id.present? %>
                     <td> <%= availability.date %> </td>
                     <td> <%= availability.start_time %> </td>
                     <td> <%= availability.end_time %> </td>
   <!-- .strftime("%l:%M%p") .strftime("%A %e %B %Y") -->
-                        <% if current_user.id == availability.user_id %>
+                      <% if current_user.id == availability.user_id %>
                         <td>
-                          <%= link_to edit_user_path(availability.id), action: :patch do %>
+                          <%= link_to edit_user_availability_path(id: availability.id, user_id: current_user.id), action: :patch do %>
                           <%= image_tag('edit.svg') %>
                           <% end %>
                         </td>
 
-                        <td> <%= link_to user_path(availability), method: :delete, data: {confirm: "Are you sure?"} do %>
+                        <td>
+                          <%= link_to user_availability_path(id: availability.id, user_id: current_user.id), method: :delete, data: {confirm: "Are you sure?"} do %>
                           <%= image_tag('bin.svg') %>
                           <% end %>
                         </td>
-                  </tr>
-                        <% end %>
+                    <% end %>
+                </tr>
 
-
-               <!-- If there are no user availabilities, show that there are no available times. -->
+  <!-- If there are no user availabilities, show that there are no available times. -->
                 <% else %>
                   <tr> There are no available times.</tr>
                 <% end %>
-                </tbody>
-            </table>
-          <br/>
-      </div>
-      <% end %>
+            <% end %>
+          </tbody>
+        </table>
+  </div>
 
-
-<!-- If the user browsing the profile (i.e. the customer) is not the same person as the user who owns the profile (i.e. the cleaner), then they can book that person. -->
-      <% if current_user.id != @user %>
-      <div class= "row center">
+  <!-- If the user browsing the profile (i.e. the customer) is not the same person as the user who owns the profile (i.e. the cleaner), then they can book that person. -->
+      <% if current_user != @user %>
+        <div class= "row center">
         <%= link_to "BOOK CLEANER", new_user_appointment_path(@user), class: "btn center" %>
-      </div>
+        </div>
       <% end %>
+
 <% end %>
   <!-- Use Javascript to feed the user's latitude and longitude based on their location (contained in the user database) to the Google maps API -->
   <!-- Google API key for Google maps -->
