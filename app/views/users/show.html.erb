@@ -38,6 +38,7 @@
     <br>Primary language: <%= @user.language %><br/>
     <br>Location: <%= @user.location %><br/>
     <br>Bio: <%= @user.bio %><br/>
+    <br/>
   </div>
 
   <!-- Show Google maps only if they are an active cleaner. -->
@@ -97,6 +98,7 @@
             <% end %>
           </tbody>
         </table>
+        <br/>
   </div>
 
   <!-- If the user browsing the profile (i.e. the customer) is not the same person as the user who owns the profile (i.e. the cleaner), then they can book that person. -->
@@ -104,6 +106,11 @@
         <div class= "row center">
         <%= link_to "BOOK CLEANER", new_user_appointment_path(@user), class: "btn center" %>
         </div>
+      <% else %>
+      <div class= "row center">
+        <br/>
+        <%= link_to "ADD AVAILABILITY", new_user_availability_path(@user), class: "btn center" %>
+      </div>
       <% end %>
 
 <% end %>
