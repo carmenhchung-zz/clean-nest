@@ -8,7 +8,7 @@
 
         <% if @home.image.present? %>
           <%= image_tag(@home.image_url, class: 'avatar-full') %>
-            <%= link_to home_path(@home.image_url), remote: true, method: :delete, data: {confirm: "Are you sure?"} do %>
+            <%= link_to home_path(@home.image_url), method: :delete, data: {confirm: "Are you sure?"} do %>
             <% image_tag('bin.svg') %>
             <% end %>
         <br/>

@@ -77,12 +77,12 @@
   <!-- .strftime("%l:%M%p") .strftime("%A %e %B %Y") -->
                         <% if current_user.id == availability.user_id %>
                         <td>
-                          <%= link_to edit_user_path(availability.id), remote: true, action: :patch do %>
+                          <%= link_to edit_user_path(availability.id), action: :patch do %>
                           <%= image_tag('edit.svg') %>
                           <% end %>
                         </td>
 
-                        <td> <%= link_to user_path(availability), remote: true, method: :delete, data: {confirm: "Are you sure?"} do %>
+                        <td> <%= link_to user_path(availability), method: :delete, data: {confirm: "Are you sure?"} do %>
                           <%= image_tag('bin.svg') %>
                           <% end %>
                         </td>

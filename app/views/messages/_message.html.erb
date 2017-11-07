@@ -9,6 +9,8 @@
       </div>
       <div class="col-md-2">
       <br/>
-      <%= link_to image_tag('bin.svg'), conversation_message_path(id: message.id), remote: true, method: :delete, data: {confirm: "Are you sure?"} %>
+      <% if message.user == current_user %>
+      <%= link_to image_tag('bin.svg'), conversation_message_path(id: message.id), method: :delete, data: {confirm: "Are you sure?"} %>
+      <% end %>
       </div>
 </div>

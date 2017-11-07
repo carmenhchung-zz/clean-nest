@@ -23,7 +23,9 @@ class MessagesController < ApplicationController
 
   # Method to delete the message.
   def destroy
+    @message = Message.find(params[:id])
     @message.destroy
+    redirect_to conversation_messages_path(@conversation)
     # respond_to :js
     # Responds to javascript - use with ajax
   end

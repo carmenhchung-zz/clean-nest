@@ -31,7 +31,7 @@
               <p>Hourly rate offered: $<%= home.hourly_rate %></p>
               <%= link_to "VIEW", home_path(home.id), class: "btn center" %>
               <%= link_to "EDIT", edit_home_path(home.id), action: :patch, class: "btn center" %>
-              <p><%= link_to image_tag('bin.svg'), home_path(home.id), remote: true, method: :delete, data: {confirm: "Are you sure?"} %></p>
+              <p><%= link_to image_tag('bin.svg'), home_path(home.id), method: :delete, data: {confirm: "Are you sure?"} %></p>
             </div>
           </div>
       <% end %>
