@@ -14,7 +14,7 @@
         <input id="conversation_id" type="hidden" value="<%= @conversation.id %>">
       </div>
       <div class="panel-body">
-          <%= form_for [@conversation, @conversation.messages.new], remote: true do |f| %>
+          <%= form_for [@conversation, @conversation.messages.new] do |f| %>
               <div class="form-group">
                 <%= f.text_field :content, placeholder: "Enter your message here.", class: "form-control" %>
               </div>
