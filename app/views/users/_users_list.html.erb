@@ -1,9 +1,9 @@
 <% if @arrUsers.blank? %>
     There are no cleaners available in your area on this date.
 <% else %>
-
+<div class="row center">
 <% @arrUsers.each do |user| %>
-      <div class="card" style="width: 30%;">
+      <div class="card" style="width: 40%">
 
         <!-- If user has an avatar, show it - otherwise show the default profile avatar -->
         <% if user.image.present? %>
@@ -20,15 +20,7 @@
               <br/><br/>
               <%= link_to "VIEW", user_path(user.id), class: "btn center" %>
           </div>
-          <br/>
       </div>
 <% end %>
-
+</div>
 <% end %>
-<!-- <script>
-  $('#star_<%#= user.id %>').raty({
-    path: '/assets',
-    readOnly: true,
-    score: <%#= user.average_rating %>
-  });
-</script> -->
