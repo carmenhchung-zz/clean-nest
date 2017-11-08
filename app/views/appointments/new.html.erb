@@ -21,7 +21,7 @@
 <!-- The booking form asks the customer for: (1) their home (which would have been previously registered - if not, they are redirected to their home create page so they can add their home address), (2) their appointment date and time. -->
 
     <%= form_for Appointment.new, url: :save_appointment do |f| %>
-      <% if @home.address.present? %>
+      <% if @homes.address.present? %>
       <div class="form-group">
         <p>
           <label>Select Your Home:</label>
