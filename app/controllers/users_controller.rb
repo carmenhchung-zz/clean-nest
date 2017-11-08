@@ -46,12 +46,6 @@ class UsersController < ApplicationController
     # Allows user to update the availability details.
     end
 
-  # Method to delete the availability.
-    # def destroy
-    #     @availability.destroy
-        # Responds to javascript - use with ajax
-    # end
-
   private
     def set_user
       # Pass param ID (i.e. user ID) which is found in the User table. Can be called by any method above now.

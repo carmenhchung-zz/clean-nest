@@ -12,80 +12,34 @@
        <% else %>
        <%= image_tag('defaultprofile.svg') %>
        <% end %>
-       <div class="panel-heading"><%= @cleaner.username %></div>
+       <div class="panel-heading center"><%= @cleaner.username %></div>
      </div>
 
-  <div class="col-md-5">
-    <h2>BOOK CLEANER</h2>
-
-<!-- The booking form asks the customer for: (1) their home (which would have been previously registered - if not, they are redirected to their home create page so they can add their home address), (2) their appointment date and time. -->
-
+  <div class="col-md-5 center">
+    <h2>YOUR BOOKING</h2>
+    <br/>
+<!-- The booking form asks the customer for their home (which would have been previously registered - if not, they are redirected to their home create page so they can add their home address).-->
+    Date Selected: <strong><%= @date %></strong>
+    <br/>
+    Hourly rate: <strong>$<%= @cleaner.hourly_rate %> per hour</strong>
+    <%#= form_for([@cleaner, @cleaner.appointments.new]) do |f| %>
     <%= form_for([@cleaner, @cleaner.appointments.new]) do |f| %>
+
       <% if @homes.address.present? %>
       <div class="form-group">
-        <p>
+        <br/>
           <label>Select Your Home:</label>
           <%= f.collection_select :user_id, Home.all, :id, :address %>
-        </p>
+        <br/>
+          <%= hidden_field_tag :date, @date %>
+          <%#= hidden_field_tag "course[user_id]", "#{@user_id}" %>
       </div>
       <% else %>
         <% redirect_to user_homes_path, flash[:alert] = "Please register an address for your home." %>
       <% end %>
-
-<!-- Should a date for the appointment here -->
-      Date: <%= text_field_tag :date_input, :class => 'form-control date_input', :id => "date_field" %>
-          </br>
-          <%= f.submit "Book now", class: 'btn center', :id => 'save_appointment' %>
+          <%= f.submit "Book now", class: 'btn center' %>
           </p>
-      	<div id="error_message" class="alert-danger"></div></br>
-      	<div id="availability_message" class="alert-danger"></div>
     <% end %>
     </div>
     </div>
   </div>
-
-<!-- Run script so that jquery-ui datepicker works - allows a dropdown date picker and a time picker -->
-<script>
-  //alert("<%=@user_id%>");
-  $(function() {
-    $('.date_input').datepicker({
-      dateFormat: 'dd-mm-yy'
-    });
-  });
-  function check_availability(){
-    var date = $("#date_field").val();
-    var start_time = $("#start_time_field").val();
-    var end_time = $("#end_time_field").val();
-    var url = '/check_availability/<%=@user_id%>/' + String(date)
-    // + "/" + String(start_time) + "/" + String(end_time)
-   if( String(date) != ""
-   // &&  String(start_time) != "" &&  String(end_time) != ""){
-    //$("#availability_message").append("");
-    $.get(url, function(data){
-      var d = data.replace("\n");
-      if (data.indexOf("Yes") >= 0){data = "Yes";}
-      else if (data.indexOf("No") >= 0){data = "No";}
-      return data;
-      $("#availability_message").html(data);
-
-    });
-   }
-  }
-  //setTimeout(check_availability, 1000);
-  $("#save_appointment").click(function(event){
-    $("#availability_message").html("");
-    $("#error_message").html("");
-    var errors = false;
-    var date = $("#date_field").val();
-    // var start_time = $("#start_time_field").val();
-    // var end_time = $("#end_time_field").val();
-    if(date == ""){$("#error_message").append("Date field is empty.</br>");errors = true;}
-    // if(start_time == ""){$("#error_message").append("Start time field is empty.</br>");errors = true;}
-    // if(end_time == ""){$("#error_message").append("End time field is empty.</br>");errors = true;}
-    alert($("#availability_message").text(data););
-    if($("#availability_message").html() || errors == true){event.preventDefault();}
-    else{alert("Save it!");}
-    //else{$("#save_appointment").unbind( "click" );$("form").submit();alert("Save it!");}
-
-  });
-</script>

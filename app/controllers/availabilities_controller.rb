@@ -64,8 +64,7 @@ class AvailabilitiesController < ApplicationController
 
 # To create or update availability, you need to permit the attributes that the user can create/update.
     def availability_params
-      params.permit(:date, :user_id)
-      #params.permit(:date, :user_id)
+      params.permit(:date, :customer_id)
     end
 
     def is_authorised

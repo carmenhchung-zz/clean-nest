@@ -13,10 +13,10 @@
         <div class="panel-heading"><%= @user.username %></div>
 
 <!-- If the current user looking at the profile is not the owner of the profile, allow them to message the user. Set sender and recipient IDs. -->
-        <% if current_user != @user %>
-          <br/>
-          <%= link_to "Message", conversation_path(sender_id: current_user.id, recipient_id: @user.id), method: :post, class: "btn center" %>
-        <% end %>
+        <%# if current_user != @user %>
+          <!-- <br/> -->
+          <%#= link_to "Message", conversation_messages_path(sender_id: current_user.id, recipient_id: @user.id), method: :post, class: "btn center" %>
+        <%# end %>
       </div>
     </div>
 
@@ -53,41 +53,46 @@
 
   <!-- Show availabilities only if they are an active cleaner. -->
   <% if @user.active == true %>
-    <hr/>
-    <div class="row center">
-      <h2>CURRENT AVAILABILITY</h2>
-        <table class="reservation-table">
+  <hr/>
+  <div class="row center">
+    <h2>CURRENT AVAILABILITY</h2>
+    <table class="reservation-table">
 
   <!-- For each user availability, show the date, start time and end time - and if the current user is the same as the one who owns the profile, then allow them to access edit and delete functions as well. -->
-          <tbody class>
+      <tbody class>
+          <tr>
+            <td> Date <span id="availability_date"></span></td>
+            <td> Start Time <span id="availability_start_time"></span></td>
+            <td> End Time <span id="availability_end_time"></span></td>
+            <% if current_user.id == @user.id %>
+            <td> Delete <span id="delete_availability"></span></td>
+            <% else %>
+            <td></td>
+            <% end %>
+          </tr>
+
+      <% @availabilities.each do |availability| %>
+          <% if availability.user_id.present? %>
               <tr>
-                <td> Date <span id="availability_date"></span></td>
-                <td> Start Time <span id="availability_start_time"></span></td>
-                <td> End Time <span id="availability_end_time"></span></td>
-                <% if current_user.id == @user.id %>
-                <td> Delete <span id="delete_availability"></span></td>
+                <td> <%= availability.date %> </td>
+                <td> <%= availability.start_time %> </td>
+                <td> <%= availability.end_time %> </td>
+                <% if current_user.id == availability.user_id %>
+                    <td>
+                      <%= link_to user_availability_path(id: availability.id, user_id: current_user.id), method: :delete, data: {confirm: "Are you sure?"} do %>
+                      <%= image_tag('bin.svg') %>
+                      <% end %>
                 <% else %>
-                <td></td>
+
+                  <% if availability.customer_id.present? %>
+                    <td><div class="btn red-center"> "UNAVAILABLE"</div></td>
+                  <% else %>
+                  <td><%= link_to "BOOK DATE", new_user_appointment_path(:user_id => availability.user_id, :date => availability.date), class: "btn center" %></td>
+                  <% end %>
                 <% end %>
+                </td>
               </tr>
 
-          <% @availabilities.each do |availability| %>
-              <% if availability.user_id.present? %>
-                  <tr>
-                    <td> <%= availability.date %> </td>
-                    <td> <%= availability.start_time %> </td>
-                    <td> <%= availability.end_time %> </td>
-  <!-- .strftime("%l:%M%p") .strftime("%A %e %B %Y") -->
-                      <% if current_user.id == availability.user_id %>
-                        <td>
-                          <%= link_to user_availability_path(id: availability.id, user_id: current_user.id), method: :delete, data: {confirm: "Are you sure?"} do %>
-                          <%= image_tag('bin.svg') %>
-                          <% end %>
-                      <% else %>
-                          <td><%= link_to "BOOK DATE", new_user_appointment_path(@user), class: "btn center" %></td>
-                      <% end %>
-                        </td>
-                  </tr>
   <!-- If there are no user availabilities, show that there are no available times. -->
                 <% else %>
                   <tr> There are no available times.</tr>
