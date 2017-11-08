@@ -2,7 +2,7 @@
 
 <div class="container">
 <div class="row">
-  <div class="col-md-3 center">
+  <div class="col-md-4 center">
 <!-- If user has an avatar, show it - otherwise show the default profile avatar -->
     <div class="card">
       <% if @user.image.present? %>
@@ -15,12 +15,12 @@
 <!-- If the current user looking at the profile is not the owner of the profile, allow them to message the user. Set sender and recipient IDs. -->
         <% if current_user != @user %>
           <br/>
-          <%= link_to "Message", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: :post, class: "btn center" %>
+          <%= link_to "Message", conversation_path(sender_id: current_user.id, recipient_id: @user.id), method: :post, class: "btn center" %>
         <% end %>
       </div>
     </div>
 
-  <div class="col-md-5">
+  <div class="col-md-4">
     <h2><%= @user.firstname %> <%= @user.lastname %>
 
 <!-- If the user has uploaded their ID document (under edit profile), then this verification tick will show -->
@@ -45,13 +45,11 @@
     <% if @user.active == true %>
     <div class="col-md-4 center">
     <h2>CLEANING LOCATION</h2>
-      <br/>
       <div id="map" style="width: 100%; height: 100%"></div>
     </div>
   <hr/>
   <% end %>
   </div>
-
 
   <!-- Show availabilities only if they are an active cleaner. -->
   <% if @user.active == true %>
@@ -68,12 +66,14 @@
                 <td> End Time <span id="availability_end_time"></span></td>
                 <% if current_user.id == @user.id %>
                 <td> Delete <span id="delete_availability"></span></td>
+                <% else %>
+                <td></td>
                 <% end %>
               </tr>
 
           <% @availabilities.each do |availability| %>
-                <tr>
-                  <% if availability.user_id.present? %>
+              <% if availability.user_id.present? %>
+                  <tr>
                     <td> <%= availability.date %> </td>
                     <td> <%= availability.start_time %> </td>
                     <td> <%= availability.end_time %> </td>
@@ -83,10 +83,11 @@
                           <%= link_to user_availability_path(id: availability.id, user_id: current_user.id), method: :delete, data: {confirm: "Are you sure?"} do %>
                           <%= image_tag('bin.svg') %>
                           <% end %>
+                      <% else %>
+                          <td><%= link_to "BOOK DATE", new_user_appointment_path(@user), class: "btn center" %></td>
+                      <% end %>
                         </td>
-                    <% end %>
-                </tr>
-
+                  </tr>
   <!-- If there are no user availabilities, show that there are no available times. -->
                 <% else %>
                   <tr> There are no available times.</tr>
@@ -98,11 +99,7 @@
   </div>
 
   <!-- If the user browsing the profile (i.e. the customer) is not the same person as the user who owns the profile (i.e. the cleaner), then they can book that person. -->
-      <% if current_user != @user %>
-        <div class= "row center">
-        <%= link_to "BOOK CLEANER", new_user_appointment_path(@user), class: "btn center" %>
-        </div>
-      <% else %>
+      <% if current_user == @user %>
       <div class= "row center">
         <br/>
         <%= link_to "ADD AVAILABILITY", new_user_availability_path(@user), class: "btn center" %>
