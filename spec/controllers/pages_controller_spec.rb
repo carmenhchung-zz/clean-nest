@@ -22,7 +22,7 @@ RSpec.describe PagesController, type: :controller do
       context "when location param is provided but date param is not provided" do
         it "assigns all active users to @user_location" do
           user = User.create! username: 'ironingman', active: true, firstname: "Tommy", lastname: "Stark", email: "stark@stark.com", password: 'password'
-          get :search, :address => '1 Blah Street'
+          get :search, {:searc => {:addres => '1 Blah Street'}}
           expect(assigns(:user_location)).to eq([user])
         end
       end

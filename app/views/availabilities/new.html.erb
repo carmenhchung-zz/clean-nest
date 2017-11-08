@@ -14,7 +14,7 @@
 
         <%= form_for([@user, @user.availabilities.new]) do |f| %>
         <div class="form-group">
-          <%= text_field_tag :date, params[:date], placeholder: "Select a Date", class: "form-control datepicker" %><br/>
+          <%= text_field_tag :date, params[:date], readonly: true, placeholder: "Select a Date", class: "form-control datepicker" %><br/>
 
           <!-- Time picker using bootstrap -->
           <!-- Start Time:

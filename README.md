@@ -13,9 +13,9 @@
 ## OVERVIEW
 </a>
 
-Clean Nest is two-way market place that aims to be the leading provider of household cleaning services in Australia.
+Clean Nest is two-way market place that aims to be the leading provider of household cleaning services in Australia. It can be found online [here](www.clean-nest.herokuapp.com).
 
-Clean Nest allows identity-verified cleaners to select the dates that they are available for cleaning, as well as the location they prefer to clean in, and set their own hourly rate. The platform also allows customers to search cleaners by availability and location (searching within a 20km radius of their specified location) and book their services. While the cleaners and customers can communicate via an internal messaging system on the platform, both the booking and payment process is handled by Clean Nest. Finally, both cleaners and customers can review each other upon completion of a booking.
+Clean Nest allows identity-verified cleaners to select the dates that they are available for cleaning, as well as the location they prefer to clean in, and set their own hourly rate. The platform also allows customers to search cleaners by availability and location (searching within a 20km radius of their specified location) and book their services. Further, customers can create home profiles with fields such as address and cleaning instructions filled in, so they can be reused and sent through to the cleaner that has been booked. While the cleaners and customers can communicate via an internal messaging system on the platform, both the booking and payment process is handled by Clean Nest. Finally, both cleaners and customers can review each other upon completion of a booking.
 
 <a name="businessproblem"/>
 ## BUSINESS PROBLEM
@@ -25,7 +25,7 @@ The Australian Bureau of Statistics reports that the number of households in Aus
 
 Currently, the household cleaning market in Australia is dominated by agencies and small business owners, many of which do not offer an online booking platform. For the booking platforms that do exist, they are run by specific agencies; they are not designed for individual cleaners, which means that cleaners (or those looking for casual work such as students) are required to sign up with an agency before they are able to offer their services, and are unable to dictate their own hourly rate.
 
-The agency is given full control over which cleaner they send for each booking, and takes a significant commission (estimated to be around 40% of the fee charged to the customer - as opposed to Clean Nest's proposed 8% fee). From the customer's perspective, there is no transparency over which cleaner they are provided with, as there is no peer-review or star rating system. Even platforms like Helpling[www.helpling.com.au], which do allow you to view cleaner profiles, only allow you to do so if you have a subscription package with them. Finally, booking through a cleaning agency can be burdensome, sometimes requiring more than two days' advance notice.
+The agency is given full control over which cleaner they send for each booking, and takes a significant commission (estimated to be around 40% of the fee charged to the customer - as opposed to Clean Nest's proposed 8% fee). From the customer's perspective, there is no transparency over which cleaner they are provided with, as there is no peer-review or star rating system. Even platforms like [Helpling](www.helpling.com.au), which do allow you to view cleaner profiles, only allow you to do so if you have a subscription package with them. Finally, booking through a cleaning agency can be burdensome, sometimes requiring more than two days' advance notice.
 
 
 <a name="businesssolution"/>
@@ -46,60 +46,45 @@ Finally, Clean Nest will offer complimentary insurance to its customers, which c
 
 Below are the user stories created for the project, divided into customer and cleaner.
 
-### Workflow Diagram
+### Workflow Diagram & Project Plan
 
-Below is a workflow diagram of the user journey.
+Below is a workflow diagram of the user journey, with project plan and estimation.
 
 ### Wireframes
 
 Below are wireframes for at least five screens.
 
+### Entity Relationship Diagram (ERD)
 
-Entity Relationship Diagram (ERD).
-Project plan and estimation.
+Below is the ERD that was prepared for the project.
 
-
+<a name="projectplanning"/>
 ## TOOLS & METHODOLOGIES
 
-Tools and methodologies
-Trello or similar project management tool to be used to track progress of build.
-Code review. Demonstrate that you have had your code reviewed by other students and that you have provided a code review for others.
-GitHub. Demonstrate use of frequent commits, pull requests, documentation.
-Use Agile development methodologies.
-Provide evidence you have used code quality tools (eg. Traceroute, Bullet, Brakeman, Rails Best Practices tool, RuboCop, RubyCritic, CodeClimate).
+- [x] Trello was used to track progress of build (see Project Plan above).
+- [x] Code was reviewed by myself, other students, and the teachers.
+- [x] Frequent commits (over 100), pull requests, and documentation updates were made.
+- [x] Agile development methodologies were utilised.
+- [x] Rails conventions and code quality tools (like RuboCop) were used.
+- [x] Postgresl database was used.
+- [x] APIs such as Google maps API, Cloudinary API, and Mailgun API were used. The latter two API keys were stored in environment variables.
+- [x] For functionality, gems such as geocoder (for Google maps), geocomplete (for autocompleting address searches), Bootstrap (for CSS formatting), devise (for login authentication), toastr (for customising the alerts/messages shown to the user), shrine and cloudinary (for image upload and saving with Heroku), jquery-ui-sass-rails (for the date picker), and ransack (for search functionality).
+- [x] For testing, rspec-rails, rails-controller-testing, and dotenv-rails were used. Testing was done specifically on the search functionality in the pages controller to check the results of the following: (i) when 
 
+## KEY FEATURES
 
-## CODING
-
-
-- [x]
-
-
-Rails application code
-Demonstrate Ruby on Rails development skills.
-
-Create your application using Ruby on Rails.
-Demonstrate knowledge of Rails conventions.
-Use postgresql database in development.
-Use an API (eg. Omniauth, Geocoding, Maps, other..).
-Use appropriate gems.
-Use environmental variables to protect API keys etc. (dotenv)
-Implement a payment system for your product. (e.g. Stripe)
-Your app must send transactional emails (eg. using Mailgun).
-Your app should have an internal user messaging system.
-Your app will have some type of searching, sorting and/or filtering capability.
-Your app will have some type of file uploading capability (eg. images).
-Your app will have authentication (eg. Devise, must have full functionality in place).
-Your app will have authorisation (users have restrictions on what they can see and edit).
-Document your application with a README that explains how to setup, configure and use your application.
-
-Deployed application
-Your application is to be deployed to Heroku (recommended) or AWS.
+* Sign up / Log in (using Devise).
+* Editing profile (including uploading an avatar as well as identification documentation such as a passport).
+* Identification verification (with a green tick appearing beside the usernames of those who have uploaded identification documents)
+* Authorisation restrictions (for example, users who have not signed up can search for cleaners, but they cannot view their profiles or message them. This is to ensure that people do not circumvent the platform by trying to contact the cleaners through the application without having signed up beforehand. Users also cannot edit other user's availabilities, and cannot book themselves.)
+* Search functionality
+* Internal messaging system was made available - users can see all their conversations with multiple users, and can click on each conversation to view all the messages (plus message users and delete their own messages).
+* Payment system was implemented using Stripe.
 
 ## Further Work
 
-
 Additional features that are to be developed include:
 
-- the ability to specify times when the cleaner is available / when the customer wishes to book a cleaner;
-- a GPS based check in / check out system where the cleaner can check in and out of the apartment so that the customer has a record of when they have arrived and when they have left.
+- the ability for the cleaner to specify times when they are available / ability for the customer to specifty times when they wish to book a cleaner;
+- a GPS based check in / check out system where the cleaner can check in and out of the apartment so that the customer has a record of when they have arrived and when they have left; and
+- the ability for the cleaner to adjust the hourly rate depending on the date (for example, charge extra on weekends).
