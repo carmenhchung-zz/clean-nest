@@ -9,17 +9,16 @@
 * [User Stories](#userstories)
 
 
-<a name="overview"/>
+<a name="overview"/></a>
 ## OVERVIEW
-</a>
+
 
 Clean Nest is two-way market place that aims to be the leading provider of household cleaning services in Australia. It can be found online [here](www.clean-nest.herokuapp.com).
 
 Clean Nest allows identity-verified cleaners to select the dates that they are available for cleaning, as well as the location they prefer to clean in, and set their own hourly rate. The platform also allows customers to search cleaners by availability and location (searching within a 20km radius of their specified location) and book their services. Further, customers can create home profiles with fields such as address and cleaning instructions filled in, so they can be reused and sent through to the cleaner that has been booked. While the cleaners and customers can communicate via an internal messaging system on the platform, both the booking and payment process is handled by Clean Nest. Finally, both cleaners and customers can review each other upon completion of a booking.
 
-<a name="businessproblem"/>
+<a name="businessproblem"/></a>
 ## BUSINESS PROBLEM
-</a>
 
 The Australian Bureau of Statistics reports that the number of households in Australia is projected to increase around 50% from 2011 until 2036, and that the net worth of households will continue to grow. Similarly, despite relatively high labor costs in Australia, research firm IbisWorld predicts significant growth in the household cleaning market due to the aging and growing Australian population, increasing number of households, and greater disposable income. In 2014-2015, the residential cleaning service industry had a market size of around $711 million, and it is forecast to continue growing steadily over the next five years, with revenue rising at an annualized 1.7% to reach around $900m in 2019-20.
 
@@ -69,7 +68,7 @@ Below is the ERD that was prepared for the project.
 - [x] Postgresl database was used.
 - [x] APIs such as Google maps API, Cloudinary API, and Mailgun API were used. The latter two API keys were stored in environment variables.
 - [x] For functionality, gems such as geocoder (for Google maps), geocomplete (for autocompleting address searches), Bootstrap (for CSS formatting), devise (for login authentication), toastr (for customising the alerts/messages shown to the user), shrine and cloudinary (for image upload and saving with Heroku), jquery-ui-sass-rails (for the date picker), and ransack (for search functionality).
-- [x] For testing, rspec-rails, rails-controller-testing, and dotenv-rails were used. Testing was done specifically on the search functionality in the pages controller to check the results of the following: (i) when 
+- [x] For testing, rspec-rails, rails-controller-testing, and dotenv-rails were used. Testing was done specifically on the search functionality in the pages controller to check the results of the following: (i) when
 
 ## KEY FEATURES
 
