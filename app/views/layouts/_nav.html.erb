@@ -35,7 +35,9 @@
         <% else %>
         <%= link_to "Be a Cleaner", edit_user_registration_path, class: 'text-teal' %></li>
         <% end %>
-      <li class="nav-item"><%= link_to "Appointments", user_appointments_path(current_user.id), class: 'text-teal' %></li>
+        <%if current_user%>
+          <li class="nav-item"><%= link_to "Appointments", user_appointments_url(current_user.id), :class => 'text-teal' %></li>
+        <% end %>
     </ul>
 </ul>
     <ul class="dropdown ml-auto">

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
 # Allow appointments to be made and linked to users - but only let customers create, and not edit or delete, appointments. Also let them create availabilities.
   resources :users do
-    resources :appointments, only: [:index, :new, :create]
+    resources :appointments, only: [:new, :create]
     resources :availabilities
   end
 
@@ -20,9 +20,15 @@ Rails.application.routes.draw do
     resources :messages, only: [:index, :create, :destroy, :delete]
   end
 
-  # get '/your_appointments', to: 'appointments#your_appointments'
 # Only create the path to show user information - create/update is taken care of by Devise.
   get '/userprofile/:id', to: 'users#show', as: 'showuser'
 
   get 'search' => 'pages#search'
+
+  post 'save_appointment', to: 'appointments#save_appointment', as: 'save_appointment'
+
+  #availability controller
+  get 'create_availability/:date/:start_time/:end_time', to: 'availabilities#create_availability', as: 'create_availability'
+  get 'check_availability/:user_id/:date/:start_time/:end_time', to: 'availabilities#check_availability', as: 'check_availability'
+
 end
