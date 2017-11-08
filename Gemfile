@@ -28,8 +28,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # Use below version of bcrypt to overcome Windows issues.
-gem 'bcrypt', '~> 3.1.11'
-
+gem 'bcrypt'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

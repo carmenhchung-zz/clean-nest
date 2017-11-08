@@ -21,7 +21,7 @@ class AvailabilitiesController < ApplicationController
 
     def create
       @user = current_user
-      date = Date.parse(availability_params[:date])
+      # date = Date.parse(:date)
       # start_time = Time.parse(availability_params[:start_time])
       # end_time = Time.parse(availability_params[:end_time])
       # hours = (end_time - start_time).to_i
@@ -67,7 +67,7 @@ class AvailabilitiesController < ApplicationController
 
 # To create or update availability, you need to permit the attributes that the user can create/update.
     def availability_params
-      params.permit(:date, :user_id)
+      params.require(:availability).permit(:date, :user_id)
     end
 
     def is_authorised
