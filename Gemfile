@@ -41,8 +41,6 @@ gem 'jquery-rails'
 gem 'devise', '~> 4.2'
 # Toastr is to auto format the notices/alerts/messages to pop up on top right.
 gem 'toastr-rails', '~> 1.0'
-# Development testing gem
-gem 'dotenv-rails', groups: [:development, :test]
 # Shrine gem is for image uploading
 gem 'shrine'
 # Geocoder gem for Google map
@@ -57,13 +55,15 @@ gem 'bootstrap-timepicker-rails'
 gem 'simple_form'
 # Ransack gem used for searching
 gem 'ransack', '~> 1.7'
+# Allow upload of photos to Heroku
+gem "shrine-cloudinary"
 
 # Rspec gem for testing
 group :test, :development do
   gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
-end
-
-group :development, :test do
+  gem 'rails-controller-testing'
+  # Development testing gem
+  gem 'dotenv-rails'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver

@@ -34,8 +34,5 @@ class PagesController < ApplicationController
           @arrUsers.delete(user)
           end
         end
-
       end
-
-      # render 'search'
 end
