@@ -43,7 +43,7 @@ class AppointmentsController < ApplicationController
 
   def set_appointment
 # Find the cleaner you are booking
-    @user = User.find(params[:user_id])
+    # @user = User.find(params[:user_id])
 
 # Find the current user (i.e. customer's) homes (to allow them to choose which should be cleaned)
     @homes = Home.find(current_user.id)
