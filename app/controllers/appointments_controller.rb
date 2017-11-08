@@ -1,6 +1,6 @@
 class AppointmentsController < ApplicationController
 
-  before_action :set_appointment
+  before_action :set_appointment, except: [:show]
   before_action :authenticate_user!
 
   def new
@@ -9,6 +9,8 @@ class AppointmentsController < ApplicationController
   end
 
   def show
+    @homes = Home.find(current_user.id)
+    @appointments = Appointment.where(:home_id == @homes.id).or(Appointment.where(:user_id == current_user.id))
   end
 
   def create
