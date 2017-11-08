@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
 # Allow appointments to be made and linked to users - but only let customers create, and not edit or delete, appointments. Also let them create availabilities.
   resources :users do
-    resources :appointments, only: [:new, :create]
+    resources :appointments, only: [:new, :create, :index]
     resources :availabilities
   end
 

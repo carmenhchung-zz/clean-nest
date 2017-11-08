@@ -15,8 +15,8 @@ class AppointmentsController < ApplicationController
 
     if current_user == @user
       flash[:alert] = "You cannot make a booking for yourself."
-    else
 
+    else
     date = Date.parse(appointment_params[:date])
     puts "Date received: " + date.to_s
 
@@ -25,8 +25,6 @@ class AppointmentsController < ApplicationController
     #Pass the user at the top of this method down to this particular appointment.
     @appointment.user = @user
     @appointment.home = @home
-    # @appointment.hourly_rate = @user.hourly_rate
-    # @appointment.total_price = @user.hourly_rate * hours
     @appointment.save
 
     flash[:notice] = "You have successfully made an appointment!"
@@ -34,27 +32,25 @@ class AppointmentsController < ApplicationController
     end
   end
 
-  def your_appointments
-    @appointments = current_user.appointments.order(date: :asc)
-  end
-
-  def save_appointment
-  @cleaner = User.all.last
-  Appointment.save_appointment(params, current_user, @cleaner)
-  flash[:success] = "Appointment saved"
-  redirect_back(fallback_location: :root)
-  end
+    def save_appointment
+    @cleaner = User.all.last
+    Appointment.save_appointment(params, current_user, @cleaner)
+    flash[:success] = "Appointment saved"
+    redirect_back(fallback_location: :root)
+    end
 
   private
 
   def set_appointment
-    # Find the cleaner you are booking
-    #@user = User.find(params[:user_id])
+# Find the cleaner you are booking
+    @user = User.find(params[:user_id])
 
-    # Find the current user (i.e. customer's) homes (to allow them to choose which should be cleaned)
-    # @home = Home.find(current_user.id)
-    @home = Home.where(:user => current_user).first
-    #@appointments = @user.appointments
+# Find the current user (i.e. customer's) homes (to allow them to choose which should be cleaned)
+    @homes = Home.find(current_user.id)
+    #@homes = Home.where(:user => current_user)
+    @appointments = Appointment.where(:home_id => @homes_id).order(date: :asc)
+    # @appointments = Appointments.find(params[:home_id => @home.id])
+
   end
 
   def appointment_params
