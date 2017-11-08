@@ -7,11 +7,15 @@
 [BUSINESS SOLUTION](#businesssolution)  
 [PROJECT PLANNING](#businesssolution)
 * [User Stories](#userstories)
-
+* [Workflow Diagram & Project Plan](#workflow)
+* [Wireframes](#wireframes)
+* [Entity Relationship Diagram (ERD)](#erd)
+[TOOLS & METHODOLOGIES](#tools)
+[KEY FEATURES](#keyfeatures)
+[FURTHER WORK](#furtherwork)
 
 <a name="overview"/></a>
 ## OVERVIEW
-
 
 Clean Nest is two-way market place that aims to be the leading provider of household cleaning services in Australia. It can be found online [here](www.clean-nest.herokuapp.com).
 
@@ -27,9 +31,8 @@ Currently, the household cleaning market in Australia is dominated by agencies a
 The agency is given full control over which cleaner they send for each booking, and takes a significant commission (estimated to be around 40% of the fee charged to the customer - as opposed to Clean Nest's proposed 8% fee). From the customer's perspective, there is no transparency over which cleaner they are provided with, as there is no peer-review or star rating system. Even platforms like [Helpling](www.helpling.com.au), which do allow you to view cleaner profiles, only allow you to do so if you have a subscription package with them. Finally, booking through a cleaning agency can be burdensome, sometimes requiring more than two days' advance notice.
 
 
-<a name="businesssolution"/>
+<a name="businesssolution"/></a>
 ## BUSINESS SOLUTION
-</a>
 
 Clean Nest will offer a platform that provides greater access, transparency, accountability and flexibility for both cleaners and customers. For example, it intends to charge a low 8% fee on all transactions through Stripe payment system, which allows cleaners to earn more than what they would usually receive through agency work (upwards of $5 per hour more), and gives them flexibility to adjust their rates accordingly. This is also attractive to customers, who are offered a competitive pool of qualified cleaners.
 
@@ -37,27 +40,30 @@ In addition, Clean Nest offers identification screening. Users who have uploaded
 
 Finally, Clean Nest will offer complimentary insurance to its customers, which covers damage to broken or stolen goods (up to AU$1 million), as well as insurance to the cleaners for on-the-job injuries. This will come at no extra cost to either cleaner or customer; instead, it will cost the business approximately $500 per month.
 
-<a name="projectplanning"/>
+<a name="projectplanning"/></a>
 ## PROJECT PLANNING
-</a>
 
+<a name="userstories"/></a>
 ### User Stories
 
 Below are the user stories created for the project, divided into customer and cleaner.
 
+<a name="workflow"/></a>
 ### Workflow Diagram & Project Plan
 
 Below is a workflow diagram of the user journey, with project plan and estimation.
 
+<a name="wireframes"/></a>
 ### Wireframes
 
 Below are wireframes for at least five screens.
 
+<a name="erd"/></a>
 ### Entity Relationship Diagram (ERD)
 
 Below is the ERD that was prepared for the project.
 
-<a name="projectplanning"/>
+<a name="tools"/>
 ## TOOLS & METHODOLOGIES
 
 - [x] Trello was used to track progress of build (see Project Plan above).
@@ -70,6 +76,7 @@ Below is the ERD that was prepared for the project.
 - [x] For functionality, gems such as geocoder (for Google maps), geocomplete (for autocompleting address searches), Bootstrap (for CSS formatting), devise (for login authentication), toastr (for customising the alerts/messages shown to the user), shrine and cloudinary (for image upload and saving with Heroku), jquery-ui-sass-rails (for the date picker), and ransack (for search functionality).
 - [x] For testing, rspec-rails, rails-controller-testing, and dotenv-rails were used. Testing was done specifically on the search functionality in the pages controller to check the results of the following: (i) when
 
+<a name="keyfeatures"/></a>
 ## KEY FEATURES
 
 * Sign up / Log in (using Devise).
@@ -80,7 +87,8 @@ Below is the ERD that was prepared for the project.
 * Internal messaging system was made available - users can see all their conversations with multiple users, and can click on each conversation to view all the messages (plus message users and delete their own messages).
 * Payment system was implemented using Stripe.
 
-## Further Work
+<a name="furtherwork"/></a>
+## FURTHER WORK
 
 Additional features that are to be developed include:
 
