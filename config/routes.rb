@@ -25,10 +25,10 @@ Rails.application.routes.draw do
 
   get 'search' => 'pages#search'
 
-  post 'save_appointment', to: 'appointments#save_appointment', as: 'save_appointment'
+  # post 'save_appointment', to: 'appointments#save_appointment', as: 'save_appointment'
 
   #availability controller
-  get 'create_availability/:date/:start_time/:end_time', to: 'availabilities#create_availability', as: 'create_availability'
-  get 'check_availability/:user_id/:date/:start_time/:end_time', to: 'availabilities#check_availability', as: 'check_availability'
+  # get 'create_availability/:date/:start_time/:end_time', to: 'availabilities#create_availability', as: 'create_availability'
+  # get 'check_availability/:user_id/:date/:start_time/:end_time', to: 'availabilities#check_availability', as: 'check_availability'
 
 end
