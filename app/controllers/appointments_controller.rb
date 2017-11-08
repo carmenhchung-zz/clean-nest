@@ -4,6 +4,8 @@ class AppointmentsController < ApplicationController
   before_action :authenticate_user!
 
   def new
+    @user = current_user
+    @user_id = params[:user_id]
   end
 
   def show
@@ -16,9 +18,7 @@ class AppointmentsController < ApplicationController
     else
 
     date = Date.parse(appointment_params[:date])
-    # start_time = Time.parse(appointment_params[:start_time])
-    # end_time = Time.parse(appointment_params[:end_time])
-    # hours = (end_time - start_time).to_i
+    puts "Date received: " + date.to_s
 
     @appointment = @user.appointments.build(appointment_params)
 
@@ -38,16 +38,23 @@ class AppointmentsController < ApplicationController
     @appointments = current_user.appointments.order(date: :asc)
   end
 
+  def save_appointment
+  @cleaner = User.all.last
+  Appointment.save_appointment(params, current_user, @cleaner)
+  flash[:success] = "Appointment saved"
+  redirect_back(fallback_location: :root)
+  end
+
   private
 
   def set_appointment
     # Find the cleaner you are booking
-    @user = User.find(params[:user_id])
+    #@user = User.find(params[:user_id])
 
     # Find the current user (i.e. customer's) homes (to allow them to choose which should be cleaned)
-    @home = Home.find(current_user.id)
-
-    @appointments = @user.appointments
+    # @home = Home.find(current_user.id)
+    @home = Home.where(:user => current_user).first
+    #@appointments = @user.appointments
   end
 
   def appointment_params

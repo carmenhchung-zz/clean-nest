@@ -271,7 +271,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bcrypt (~> 3.1.11)
+  bcrypt
   bootstrap (~> 4.0.0.beta)
   bootstrap-timepicker-rails
   byebug
