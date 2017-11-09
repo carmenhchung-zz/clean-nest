@@ -8,11 +8,14 @@ class AppointmentsController < ApplicationController
     @homes = Home.find(current_user.id)
     @cleaner = User.find(params[:user_id])
     @date = Date.parse(appointment_params[:date])
+    @appointment = @cleaner.appointments.build
   end
 
   def show
     @homes = Home.find(current_user.id)
-    @appointments = Appointment.where(:home_id ==  @homes.id).or(Appointment.where(:user_id == current_user.id))
+    @cleaner = User.find(params[:user_id])
+    @appointments = Appointment.where(:user_id == @cleaner.id)
+
   end
 
   def create
@@ -25,22 +28,25 @@ class AppointmentsController < ApplicationController
       flash[:alert] = "You cannot make a booking for yourself."
 
     else
-    @appointment = @cleaner.appointments.build(appointment_params)
+    @appointment = Appointment.new(appointment_params)
+    # @appointment = @cleaner.appointments.build(appointment_params)
+    puts "="*12
+    puts params[:user_id]
+    puts "="*12
+    # puts "="*12
+    # puts @appointment.inspect
+    # puts "="*12
+#Pass the user at the top of this method down to this particular appointment.
+    # @appointment.user = @cleaner
+    # @appointment.home_id = @home.id
+      @appointment.save!
 
-    #   @user = User.find_by_id[params(:user_id)]
-    #   Appointment.save_appointment(params, current_user, @user)
-    #   flash[:success] = "Appointment saved"
-    #   redirect_back(fallback_location: :root)
-    #
-    # date = Date.parse(appointment_params[:date])
+      puts "="*12
+      puts @appointment.inspect
+      puts "="*12
 
-    #Pass the user at the top of this method down to this particular appointment.
-    @appointment.user = @cleaner
-    @appointment.home = @home
-    @appointment.save
-
-    flash[:notice] = "You have successfully made an appointment!"
-    redirect_to root_path
+      flash[:notice] = "You have successfully made an appointment!"
+      redirect_to root_path
     end
   end
 
@@ -49,13 +55,6 @@ class AppointmentsController < ApplicationController
     @homes = Home.where(:user_id => current_user.id)
     @bookings = Appointment.where(:home_id => @homes_id).order(date: :asc)
   end
-
-    # def save_appointment
-    # @user = User.find_by_id[params(:user_id)]
-    # Appointment.save_appointment(params, current_user, @user)
-    # flash[:success] = "Appointment saved"
-    # redirect_back(fallback_location: :root)
-    # end
 
   private
 
@@ -69,9 +68,11 @@ class AppointmentsController < ApplicationController
 
 # Find the current user (i.e. customer's) homes (to allow them to choose which should be cleaned)
     @homes = Home.find(current_user.id)
-    #@homes = Home.where(:user => current_user)
     @appointments = Appointment.where(:home_id => @homes_id).order(date: :asc)
-    # @appointments = Appointments.find(params[:home_id => @home.id])
+  end
+
+  def is_authorised
+    redirect_to user_path, alert: "You don't have permission to access this." unless current_user.id == @availability.user_id
   end
 
 end

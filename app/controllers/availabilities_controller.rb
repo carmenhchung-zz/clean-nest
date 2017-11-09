@@ -25,7 +25,6 @@ class AvailabilitiesController < ApplicationController
       @availability = current_user.availabilities.build(availability_params)
 
 #Pass the user at the top of this method down to this particular availability.
-      # @availability.user = user
       if @availability.save
         redirect_to user_path(current_user.id), notice: "Successfully saved!"
       else
@@ -64,7 +63,7 @@ class AvailabilitiesController < ApplicationController
 
 # To create or update availability, you need to permit the attributes that the user can create/update.
     def availability_params
-      params.permit(:date, :customer_id)
+      params.permit(:date)
     end
 
     def is_authorised
