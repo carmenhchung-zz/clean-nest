@@ -38,7 +38,7 @@ Clean Nest will offer a platform that provides greater access, transparency, acc
 
 In addition, Clean Nest offers identification screening. Users who have uploaded their identification on the platform have a green "verified" tick appearing beside their name. At a later stage, Clean Nest staff will be verifying identities efficiently through the admin panel, with police checks being arranged. As mentioned above, a rating and review system will be implemented at a later stage for both cleaners and customers, in order to offer accountability to both parties.
 
-Finally, Clean Nest will offer complimentary insurance to its customers, which covers damage to broken or stolen goods (up to AU$1 million), as well as insurance to the cleaners for on-the-job injuries. This will come at no extra cost to either cleaner or customer; instead, it will cost the business approximately $500 per month.
+Finally, Clean Nest will offer complimentary insurance to its customers, which covers damage to goods or stolen goods (up to AU$1 million), as well as insurance to the cleaners for on-the-job injuries. This will come at no extra cost to either cleaner or customer; instead, it will cost the business approximately $500 per month.
 
 <a name="projectplanning"/></a>
 ## PROJECT PLANNING
@@ -85,7 +85,7 @@ Below is the ERD that was prepared for the project.
 * Authorisation restrictions (for example, users who have not signed up can search for cleaners, but they cannot view their profiles or message them. This is to ensure that people do not circumvent the platform by trying to contact the cleaners through the application without having signed up beforehand. Users also cannot edit other user's availabilities, and cannot book themselves.)
 * Search functionality
 * Internal messaging system was made available - users can see all their conversations with multiple users, and can click on each conversation to view all the messages (plus message users and delete their own messages).
-* Payment system was implemented using Stripe.
+* Mailgun email system was partially implemented (the free Mailgun service requires that recipient emails be authorised before they can receive emails, so this was removed).
 
 <a name="furtherwork"/></a>
 ## FURTHER WORK
@@ -93,5 +93,6 @@ Below is the ERD that was prepared for the project.
 Additional features that are to be developed include:
 
 - the ability for the cleaner to specify times when they are available / ability for the customer to specifty times when they wish to book a cleaner;
+- a review/rating system for both cleaner and customer - linked to each appointment;
 - a GPS based check in / check out system where the cleaner can check in and out of the apartment so that the customer has a record of when they have arrived and when they have left; and
 - the ability for the cleaner to adjust the hourly rate depending on the date (for example, charge extra on weekends).
