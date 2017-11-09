@@ -1,14 +1,14 @@
 <!-- This page is a booking form to book a particular cleaner. -->
 
 <div class="container">
-<div class="row">
+<div class="row center">
 
 <!-- If user has an avatar, show it - otherwise show the default profile avatar -->
-   <div class="card">
+   <div class="card center", style="width: 20%">
        <% if @cleaner.image.present? %>
-       <%= image_tag(@cleaner.image_url) %>
+       <%= image_tag(@cleaner.image_url, class: 'avatar-mid center') %>
        <% else %>
-       <%= image_tag('defaultprofile.svg') %>
+       <%= image_tag('defaultprofile.svg', class: 'avatar-mid center') %>
        <% end %>
        <div class="panel-heading center"><%= @cleaner.username %></div>
      </div>

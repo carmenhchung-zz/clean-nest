@@ -3,6 +3,7 @@
 <div class="container">
 <div class="row">
   <div class="col-md-4 center">
+
 <!-- If user has an avatar, show it - otherwise show the default profile avatar -->
     <div class="card">
       <% if @user.image.present? %>
@@ -46,7 +47,7 @@
     <br/>
   </div>
 
-  <!-- Show Google maps only if they are an active cleaner. -->
+<!-- Show Google maps only if they are an active cleaner. -->
     <% if @user.active == true %>
     <div class="col-md-4 center">
     <h2>Cleaning Location</h2>
@@ -56,14 +57,14 @@
   <% end %>
   </div>
 
-  <!-- Show availabilities only if they are an active cleaner. -->
+<!-- Show availabilities only if they are an active cleaner. -->
   <% if @user.active == true %>
   <hr/>
   <div class="row center">
     <h2>Current Availability</h2>
     <table class="reservation-table">
 
-  <!-- For each user availability, show the date, start time and end time - and if the current user is the same as the one who owns the profile, then allow them to access edit and delete functions as well. -->
+<!-- For each user availability, show the date, start time and end time - and if the current user is the same as the one who owns the profile, then allow them to access edit and delete functions as well. -->
       <tbody class>
           <tr>
             <td> Date <span id="availability_date"></span></td>
@@ -86,43 +87,43 @@
               <td> <%= availability.date %> </td>
               <td> <%= availability.start_time %> </td>
               <td> <%= availability.end_time %> </td>
-              <% if current_user.id == availability.user_id %>
-                  <td>
-                  <%= link_to user_availability_path(id: availability.id, user_id: current_user.id), method: :delete, data: {confirm: "Are you sure?"} do %>
-                    <%= image_tag('bin.svg') %>
-                  <% end %>
-              <% else %>
-              <br>
-
-          <% if @array.include?(availability.date) %>
-            <td><div class="btn-red center">UNAVAILABLE</div></td>
-          <% else %>
-            <td><%= link_to "BOOK DATE", new_user_appointment_path(:user_id => @user.id, :date => availability.date), class: "btn center" %></td>
-          <% end %>
-      <% end %>
-      </td>
-    </tr>
-
-  <!-- If there are no user availabilities, show that there are no available times. -->
-                <% else %>
-                  <tr> There are no available times.</tr>
+            <% if current_user.id == availability.user_id %>
+                <td>
+                <%= link_to user_availability_path(id: availability.id, user_id: current_user.id), method: :delete, data: {confirm: "Are you sure?"} do %>
+                <%= image_tag('bin.svg') %>
                 <% end %>
+
+            <% else %>
+              <br>
+              <% if @array.include?(availability.date) %>
+                <td><div class="btn-red center">UNAVAILABLE</div></td>
+              <% else %>
+                <td><%= link_to "BOOK DATE", new_user_appointment_path(:user_id => @user.id, :date => availability.date), class: "btn center" %></td>
+              <% end %>
             <% end %>
+        </td>
+      </tr>
+
+<!-- If there are no user availabilities, show that there are no available times. -->
+        <% else %>
+                  <tr> There are no available times.</tr>
+        <% end %>
+      <% end %>
           </tbody>
         </table>
         <br/>
   </div>
 
-  <!-- If the user browsing the profile (i.e. the customer) is not the same person as the user who owns the profile (i.e. the cleaner), then they can book that person. -->
+<!-- If the user browsing the profile (i.e. the customer) is not the same person as the user who owns the profile (i.e. the cleaner), then they can book that person. -->
       <% if current_user == @user %>
       <div class= "row center">
         <br/>
         <%= link_to "ADD AVAILABILITY", new_user_availability_path(@user), class: "btn center" %>
       </div>
       <% end %>
-
 <% end %>
-  <!-- Use Javascript to feed the user's latitude and longitude based on their location (contained in the user database) to the Google maps API -->
+
+<!-- Use Javascript to feed the user's latitude and longitude based on their location (contained in the user database) to the Google maps API -->
   <!-- Google API key for Google maps -->
 
       <script>

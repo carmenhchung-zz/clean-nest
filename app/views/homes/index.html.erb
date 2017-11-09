@@ -1,24 +1,23 @@
 <!-- This page provides a snapshot summary of a user's homes including a thumbnail -->
 
 <div class="container">
+<div class="row center">
 
-  <!-- Register home button -->
-    <div class="row">
-        <div class="col-md-4">
-          <%= link_to "REGISTER HOME", new_home_path, class: 'btn center' %>
-        </div>
-    </div>
-
-<!-- Create header for Homes -->
-  <div class="col-md-9">
-    <div class="row center">
-      <h2>HOMES</h2>
-    </div>
+  <div class="col-md-3">
+    <%= link_to "REGISTER HOME", new_home_path, class: 'btn center' %>
+  </div>
 
 <!-- Create card with the thumbnail shot of the user's home(s), as well as its listing name, address, hourly rate offered and buttons to edit, delete and view the home profile page -->
-    <div class="col-md-6 center">
+
+  <div class="col-md-9">
+    <div class="panel panel-default">
+      <div class="panel-heading center">
+        HOMES
+        <div class="panel-body">
+          <div class="row center">
+
       <% @home.each do |home| %>
-          <div class="card">
+          <div class="card center", style="width: 40%">
             <div>
               <% if home.image.present? %>
                 <%= image_tag home.image_url, class: 'avatar-full' %>
