@@ -1,6 +1,6 @@
 # This controller sets out the search functionality
-require 'Date'
-require 'Time'
+# require 'Date'
+# require 'Time'
 
 class PagesController < ApplicationController
   def search
