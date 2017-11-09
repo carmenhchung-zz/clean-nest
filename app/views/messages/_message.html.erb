@@ -2,7 +2,11 @@
 
 <div class="row">
       <div class="col-md-5">
-      <%= image_tag(message.user.image_url, class: 'avatar-medium') %>
+        <% if @other.image.present? %>
+        <%= image_tag(message.user.image_url, class: "img-circle avatar-medium") %>&nbsp;
+        <% else %>
+        <%= image_tag('defaultprofile.svg', class: "img-circle avatar-medium") %>&nbsp;
+        <% end %>
       <strong><%= message.user.username %></strong>
       <p><%= message.message_time %></p>
       </div>

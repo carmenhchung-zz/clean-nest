@@ -7,12 +7,9 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
     def show
-      @homes = Home.find(current_user.id)
+      # @homes = Home.find(current_user.id)
       @cleaner = User.find(params[:id])
-        @appointments = Appointment.where(:user_id => @cleaner.id)
-        puts "*"*12
-        @appointments.each{|i| puts i.date}
-        puts "*"*12
+      @appointments = Appointment.where(:user_id => @cleaner.id)
     end
 
     def new

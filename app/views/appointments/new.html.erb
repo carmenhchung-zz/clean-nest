@@ -1,11 +1,9 @@
 <!-- This page is a booking form to book a particular cleaner. -->
 
-<!-- Pass the user that each appointment belongs to and the appointment details - @user is the parent and @user.appointments.new is the child -->
-
 <div class="container">
 <div class="row">
 
-    <!-- If user has an avatar, show it - otherwise show the default profile avatar -->
+<!-- If user has an avatar, show it - otherwise show the default profile avatar -->
    <div class="card">
        <% if @cleaner.image.present? %>
        <%= image_tag(@cleaner.image_url) %>
@@ -15,30 +13,28 @@
        <div class="panel-heading center"><%= @cleaner.username %></div>
      </div>
 
+<!-- The booking form asks the customer for their home (which would have been previously registered - if not, they are redirected to their home create page so they can add their home address).-->
   <div class="col-md-5 center">
     <h2>YOUR BOOKING</h2>
     <br/>
-<!-- The booking form asks the customer for their home (which would have been previously registered - if not, they are redirected to their home create page so they can add their home address).-->
     Date Selected: <strong><%= @date %></strong>
     <br/>
     Hourly rate: <strong>$<%= @cleaner.hourly_rate %> per hour</strong>
-    <%#= form_for([@cleaner, @cleaner.appointments.new]) do |f| %>
     <%= form_for([@cleaner, @cleaner.appointments.new]) do |f| %>
-<%=@homes.inspect%>
-<h1><%=@homes.id%></h1>
-      <% if @homes.address.present? %>
+      <%# if @homes.address.present? %>
       <div class="form-group">
         <br/>
           <label>Select Your Home:</label>
           <%= f.collection_select :user_id, Home.all, :id, :address %>
-
+          <%#= select_tag(:user_id,
+   options_for_select(Home.all.map{ |f| [f.address]}), :prompt => "Select Venue") %>
         <br/>
           <%= hidden_field_tag :date, @date %>
-          <%= hidden_field_tag :home_id, @homes.id%>
+          <%= hidden_field_tag :home_id, @homes.ids%>
       </div>
-      <% else %>
-        <% redirect_to user_homes_path, flash[:alert] = "Please register an address for your home." %>
-      <% end %>
+      <%# else %>
+        <%# redirect_to user_homes_path, flash[:alert] = "Please register an address for your home." %>
+      <%# end %>
           <%= f.submit "Book now", class: 'btn center' %>
           </p>
     <% end %>

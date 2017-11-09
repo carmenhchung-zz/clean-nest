@@ -1,11 +1,18 @@
 class AppointmentsController < ApplicationController
 
-  # before_action :set_appointment, except: [:show]
+  #before_action :set_appointment, except: [:show, :new]
   before_action :authenticate_user!
+
+  def index
+    @appointments = current_user.appointments.order(date: :asc)
+    @homes = Home.where(:user_id => current_user.id)
+    @bookings = Appointment.where(:home_id => @homes.ids).order(date: :asc)
+  end
 
   def new
     @customer = current_user
-    @homes = Home.find(current_user.id)
+    @homes = Home.where(:user_id => current_user.id)
+    puts @homes
     @cleaner = User.find(params[:user_id])
     @date = Date.parse(appointment_params[:date])
     @appointment = @cleaner.appointments.build
@@ -29,31 +36,11 @@ class AppointmentsController < ApplicationController
 
     else
     @appointment = Appointment.new(appointment_params)
-    # @appointment = @cleaner.appointments.build(appointment_params)
-    puts "="*12
-    puts params[:user_id]
-    puts "="*12
-    # puts "="*12
-    # puts @appointment.inspect
-    # puts "="*12
-#Pass the user at the top of this method down to this particular appointment.
-    # @appointment.user = @cleaner
-    # @appointment.home_id = @home.id
-      @appointment.save!
-
-      puts "="*12
-      puts @appointment.inspect
-      puts "="*12
+    @appointment.save!
 
       flash[:notice] = "You have successfully made an appointment!"
       redirect_to root_path
     end
-  end
-
-  def your_appointments
-    @appointments = current_user.appointments.order(date: :asc)
-    @homes = Home.where(:user_id => current_user.id)
-    @bookings = Appointment.where(:home_id => @homes_id).order(date: :asc)
   end
 
   private
