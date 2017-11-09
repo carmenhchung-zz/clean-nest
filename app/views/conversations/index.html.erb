@@ -9,7 +9,8 @@
       <h2>INBOX</h2>
       </div>
       <div class="panel-body">
-    <!-- Find both the current user and the other person and determine whether they are recipient or sender. If there are any messages, show the other person's profile picture, username, the last message time and the content. -->
+
+<!-- Find both the current user and the other person and determine whether they are recipient or sender. If there are any messages, show the other person's profile picture, username, the last message time and the content. -->
 
       <% @conversations.each do |conversation| %>
       <% other = current_user == conversation.sender ? conversation.recipient : conversation.sender %>
@@ -17,7 +18,11 @@
             <div class="row text-teal">
                 <% if conversation.messages.any? %>
                     <div class="col-md-2">
-                      <%= image_tag(other.image_url, class: 'avatar-medium') %>
+                      <% if other.image.present? %>
+                        <%= image_tag(other.image_url, class: 'avatar-medium') %>
+                      <% else %>
+                      <%= image_tag('defaultprofile.svg', class: 'avatar-medium') %>
+                      <% end %>
                     </div>
                     <div class="col-md-2">
                       <%= other.username %>
@@ -30,7 +35,7 @@
             </div>
             <% end %>
       <% end %>
-      
+
     </div>
   </div>
   </div>

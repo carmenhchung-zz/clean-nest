@@ -28,7 +28,11 @@
       <% @bookings.each do |booking| %>
           <div class="card center", style="width: 40%">
             <div>
-              <%= image_tag(booking.user.image_url, class: 'avatar-mid') %>
+              <% if booking.user.image.present? %>
+              <%= image_tag(booking.user.image_url, class: 'avatar-mid center') %>
+              <% else %>
+              <%= image_tag('defaultprofile.svg', class: 'avatar-mid center') %>
+              <% end %>
             </div>
 
             <div class="card-body center">
