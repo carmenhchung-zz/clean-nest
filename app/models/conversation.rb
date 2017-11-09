@@ -6,7 +6,7 @@ class Conversation < ApplicationRecord
   has_many :messages, dependent: :destroy
 
    # Conversation between users should be unique in the database.
-  validates_uniqueness_of :sender_id, :recipient_id
+  # validates_uniqueness_of :sender_id, :recipient_id
 
   # No matter whether the sender or recipient is the user, return the whole conversation.
   scope :involving, -> (user) {

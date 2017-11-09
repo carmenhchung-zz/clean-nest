@@ -8,15 +8,20 @@
       <% if @user.image.present? %>
       <%= image_tag(@user.image_url) %>
       <% else %>
-      <%= image_tag('defaultprofile.svg') %>
+      <%= image_tag('defaultprofile.svg', class: 'avatar-full center') %>
       <% end %>
         <div class="panel-heading"><%= @user.username %></div>
 
 <!-- If the current user looking at the profile is not the owner of the profile, allow them to message the user. Set sender and recipient IDs. -->
-        <%# if current_user != @user %>
-          <!-- <br/> -->
-          <%#= link_to "Message", conversation_messages_path(sender_id: current_user.id, recipient_id: @user.id), method: :post, class: "btn center" %>
-        <%# end %>
+        <% if current_user != @user %>
+          <% if @conversations.present? %>
+            <br/>
+            <%= link_to "Message", conversation_messages_path(sender_id: current_user.id, recipient_id: @user.id), method: :post, class: "btn center" %>
+          <% else %>
+            <br/>
+            <%= link_to "Message", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: :post, class: "btn center" %>
+          <% end %>
+        <% end %>
       </div>
     </div>
 
