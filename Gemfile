@@ -55,7 +55,9 @@ gem 'simple_form'
 # Ransack gem used for searching
 gem 'ransack', '~> 1.7'
 # Allow upload of photos to Heroku
-gem "shrine-cloudinary"
+gem 'shrine-cloudinary'
+# Robucop used to check code
+gem 'rubocop', '~> 0.51.0', require: false
 
 # Rspec gem for testing
 group :test, :development do
