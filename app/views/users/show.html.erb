@@ -21,7 +21,7 @@
     </div>
 
   <div class="col-md-4">
-    <h2><%= @user.firstname %> <%= @user.lastname %>
+    <h2><strong><%= @user.firstname %> <%= @user.lastname %></strong>
 
 <!-- If the user has uploaded their ID document (under edit profile), then this verification tick will show -->
         <% if @user.identification.present? %>
@@ -44,7 +44,7 @@
   <!-- Show Google maps only if they are an active cleaner. -->
     <% if @user.active == true %>
     <div class="col-md-4 center">
-    <h2>CLEANING LOCATION</h2>
+    <h2>Cleaning Location</h2>
       <div id="map" style="width: 100%; height: 100%"></div>
     </div>
   <hr/>
@@ -55,7 +55,7 @@
   <% if @user.active == true %>
   <hr/>
   <div class="row center">
-    <h2>CURRENT AVAILABILITY</h2>
+    <h2>Current Availability</h2>
     <table class="reservation-table">
 
   <!-- For each user availability, show the date, start time and end time - and if the current user is the same as the one who owns the profile, then allow them to access edit and delete functions as well. -->
@@ -72,26 +72,31 @@
           </tr>
 
       <% @availabilities.each do |availability| %>
-          <% if availability.user_id.present? %>
-              <tr>
-                <td> <%= availability.date %> </td>
-                <td> <%= availability.start_time %> </td>
-                <td> <%= availability.end_time %> </td>
-                <% if current_user.id == availability.user_id %>
-                    <td>
-                      <%= link_to user_availability_path(id: availability.id, user_id: current_user.id), method: :delete, data: {confirm: "Are you sure?"} do %>
-                      <%= image_tag('bin.svg') %>
-                      <% end %>
-                <% else %>
-
-                  <% if availability.customer_id.present? %>
-                    <td><div class="btn red-center"> "UNAVAILABLE"</div></td>
-                  <% else %>
-                  <td><%= link_to "BOOK DATE", new_user_appointment_path(:user_id => availability.user_id, :date => availability.date), class: "btn center" %></td>
+        <% @array = []%>
+        <% @appointments.each{|i| %>
+        <%@array << i.date%>
+      <%}%>
+      <tr>
+        <% if availability.user_id.present? %>
+              <td> <%= availability.date %> </td>
+              <td> <%= availability.start_time %> </td>
+              <td> <%= availability.end_time %> </td>
+              <% if current_user.id == availability.user_id %>
+                  <td>
+                  <%= link_to user_availability_path(id: availability.id, user_id: current_user.id), method: :delete, data: {confirm: "Are you sure?"} do %>
+                    <%= image_tag('bin.svg') %>
                   <% end %>
-                <% end %>
-                </td>
-              </tr>
+              <% else %>
+              <br>
+
+          <% if @array.include?(availability.date) %>
+            <td><div class="btn-red center">UNAVAILABLE</div></td>
+          <% else %>
+            <td><%= link_to "BOOK DATE", new_user_appointment_path(:user_id => @user.id, :date => availability.date), class: "btn center" %></td>
+          <% end %>
+      <% end %>
+      </td>
+    </tr>
 
   <!-- If there are no user availabilities, show that there are no available times. -->
                 <% else %>

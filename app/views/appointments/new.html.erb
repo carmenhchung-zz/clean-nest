@@ -24,15 +24,17 @@
     Hourly rate: <strong>$<%= @cleaner.hourly_rate %> per hour</strong>
     <%#= form_for([@cleaner, @cleaner.appointments.new]) do |f| %>
     <%= form_for([@cleaner, @cleaner.appointments.new]) do |f| %>
-
+<%=@homes.inspect%>
+<h1><%=@homes.id%></h1>
       <% if @homes.address.present? %>
       <div class="form-group">
         <br/>
           <label>Select Your Home:</label>
           <%= f.collection_select :user_id, Home.all, :id, :address %>
+
         <br/>
           <%= hidden_field_tag :date, @date %>
-          <%#= hidden_field_tag "course[user_id]", "#{@user_id}" %>
+          <%= hidden_field_tag :home_id, @homes.id%>
       </div>
       <% else %>
         <% redirect_to user_homes_path, flash[:alert] = "Please register an address for your home." %>
