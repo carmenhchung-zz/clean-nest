@@ -57,6 +57,8 @@ Below is a workflow diagram of the user journey, with project plan and estimatio
 
 ![alt text](https://user-images.githubusercontent.com/30306087/32642409-3fb1b1e4-c628-11e7-89ae-f1e782828cf6.jpg)
 
+![alt text](https://user-images.githubusercontent.com/30306087/32642740-71b80858-c62a-11e7-92ad-115f3217415b.png)
+
 <a name="wireframes"/></a>
 ### Wireframes
 
