@@ -3,15 +3,21 @@
 ## Table of Contents
 
 [OVERVIEW](#overview)  
-[BUSINESS PROBLEM](#businessproblem)   
-[BUSINESS SOLUTION](#businesssolution)  
+
+[BUSINESS PROBLEM](#businessproblem)
+
+[BUSINESS SOLUTION](#businesssolution)
+
 [PROJECT PLANNING](#businesssolution)
 * [User Stories](#userstories)
 * [Workflow Diagram & Project Plan](#workflow)
 * [Wireframes](#wireframes)
 * [Entity Relationship Diagram (ERD)](#erd)
+
 [TOOLS & METHODOLOGIES](#tools)
+
 [KEY FEATURES](#keyfeatures)
+
 [FURTHER WORK](#furtherwork)
 
 <a name="overview"/></a>
