@@ -55,7 +55,7 @@ Below are the user stories created for the project, divided into customer and cl
 
 Below is a workflow diagram of the user journey, with project plan and estimation.
 
-
+![alt text](https://user-images.githubusercontent.com/30306087/32642409-3fb1b1e4-c628-11e7-89ae-f1e782828cf6.jpg)
 
 <a name="wireframes"/></a>
 ### Wireframes
