@@ -48,15 +48,39 @@ Finally, Clean Nest will offer complimentary insurance to its customers, which c
 
 Below are the user stories created for the project, divided into customer and cleaner.
 
+![alt text](https://user-images.githubusercontent.com/30306087/32641765-df3f6436-c623-11e7-82e0-83eb0ef9bdcc.png)
+
 <a name="workflow"/></a>
 ### Workflow Diagram & Project Plan
 
 Below is a workflow diagram of the user journey, with project plan and estimation.
 
+
+
 <a name="wireframes"/></a>
 ### Wireframes
 
-Below are wireframes for at least five screens.
+Below are wireframes for at least five screens, most of which were the same as the final product (although some formatting and spacing was a bit different, in particular with the navbar).
+
+Home page:
+
+![alt text](https://user-images.githubusercontent.com/30306087/32641849-65e1558a-c624-11e7-8e2c-2ff7284843bc.png)
+
+Search result page:
+
+![alt text](https://user-images.githubusercontent.com/30306087/32641824-33d8e3e6-c624-11e7-92d2-d49a1ec5806f.png)
+
+Profile page:
+
+![alt text](https://user-images.githubusercontent.com/30306087/32642142-42db3798-c626-11e7-8486-f70dce8dcfa9.png)
+
+Appointments page:
+
+![alt text](https://user-images.githubusercontent.com/30306087/32642001-7b7fbbc4-c625-11e7-9a90-13238afb97ba.png)
+
+Inbox page:
+
+![alt text](https://user-images.githubusercontent.com/30306087/32642203-bbb369e2-c626-11e7-85f7-0ea4fe2823d5.png)
 
 <a name="erd"/></a>
 ### Entity Relationship Diagram (ERD)
@@ -74,7 +98,7 @@ Below is the ERD that was prepared for the project.
 - [x] Postgresl database was used.
 - [x] APIs such as Google maps API, Cloudinary API, and Mailgun API were used. The latter two API keys were stored in environment variables.
 - [x] For functionality, gems such as geocoder (for Google maps), geocomplete (for autocompleting address searches), Bootstrap (for CSS formatting), devise (for login authentication), toastr (for customising the alerts/messages shown to the user), shrine and cloudinary (for image upload and saving with Heroku), jquery-ui-sass-rails (for the date picker), and ransack (for search functionality).
-- [x] For testing, rspec-rails, rails-controller-testing, and dotenv-rails were used. Testing was done specifically on the search functionality in the pages controller to check the results of the following: (i) when
+- [x] For testing, rspec-rails, rails-controller-testing, and dotenv-rails were used. Testing was done specifically on the search functionality in the pages controller to check things like what would happen when the user did not enter search parameters.
 
 <a name="keyfeatures"/></a>
 ## KEY FEATURES
