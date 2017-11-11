@@ -1,0 +1,10 @@
+development:
+  cloud_name: "carmenhchung",
+  api_key: ENV["CLOUDINARY_KEY"],
+  api_secret: ENV["CLOUDINARY_SERCRET"]
+
+
+test:
+  cloud_name: "carmenhchung",
+  api_key: ENV["CLOUDINARY_KEY"],
+  api_secret: ENV["CLOUDINARY_SERCRET"]
