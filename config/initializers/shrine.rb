@@ -8,7 +8,7 @@ Shrine.plugin :validation_helpers
 Cloudinary.config(
   cloud_name: "carmenhchung",
   api_key: ENV["CLOUDINARY_KEY"],
-  api_secret: ENV["CLOUDINARY_SERCRET"]
+  api_secret: IN7w0Mdi2XMegHkSemqg_rROuyY
 )
 
 
