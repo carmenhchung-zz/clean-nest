@@ -95,7 +95,9 @@ Inbox page:
 
 Below is the ERD that was prepared for the project.
 
-<a name="tools"/>
+![alt text](https://user-images.githubusercontent.com/30306087/32720550-00875798-c8b8-11e7-89e5-42d683597d1e.png)
+
+<a name="tools"/></a>
 ## TOOLS & METHODOLOGIES
 
 - [x] Trello was used to track progress of build (see Project Plan above).
