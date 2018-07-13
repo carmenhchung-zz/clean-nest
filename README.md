@@ -23,7 +23,7 @@
 <a name="overview"/></a>
 ## OVERVIEW
 
-Clean Nest is two-way market place that aims to be the leading provider of household cleaning services in Australia. It can be found online [here](www.clean-nest.herokuapp.com).
+Clean Nest is two-way market place that aims to be the leading provider of household cleaning services in Australia. It can be found online [here](https://clean-nest.herokuapp.com/).
 
 Clean Nest allows identity-verified cleaners to select the dates that they are available for cleaning, as well as the location they prefer to clean in, and set their own hourly rate. The platform also allows customers to search cleaners by availability and location (searching within a 20km radius of their specified location) and book their services. Further, customers can create home profiles with fields such as address and cleaning instructions filled in, so they can be reused and sent through to the cleaner that has been booked. While the cleaners and customers can communicate via an internal messaging system on the platform, both the booking and payment process is handled by Clean Nest. Finally, both cleaners and customers can review each other upon completion of a booking.
 
