@@ -31,9 +31,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem "loofah", ">= 2.2.3"
 
 # Bootstrap
-gem 'bootstrap', '~> 4.0.0.beta'
+gem "bootstrap", ">= 4.1.2"
 # Jquery-rails
 gem 'jquery-rails'
 #  Devise is for login authentication
