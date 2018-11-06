@@ -7,6 +7,8 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
+gem 'rubyzip', '~> 1.2.2'
+
 # Use postgres as the database
 gem 'pg'
 # Use Puma as the app server
@@ -32,6 +34,8 @@ gem 'bcrypt'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem "loofah", ">= 2.2.3"
+
+gem 'nokogiri', '~> 1.8.5'
 
 # Bootstrap
 gem "bootstrap", ">= 4.1.2"
